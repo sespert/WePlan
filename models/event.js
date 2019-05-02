@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const conventionSchema = new Schema({
+const eventSchema = new Schema({
   place: { type: String, required: true },
   speaker: { type: String, required: true },
   subject: String,
@@ -9,6 +9,6 @@ const conventionSchema = new Schema({
   time: Number
 });
 
-const Convention = mongoose.model("Convention", conventionSchema);
+const Event = mongoose.model("Event", eventSchema);
 
-module.exports = Convention;
+module.exports = Event;
