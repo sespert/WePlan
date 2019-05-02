@@ -1,5 +1,5 @@
 {
-  "name": "mern",
+  "name": "weplan",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -23,6 +23,9 @@
     "axios": "^0.18.0",
     "express": "^4.16.3",
     "mongoose": "^5.3.16",
-    "if-env": "^1.0.4"
+    "if-env": "^1.0.4",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.0"
   }
 }

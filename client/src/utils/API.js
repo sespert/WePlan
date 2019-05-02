@@ -2,19 +2,23 @@ import axios from "axios";
 
 export default {
   // Gets all books
-  getConventions: function() {
-    return axios.get("/api/conventions");
+  getEvents: function() {
+    return axios.get("/api/events");
   },
   // Gets the book with the given id
-  getConvention: function(id) {
-    return axios.get("/api/conventions/" + id);
+  getCevents: function(id) {
+    return axios.get("/api/events/" + id);
   },
   // Deletes the book with the given id
-  deleteConvention: function(id) {
-    return axios.delete("/api/conventions/" + id);
+  deleteEvent: function(id) {
+    return axios.delete("/api/events/" + id);
   },
   // Saves a book to the database
-  saveConvention: function(conventionData) {
-    return axios.post("/api/conventions", conventionData);
-  }
+  saveEvent: function(eventData) {
+    return axios.post("/api/events", eventData);
+  },
+  getMap: function(query) {
+    //GoogleMap API
+    // return axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
+  },
 };

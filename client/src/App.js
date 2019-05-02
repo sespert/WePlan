@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Convention from "./pages/Convention";
+import Event from "./pages/Event";
 // import Detail from "./pages/Detail";
 // import NoMatch from "./pages/NoMatch";
-// import Nav from "./components/Nav";
+import Nav from "./components/Nav";
 
 function App() {
   return (
@@ -11,10 +11,10 @@ function App() {
       <div>
         <Nav />
         <Switch>
-          <Route exact path="/" component={Conventions} />
-          <Route exact path="/conventions" component={Conventions} />
-          <Route exact path="/conventions/:id" component={Detail} />
-          <Route component={NoMatch} />
+          <Route exact path="/" component={Event} />
+          {/* <Route exact path="/events" component={Event} />
+          <Route exact path="/events/:id" component={Detail} />
+          <Route component={NoMatch} /> */}
         </Switch>
       </div>
     </Router>
