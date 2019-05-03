@@ -9,11 +9,16 @@ import { Input, TextArea, FormBtn } from "../components/Form";
 
 class Conventions extends Component {
   state = {
-    conventions: [],
-    title: "",
-    author: "",
-    synopsis: ""
-  };
+    events: [{
+      title: "Merchant2019",
+      date: "Sep2019"
+    },
+    {
+      title: "DogsExpo",
+      date: "Oct2019"
+    }
+      ]
+  }
 
   // componentDidMount() {
   //   this.loadConventions();
@@ -55,61 +60,21 @@ class Conventions extends Component {
 
   render() {
     return (
-      <Container fluid>
-        <Row>
-          <Col size="md-6">
+      <Container>
             <Jumbotron>
-              <h1>What Conventions Should I Read?</h1>
+              <h1>Let us plan your next event</h1>
             </Jumbotron>
-            <form>
-              <Input
-                value={this.state.title}
-                onChange={this.handleInputChange}
-                name="title"
-                placeholder="Title (required)"
-              />
-              <Input
-                value={this.state.author}
-                onChange={this.handleInputChange}
-                name="author"
-                placeholder="Author (required)"
-              />
-              <TextArea
-                value={this.state.synopsis}
-                onChange={this.handleInputChange}
-                name="synopsis"
-                placeholder="Synopsis (Optional)"
-              />
-              <FormBtn
-                disabled={!(this.state.author && this.state.title)}
-                onClick={this.handleFormSubmit}
-              >
-                Submit Book
-              </FormBtn>
-            </form>
-          </Col>
-          {/* <Col size="md-6 sm-12">
-            <Jumbotron>
-              <h1>Conventions On My List</h1>
-            </Jumbotron>
-            {this.state.Conventions.length ? (
-              <List>
-                {this.state.Conventions.map(book => (
-                  <ListItem key={book._id}>
-                    <Link to={"/Conventions/" + book._id}>
-                      <strong>
-                        {book.title} by {book.author}
-                      </strong>
-                    </Link>
-                    <DeleteBtn onClick={() => this.deleteBook(book._id)} />
-                  </ListItem>
-                ))}
-              </List>
-            ) : (
-              <h3>No Results to Display</h3>
-            )}
-          </Col> */}
-        </Row>
+
+            <List>
+            {this.state.events.map(eve => {
+                  return(
+                    <ListItem                       
+                      title = {eve.title}                                      
+                    />
+                  )
+                })}
+            </List>
+            
       </Container>
     );
   }

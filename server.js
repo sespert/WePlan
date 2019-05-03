@@ -1,13 +1,23 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const mongoSanitize = require("express-mongo-sanitize");
+const helmet = require("helmet");
 const routes = require("./routes");
 const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Define middleware here
+// MiddleWares
+
+// refactored to use helmet set security-related HTTP response headers
+app.use(helmet());
+// Will replace prohibited characters with _,
+app.use(mongoSanitize({ replaceWith: "_" }));
+// support parsing of application/json type post data and limit payload
+app.use(express.json({ limit: "300kb" }));
+//support parsing of application/x-www-form-urlencoded post data
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
