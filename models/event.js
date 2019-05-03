@@ -1,12 +1,42 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+const User = require("./User");
+
 const eventSchema = new Schema({
-  place: { type: String, required: true },
-  speaker: { type: String, required: true },
-  subject: String,
-  date: { type: Date, default: Date.now },
-  time: Number
+  admin: {
+    type: Schema.Types.ObjectId,
+    ref: "User"
+  },
+  name: {
+    type: String,
+    required: true
+  },
+  place: {
+    type: String, 
+    required: true 
+  },
+  subject: {
+    type: String,
+    required: false
+  },  
+  date: { 
+    type: Date, 
+    default: Date.now,
+    required: true
+  },
+  numOfDays: {
+    type: Number,
+    required: true
+  },
+  startTime: {
+    type: Number,
+    required: true
+  },
+  endTime: {
+    type: Number,
+    required: true
+  }
 });
 
 const Event = mongoose.model("Event", eventSchema);
