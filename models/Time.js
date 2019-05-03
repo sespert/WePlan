@@ -4,9 +4,10 @@ const Conference = require("./Conference");
 const Exhibitor = require("./Exhibitor");
 
 const timeSchema = new Schema ({
-    hour: {
-        type: Date,
-        default: Date.now
+    schedule: {
+        day: Number,
+        time: Number,
+        duration: Number
     },
     conf: [{
         type: Schema.Types.ObjectId,
