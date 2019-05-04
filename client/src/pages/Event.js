@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
+import Modal from "../components/Modal";
+import Questions from "./Questions";
 
 class Conventions extends Component {
   state = {
@@ -64,7 +66,7 @@ class Conventions extends Component {
             <Jumbotron>
               <h1>Let us plan your next event</h1>
             </Jumbotron>
-
+            <Modal />
             <List>
             {this.state.events.map(eve => {
                   return(
