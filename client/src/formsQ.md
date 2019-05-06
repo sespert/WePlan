@@ -7,7 +7,6 @@ email
 password
 
 EVENT INFO
-schedule
 event name
 place
 subject
