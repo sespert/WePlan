@@ -8,10 +8,10 @@ function Nav() {
       </a>
         <ul className="navbar-nav flex-row ml-md-auto">
           <li className="nav-item">
-          <a class="nav-link" href="/">Login</a>
+          <a className="nav-link" href="/">Login</a>
           </li>
           <li className="nav-item">
-          <a class="nav-link" href="/">Register</a>
+          <a className="nav-link" href="/">Register</a>
         </li>
         </ul>
     </nav>
