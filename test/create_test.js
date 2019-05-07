@@ -67,11 +67,7 @@ describe ("creating new collections" , function() {
             name: "Smarty pills",
             representant: "Diana Pachon",
             booth: "N-201",
-            sched:[
-                {day:1, hour:9, available:true},
-                {day:1, hour:7, available: false},
-                {day:2, hour:13}
-            ]
+            
         });
 
         exhibitor.save().then(function() {
