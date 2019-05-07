@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const User = require("./User ");
+// const User = require("./User ");
 
 const timeExhibitSchema = new Schema ({
     hour: Number,
@@ -14,6 +14,6 @@ const timeExhibitSchema = new Schema ({
     }]
 });
 
-const TimeExhibit = mongoose.model("Time", timeExhibitSchema);
+const TimeExhibit = mongoose.model("TimeExhibit", timeExhibitSchema);
 
 module.exports = TimeExhibit;

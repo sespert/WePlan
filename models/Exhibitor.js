@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const DayExhibit = require("./DayExhibit");
-const Event = require("./Event");
+// const Event = require("./Event");
 
 const exhibitorSchema = new Schema ({
     name: {
@@ -17,11 +17,22 @@ const exhibitorSchema = new Schema ({
         type:  String,
         required: true
     },
-    event: {
-        type: Schema.Types.ObjectId,
-        ref: "Event"
-    },
-    sched: [DayExhibit]
+    sched: [{
+        day: Number,
+        hour: Number,
+        available:{
+            type: Boolean,
+            default: true
+        }
+    }]
+    // event: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: "Event"
+    // },
+    // sched: [{
+    //     type: Schema.Types.ObjectId,
+    //     ref: "DayExhibit"
+    // }]
 
 });
 
