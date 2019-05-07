@@ -22,7 +22,7 @@ class QuestionUser extends Component{
         e.preventDefault();
         if (this.state.name && this.state.email && this.state.password) {
             alert("user saved");
-            this.setState({referrer: '/'});
+            this.setState({referrer: '/events'});
         //   API.saveUserRole({
         //     name: this.state.name,
         //     email: this.state.email,
