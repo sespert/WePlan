@@ -1,16 +1,22 @@
 const mongoose = require("mongoose");
-const db = require("../models");
+const db = require("../models/event");
 
-// This file empties the Books collection and inserts the books below
+// This file empties the collection and inserts the events below
 
 mongoose.connect(
   process.env.MONGODB_URI ||
   "mongodb://localhost/weplan"
 );
 
-const convention1 = [
+const conventionSeed = [
   {
-    
+    name: "Industrial Exchange 2019",
+    place: "Miami Beach Convention Center",
+    subject: "Over 2,500 attendees from middle-market industrial companies and the private equity community will meet in Miami Beach in May 2019. Don’t miss out on networking opportunities with the group of high level decision makers.",
+    date: "2019-5-6",
+    numOfDays: 3,
+    startTime: 1200,
+    endTime: 1100
   
   }
 ];

@@ -1,14 +1,13 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
 import Nav from "./components/Nav";
 import Event from "./pages/Event";
 import Register from "./pages/Register";
-// import List from "./pages/List";
+import List from "./pages/List";
 import Admin from "./pages/Admin";
-// import AdminEvent from "./pages/AdminEvent";
-// import SingleEvent from "./pages/SingleEvent";
-// import UserEvent from "./pages/UserEvent";
+import AdminEvent from "./pages/AdminEvent";
+import SingleEvent from "./pages/SingleEvent";
+import UserEvent from "./pages/UserEvent";
 
 import NoMatch from "./pages/NoMatch";
 
@@ -20,11 +19,11 @@ function App() {
         <Switch>
           <Route exact path="/" component={Event} />
           <Route exact path="/register" component={Register} />
-          {/* <Route exact path="/events" component={List} /> */}
+          <Route exact path="/events" component={List} />
           <Route exact path="/admin" component={Admin} />
-          {/* <Route exact path="/admin/events/id" component={AdminEvent} /> */}
-          {/* <Route exact path="/events/id" component={SingleEvent} /> */}          
-          {/* <Route exact path="/user/events/id" component={UserEvent} /> */}
+          <Route exact path="/admin/events/id" component={AdminEvent} />
+          <Route exact path="/events/id" component={SingleEvent} />          
+          <Route exact path="/user/event/id" component={UserEvent} />
           <Route component={NoMatch} />
         </Switch>
       </div>

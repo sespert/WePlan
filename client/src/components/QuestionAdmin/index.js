@@ -14,7 +14,6 @@ class QuestionAdmin extends Component {
         startTime: "",
         endTime: "",
         referrer: null
-
     }
 
     handleChange = e => {
@@ -28,7 +27,7 @@ class QuestionAdmin extends Component {
     this.setState({referrer: '/'});
 
     // console.log(e);
-    //   API.saveEventInfo({
+    //   API.saveEvent({
     //     name: this.state.name,
     //     place: this.state.place,
     //     subject: this.state.subject,
@@ -54,7 +53,7 @@ class QuestionAdmin extends Component {
             <Input name="startTime" placeholder="Start time: 12:00 (required)" value={this.state.startTime} onChange={this.handleChange}/> 
             <Input name="endTime" placeholder="End time: 12:00 (required)" value={this.state.endTime} onChange={this.handleChange}/> 
             
-            <FormBtn onClick={this.handleSubmit}>Submit</FormBtn>
+            <FormBtn onClick={this.handleSubmit}>Create Event</FormBtn>
         </form>
       
         )
