@@ -1,6 +1,6 @@
-module exports ={
-    const Event = require('../models/Event');
-    const User = require('../models/User');
-    const Conference = require('../models/Conference');
-    const Exhibitor = require('../models/Exhibitor');
+module.exports = {
+    Event: require('../models/Event'),
+     User : require('../models/User'),
+     Conference : require('../models/Conference'),
+     Exhibitor : require('../models/Exhibitor')
 }
