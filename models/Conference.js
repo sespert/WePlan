@@ -17,10 +17,7 @@ const conferenceSchema = new Schema({
         type: String,
         required: true
     },
-    // event: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: "Event"
-    // },
+    
     schedule: {
         day: Number,
         time: Number,

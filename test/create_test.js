@@ -4,10 +4,7 @@ const Event = require('../models/Event');
 const User = require('../models/User');
 const Conference = require('../models/Conference');
 const Exhibitor = require('../models/Exhibitor');
-// const DayExhibit = require('../models/DayExhibit');
-// const TimeExhibit = require('../models/TimeExhibit');
-// const Day = require('../models/Day');
-// const Time = require('../models/Time');
+
 
 describe ("creating new collections" , function() {
 
@@ -16,7 +13,7 @@ describe ("creating new collections" , function() {
     //         name: "Fabian",
     //         company: "FM Tech Enterprise",
     //         role: false,
-    //         email: "fmtechenterprise6@gmail.com",
+    //         email: "fmtechenterprise7@gmail.com",
     //         password: "test1234",
     //         // event: [{ '_id': 'ObjectId("5cce4f1cfb49d38188fa316e")'}]
     //     });
@@ -75,42 +72,5 @@ describe ("creating new collections" , function() {
             done();
         });
     });
-
-    // it("Creates a new DayExhibit", function() {
-    //     const dayExhibit = new DayExhibit();
-    //     dayExhibit.save().then(function() {
-    //         assert(dayExhibit.isNew === false);
-    //         done();
-    //     });
-    // });
-
-    // it("Creates a new TimeExhibit", function() {
-    //     const timeExhibit = new TimeExhibit({ 
-    //         hour:6,
-    //         available: false,
-    //     });
-
-    //     timeExhibit.save.then(function() {
-    //         assert(timeExhibit.isNew === false);
-    //         done();
-    //     });
-    // })
-
-    // it("Creates a new Day", function() {
-    //     const day =  new Day();
-    //     day.save().then(function() {
-    //         assert(day.isNew === false);
-    //         done();
-    //     });
-    // });
-
-    // it("Creates a new Time", function() {
-    //     const time = new Time({
-
-    //     })
-    // })
-
-
-
     
 })

@@ -36,11 +36,11 @@ const eventSchema = new Schema({
   conferences: {
     type: Schema.Types.ObjectId,
     ref: "Conference"
-  },
+  },//implementar llenar esto
   exhibitors: {
     type: Schema.Types.ObjectId,
     ref: "Exhibitor"
-  }
+  }//implemntar llenar esto
 });
 
 const Event = mongoose.model("Event", eventSchema);

@@ -24,8 +24,8 @@ export default {
     // return axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
   },
   //Save user info (2)
-  saveUserRole: function() {
-
+  saveUserRole: function(userData) {
+    return axios.post("/register", userData);
   },
   //Save conference to event  by admin (6)
   saveConference: function (data) {

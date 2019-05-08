@@ -29,37 +29,25 @@ describe ("updating the database", function () {
     });
 
     it("Creates schedule of an Exhibitor based on the event duration", function(done) {
-        var k = 0;  
-        var i = 0;    
-        var j = 9;          
-        do {            
-                Exhibitor.findOneAndUpdate({name:"Smarty pills"}, {$push: {sched: {day:i, hour:j }}}).then(function(){
-                    if(j === 17){
-                        i++;                        
-                        if(i=== 3 && j===17){
-                            // let index = 3*9;
-                            Exhibitor.findOne({name:"Smarty pills"}).then(function(result){
-                                assert(result.sched[5].available === true);                 
-                                done(); 
-                                                               
-                            });  
-                                               
-                        }else{
-                            j=9;
-                        }
-                    } else{
-                        j++;
-                    }
-                   
-                });
-           
-        // }
-        // const hours_day = dbEvent.endTime - dbEvent.startTime;
-        // for(let i=0; i<dbEvent.numOfDays; i++) {
-        //     for(let j=dbEvent.startTime; j<dbEvent.endTime; j++) {
-        //         Exhibitor.findOneAndUpdate({name:"Smarty pills"}, {$push: { sched: {day:i, hour: j}}});
-        //     }
-        }while( k < 1)
+        var days = 3;    
+        var startTime = 9;
+        var endTime = 18;
+        var hours = endTime-startTime;
+        const hoursArr=[];
+        var available = true;
+        const daysArray=[];
+        for (let i =0; i<hours; i++ ){
+            hoursArr.push(available);
+        }
+        for (let i =0; i<days; i++){
+            daysArray.push(hoursArr);
+        }
+        Exhibitor.findOneAndUpdate({name:"Smarty pills"}, {$push: {sched: daysArray}}).then(function(){
+            Exhibitor.findOne({name:"Smarty pills"}).then(function(result){
+                assert(result.sched[2][4] === true);                 
+                done();                                                           
+            });  
+        });
 
     });
 
