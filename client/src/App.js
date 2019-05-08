@@ -18,7 +18,7 @@ function App() {
         <Nav />
         <Switch>
           <Route exact path="/" component={Event} />
-          <Route exact path="/register" component={Register} />
+          <Route exact path="/user" component={Register} />
           <Route exact path="/events" component={List} />
           <Route exact path="/admin" component={Admin} />
           <Route exact path="/admin/events/id" component={AdminEvent} />

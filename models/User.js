@@ -4,7 +4,7 @@ const SALT_WORK_FACTOR = 13;
 const Schema = mongoose.Schema;
 
 const Day = require("./Day");
-const Event = require("./Event");
+const Event = require("./event");
 
 var validateEmail = function(email) {
     var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;

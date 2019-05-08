@@ -7,6 +7,7 @@ import API from "../../utils/API";
 class QuestionUser extends Component {
 
     state = {
+        users: [],
         name: "",
         email: "",
         company: "",
@@ -16,6 +17,7 @@ class QuestionUser extends Component {
     }
 
     handleChange = e => {
+        e.preventDefault();
         this.setState({ [e.target.name]: e.target.value })
     }
 
@@ -24,13 +26,13 @@ class QuestionUser extends Component {
         if (this.state.name && this.state.email && this.state.password) {
             
             this.setState({ referrer: '/events' });
-            API.saveUserRole({
+            API.saveUser({
                 name: this.state.name,
                 email: this.state.email,
                 company: this.state.company,
                 password: this.state.password
             })
-            .then(alert("user saved"))
+            .then(res => console.log(res))
             .catch (err => console.log(err));
         } else {
             alert("Please enter missing fields")
