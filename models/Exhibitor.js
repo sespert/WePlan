@@ -17,22 +17,8 @@ const exhibitorSchema = new Schema ({
         type:  String,
         required: true
     },
-    sched: [{
-        day: Number,
-        hour: Number,
-        available:{
-            type: Boolean,
-            default: true
-        }
-    }]
-    // event: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: "Event"
-    // },
-    // sched: [{
-    //     type: Schema.Types.ObjectId,
-    //     ref: "DayExhibit"
-    // }]
+    sched: []
+    
 
 });
 

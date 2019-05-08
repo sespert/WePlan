@@ -26,7 +26,14 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/weplan");
+mongoose.Promise = global.Promise;
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/weplanDB");
+mongoose.connection.once('open', function () {
+  console.log('connection has been made, now make some fireworks...');
+  done();
+}).on('error', function (error) {
+  console.log('connection error:', error);
+});
 
 // Send every other request to the React app
 // Define any API routes before this runs
