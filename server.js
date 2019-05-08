@@ -30,7 +30,7 @@ mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/weplanDB");
 mongoose.connection.once('open', function () {
   console.log('connection has been made, now make some fireworks...');
-  done();
+  // done();
 }).on('error', function (error) {
   console.log('connection error:', error);
 });
