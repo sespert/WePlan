@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-// const TimeExhibit = require("./TimeExhibit");
+const TimeExhibit = require("./TimeExhibit");
 
 const dayExhibit = new Schema ({
     day : [{

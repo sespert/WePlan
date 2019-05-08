@@ -1,5 +1,5 @@
 import axios from "axios";
-import { func } from "prop-types";
+// import { func } from "prop-types";
 
 export default {
   // Gets all events (1-3)
@@ -23,16 +23,13 @@ export default {
     //GoogleMap API
     // return axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
   },
+  getUsers: function() {
+    return axios.get("/api/user");
+  },
   //Save user info (2)
-  saveUserRole: function(userData) {
-    return axios.post("/register", userData);
-  },
-  //Save conference to event  by admin (6)
-  saveConference: function (data) {
-
-  },
-  //Save conference to user id (5)
-  saveConferenceAttendee: function() {
-
+  saveUser: function(userData) {
+    return axios.post("/api/user", userData);
   }
+  //Save conference to user id (5)
+  
 };

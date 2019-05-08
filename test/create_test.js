@@ -8,21 +8,21 @@ const Exhibitor = require('../models/Exhibitor');
 
 describe ("creating new collections" , function() {
 
-    // it("Creates a new User", function(done) {
-    //     const user = new User({
-    //         name: "Fabian",
-    //         company: "FM Tech Enterprise",
-    //         role: false,
-    //         email: "fmtechenterprise7@gmail.com",
-    //         password: "test1234",
-    //         // event: [{ '_id': 'ObjectId("5cce4f1cfb49d38188fa316e")'}]
-    //     });
+    it("Creates a new User", function(done) {
+        const user = new User({
+            name: "Fabian",
+            company: "FM Tech Enterprise",
+            role: false,
+            email: "fmtechenterprise7@gmail.com",
+            password: "test1234",
+            // event: [{ '_id': 'ObjectId("5cce4f1cfb49d38188fa316e")'}]
+        });
 
-    //     user.save().then(function() {
-    //         assert(user.isNew === false);
-    //         done();
-    //     });
-    // });
+        user.save().then(function() {
+            assert(user.isNew === false);
+            done();
+        });
+    });
 
     it("Creates a new Event", function(done) {
         const event = new Event({

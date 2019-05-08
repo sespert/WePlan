@@ -1,4 +1,4 @@
-const db = require("../models");
+const db = require("../models/event");
 
 // Defining methods for the conventionController
 module.exports = {
