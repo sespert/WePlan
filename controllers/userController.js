@@ -2,10 +2,15 @@ const db = require("../models");
 
 // Defining methods for the conventionController
 module.exports = {
-  findUSerByEvent: function(req, res) {
+  findAll: function(req, res) {
     db.User
       .find(req.query)
-      .sort({ date: -1 })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  findOne: function(req, res) {
+    db.User
+      .findOne(req.query)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -17,9 +22,11 @@ module.exports = {
   },
   create: function(req, res) {
     db.User
+    // .save(req.body)
       .create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+      
   },
   update: function(req, res) {
     db.User
