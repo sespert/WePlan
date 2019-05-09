@@ -6,7 +6,7 @@ import { ConferenceList, ConferenceListItem } from "../components/ListConference
 import Conference from "../components/Conference";
 import { FormBtn } from "../components/Form";
 import { Redirect } from "react-router-dom";
-// import API from "../utils";
+import API from "../utils/API";
 
 //TO DO: display all events of user by default?
 
@@ -26,14 +26,35 @@ class AdminEvent extends Component {
             speakers: ["Billy Beane"],
             description: "Considered one of the most progressive and talented baseball executives in the game today, Billy Beane has molded the Oakland Athletics into one of professional baseball’s most consistent winners since taking over as General Manager…",
             room: "Ballroom A",
-            schedule:"12:55 pm - 1:50 pm",
+            // schedule: [{
+            //     day: "",
+            //     time: "",
+            //     duration: ""
+            // }]
         }],       
         referrer: null
     }
 
-    // componentDidMount () {
-    //     getUserEvent(params.id);
-    // }
+    componentDidMount () {
+        this.loadConferences();
+    }
+
+    loadConferences = () => {
+        API.getConferences()
+        .then(res=> console.log(res))
+            // this.setState({conferences: [{
+            //     title: res.title,
+            //     // speakers: res.speakers,
+            //     description: res.description,
+            //     room: res.room,
+            //     // schedule: {
+            //     //     day: res.schedule.day,
+            //     //     time: res.schedule.time,
+            //     //     duration: res.schedule.duration,
+            //     // }
+            // }]}))
+            .catch(err => console.log(err));
+    }
     // getUserEvent = id => {
     //     API.getEvent(id).then(res => 
     //       this.setState({
@@ -50,13 +71,26 @@ class AdminEvent extends Component {
     //     ).catch(err => console.log(err))
     // }
 
-    // handleChange = e => {
-    //     this.setState({[e.target.name] :  e.target.value})
-    // }
+    handleChange = e => {
+        this.setState({[e.target.name] :  e.target.value})
+    }
 
     handleSubmit = e => {
         e.preventDefault();
         this.setState({referrer: '/events'});
+
+        API.saveConference({
+            title: this.state.title,
+            speakers: this.state.speakers,
+            description: this.state.description,
+            room: this.state.room,
+            // schedule: {
+            //     day:2,
+            //     time: 10,
+            //     duration:2
+            // }
+        }).then(res => console.log(res))
+        .catch(err => console.log(err));
     }
     
     render() {       

@@ -1,4 +1,4 @@
-const db = require("../models/event");
+const db = require("../models");
 
 // Defining methods for the conventionController
 module.exports = {
@@ -9,6 +9,7 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  
   findById: function(req, res) {
     db.Event
       .findById(req.params.id)
@@ -21,6 +22,7 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  
   update: function(req, res) {
     db.Event
       .findOneAndUpdate({ _id: req.params.id }, req.body)
