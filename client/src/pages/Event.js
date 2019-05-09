@@ -11,17 +11,8 @@ import Modal from "../components/Modal";
 
 class Event extends Component {
   state = {
-    events: [{
-      title: "Merchant2019",
-      location: "Miami Beach",
-      date: "Sep2019"
-    },
-    {
-      title: "DogsExpo",
-      location: "Aventura",
-      date: "Oct2019"
-    }
-      ]
+    events: [],
+   
   }
 
   // componentDidMount() {

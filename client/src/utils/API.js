@@ -7,7 +7,7 @@ export default {
     return axios.get("/api/events");
   },
   // Gets the event with the given id (6)
-  getEvents: function(id) {
+  getEventsbyId: function(id) {
     return axios.get("/api/events/" + id);
   },
   // Deletes the event with the given id
@@ -17,6 +17,12 @@ export default {
   // Saves an event to the database (4)
   saveEvent: function(eventData) {
     return axios.post("/api/events", eventData);
+  },
+  saveConference: function(conferenceData) {
+    return axios.post("/api/conferences", conferenceData);
+  },
+  getConferences: function() {
+    return axios.get("/api/conferences");
   },
   //Get google maps for the venue location
   getMap: function(query) {

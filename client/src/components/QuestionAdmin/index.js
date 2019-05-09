@@ -2,10 +2,13 @@ import React, { Component }  from "react";
 import { Redirect } from "react-router-dom";
 import { Input, FormBtn, TextArea } from "../Form";
 import "./style.css";
+import API from "../../utils/API";
+
 
 class QuestionAdmin extends Component {
 
     state = {
+        // events: [],
         name: "",
         place: "",
         subject: "",
@@ -17,32 +20,34 @@ class QuestionAdmin extends Component {
     }
 
     handleChange = e => {
+        e.preventDefault();
         this.setState({[e.target.name] :  e.target.value})
     }
 
     handleSubmit = e => {
-    e.preventDefault();
-    //Deberia guardar la id para llamarla y redirect el routing a la pagina del evento
+        e.preventDefault();
+    //Deberia guardar el id para llamarla y redirect el routing a la pagina del evento
     // this.setState({referrer: '/admin/event/:id'});
-    this.setState({referrer: '/'});
+        this.setState({referrer: '/admin/events/id'});
 
-    // console.log(e);
-    //   API.saveEvent({
-    //     name: this.state.name,
-    //     place: this.state.place,
-    //     subject: this.state.subject,
-    //     date: this.state.date,
-    //     numOfDays: this.state.numOfDays,
-    //     startTime: this.state.startTime,
-    //     endTime: this.state.endTime
-    //   })
-        // .then(res => //)
-        // .catch(err => console.log(err));
+        // console.log(e);
+        API.saveEvent({
+            name: this.state.name,
+            place: this.state.place,
+            subject: this.state.subject,
+            date: this.state.date,
+            numOfDays: this.state.numOfDays,
+            startTime: this.state.startTime,
+            endTime: this.state.endTime
+        })
+            .then(res => console.log(res))
+            .catch(err => console.log(err));
     }
       
     render() {
         const {referrer} = this.state;
         if (referrer) return <Redirect to={referrer} />;
+
         return (
         <form>
             <Input name="name" placeholder="Name of the event (required)" value={this.state.name} onChange={this.handleChange}/>

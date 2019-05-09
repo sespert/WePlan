@@ -1,6 +1,6 @@
 module.exports = {
     Event: require('./event'),
     User : require('./user'),
-    Conference : require('./Conference'),
+    Conference : require('./conference'),
     Exhibitor : require('./Exhibitor')
 };
