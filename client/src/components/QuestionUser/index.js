@@ -12,7 +12,8 @@ class QuestionUser extends Component {
         email: "",
         company: "",
         password: "",
-        referrer: null
+        referrer: null,
+        userId: ""
 
     }
 
@@ -32,7 +33,11 @@ class QuestionUser extends Component {
                 company: this.state.company,
                 password: this.state.password
             })
-            .then(res => console.log(res))
+            .then(res => {                
+                console.log(res);
+                this.setState({userId:res.data._id});
+            
+            })
             .catch (err => console.log(err));
         } else {
             alert("Please enter missing fields")
@@ -42,7 +47,7 @@ class QuestionUser extends Component {
 
     render() {
         const { referrer } = this.state;
-        if (referrer) return <Redirect to={referrer} />;
+        if ( referrer && this.state.userId ) return <Redirect to={{pathname: "/events", state: { userId : this.state.userId}}} />;
 
         return (
             <form>

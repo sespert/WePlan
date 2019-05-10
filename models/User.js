@@ -20,11 +20,11 @@ const userSchema = new Schema({
         type: String, 
         default: "personal"
     },
-    role: {
-        type: Boolean,
-        required: true,
-        default: false //false for attendee, true for admin
-    },
+    // role: {
+    //     type: Boolean,
+    //     required: true,
+    //     default: false //false for attendee, true for admin
+    // },
     email: {
         type: String,
         trim: true,
