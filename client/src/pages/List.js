@@ -8,23 +8,33 @@ import { Redirect } from "react-router-dom";
 //TO DO: Add list of events of the logged user
 
 class EventsList extends Component {
-    state={
-        events: [{
-            title: "Merchant2019",
-            date: "Sep2019"
-          },
-          {
-            title: "DogsExpo",
-            date: "Oct2019"
-          }
-            ],
-            referrer: null
+
+  constructor(props) {
+    super(props);
+
+    this.state={
+      events: [{
+          title: "Merchant2019",
+          date: "Sep2019"
+        },
+        {
+          title: "DogsExpo",
+          date: "Oct2019"
+        }
+          ],
+          referrer: null,
+          userId: ""
 
     }
 
-    // componentDidMount() {
-    //     this.loadEvents();
-    // }
+  }
+
+    
+
+    componentDidMount() {
+        this.setState({userId: this.props.location.state.userId});
+        console.log("props", this.props);
+    }
 
     // loadEvents = () => {
     //     API.getEvents()
@@ -48,6 +58,7 @@ class EventsList extends Component {
             <Container>
             <Jumbotron>
               <h1>Click to see the info of an event</h1>
+              
             </Jumbotron>
             <List>                
             {this.state.events.map(eve => {

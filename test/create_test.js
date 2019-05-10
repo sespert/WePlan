@@ -12,7 +12,7 @@ describe ("creating new collections" , function() {
         const user = new User({
             name: "Fabian",
             company: "FM Tech Enterprise",
-            role: false,
+            // role: false,
             email: "fmtechenterprise7@gmail.com",
             password: "test1234",
             // event: [{ '_id': 'ObjectId("5cce4f1cfb49d38188fa316e")'}]

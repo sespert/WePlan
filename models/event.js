@@ -4,6 +4,10 @@ const Schema = mongoose.Schema;
 // const User = require("./User");
 
 const eventSchema = new Schema({
+  admin: {
+    type: Schema.Types.ObjectId,
+    ref: "User"
+  },
   name: {
     type: String,
     required: true
