@@ -11,10 +11,16 @@ export function List({ children }) {
   );
 }
 
-// export function ListItem(props) {
-//   return <li className="list-group-item" {...props}>{props.title}</li>;
-// }
-
-export function ListItem({ children }) {
-  return <li className="list-group-item">{children}</li>
+export function ListItem(props) {
+  return (
+      <li className="list-group-item" {...props}>
+        <a href={"events/" + props.id}  >
+        <strong> {props.name}</strong>                     
+        </a>
+      </li>
+  );
 }
+
+// export function ListItem({ children }) {
+//   return <li className="list-group-item">{children}</li>
+// }

@@ -32,9 +32,16 @@ export default {
   getUsers: function() {
     return axios.get("/api/user");
   },
+  //For the login
+  // getUserByEmail: function(email) {
+  //   return axios.get("/api/user", email);
+  // },
   //Save user info (2)
   saveUser: function(userData) {
     return axios.post("/api/user", userData);
+  },
+  getExactEmail: function(email) {
+    return axios.get("/api/user", email);
   }
   //Save conference to user id (5)
   
