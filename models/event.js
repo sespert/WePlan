@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const User = require("./User");
+// const User = require("./User");
 
 const eventSchema = new Schema({
   admin: {
@@ -36,7 +36,15 @@ const eventSchema = new Schema({
   endTime: {
     type: Number,
     required: true
-  }
+  },
+  conferences: {
+    type: Schema.Types.ObjectId,
+    ref: "Conference"
+  },//implementar llenar esto
+  exhibitors: {
+    type: Schema.Types.ObjectId,
+    ref: "Exhibitor"
+  }//implemntar llenar esto
 });
 
 const Event = mongoose.model("Event", eventSchema);

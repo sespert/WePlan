@@ -2,10 +2,13 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const TimeExhibit = require("./TimeExhibit");
 
-const daySchema = new Schema ({
-    day : [TimeExhibit]
+const dayExhibit = new Schema ({
+    day : [{
+        type: Schema.Types.ObjectId,
+        ref:"TimeExhibit"
+    }]
 });
 
-const DaySchema = mongoose.model("DaySchema", daySchema);
+const DayExhibit = mongoose.model("DayExhibit", dayExhibit);
 
-module.exports = DaySchema;
+module.exports = DayExhibit;

@@ -4,7 +4,7 @@ const SALT_WORK_FACTOR = 13;
 const Schema = mongoose.Schema;
 
 const Day = require("./Day");
-const Event = require("./Event");
+const Event = require("./event");
 
 var validateEmail = function(email) {
     var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -20,11 +20,11 @@ const userSchema = new Schema({
         type: String, 
         default: "personal"
     },
-    role: {
-        type: Boolean,
-        required: true,
-        default: false //false for attendee, true for admin
-    },
+    // role: {
+    //     type: Boolean,
+    //     required: true,
+    //     default: false //false for attendee, true for admin
+    // },
     email: {
         type: String,
         trim: true,
@@ -41,18 +41,38 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    schedule:{
-        type:[Day], 
-        required: false              
+    sched:{
+        day: Number,
+        hour: Number,
+        //conference or 101 or available
+        meetingType:{
+            type: String,
+            default: null
+        },
+        conf: [{
+            type: Schema.Types.ObjectId,
+            ref: "Conference"
+        }],
+        exhibit: [{
+            type: Schema.Types.ObjectId,
+            ref: "Exhibitor"
+        }]
     },
-    event: {
+    // sched:{
+    //     type:[{
+    //         type:Schema.Types.ObjectId,
+    //         ref:"Day"
+    //     }], 
+    //     required: false              
+    // },    
+    events: {
         type: Schema.Types.ObjectId,
         ref: "Event"
     }
 });
 
 // Pre save hook to hash passwords
-UserSchema.pre("save", function(next) {
+userSchema.pre("save", function(next) {
     const user = this;
     // only hash the password if it has been modified (or is new)
     if (!user.isModified("password")) return next();
@@ -71,7 +91,7 @@ UserSchema.pre("save", function(next) {
 });
 
   // Helper method for password comparison promise based
-UserSchema.methods.comparePassword = function (candidatePassword) {
+userSchema.methods.comparePassword = function (candidatePassword) {
     return new Promise((resolve, reject) => {
         bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
             if (err) reject(err, "passwords not a match");

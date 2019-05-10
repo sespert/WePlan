@@ -6,7 +6,11 @@ router.route("/")
   .get(eventController.findAll)
   .post(eventController.create);
 
-// Matches with "/api/convention/:id"
+router.route("/events")
+.get(eventController.findAll)
+.post(eventController.create);
+
+// Matches with "/api/event/:id"
 router
   .route("/:id")
   .get(eventController.findById)
