@@ -1,14 +1,21 @@
 import React from "react";
+import "./jumbotronStyle.css";
 
-function Jumbotron({ children }) {
-  return (
-    <div
-      style={{ height: 300, clear: "both", paddingTop: 120, textAlign: "center" }}
-      className="jumbotron"
-    >
-      {children}
-    </div>
-  );
-}
+
+
+
+
+  function Jumbotron({ children }) {
+    return (
+      <div id="eventMainDetail"
+        style={{ 
+
+        }}
+        className="jumbotron"
+      >
+        {children}
+      </div>
+    );
+  }
 
 export default Jumbotron;

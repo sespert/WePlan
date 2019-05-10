@@ -5,14 +5,29 @@ import Jumbotron from "../components/Jumbotron";
 // import { Link } from "react-router-dom";
 import { Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
-// import { Input, TextArea, FormBtn } from "../components/Form";
-import Modal from "../components/Modal";
-// import Questions from "./Questions";
+import { Input, TextArea, FormBtn } from "../components/Form";
+import FormLogin from "../components/FormLogin";
 
 class Event extends Component {
   state = {
-    events: [],
-   
+    events: [{
+      title: "E-commerce Tech",
+      date: "April-2019"
+    },
+
+    {
+      title: "DogsExpo",
+      date: "September-2019"
+    },
+    {
+      title: "Merchant2019",
+      date: "October-2019"
+    },
+    {
+      title: "GoPro",
+      date: "December-2019"
+    }
+      ]
   }
 
   // componentDidMount() {
@@ -40,11 +55,17 @@ class Event extends Component {
   render() {
     return (
       <Container>
+        <article class="container">
             <Jumbotron>
-              <h1>Let us plan your next event</h1>
-            </Jumbotron>
-            
-            <List>
+            <blockquote>
+            <strong>Conference</strong>  <em>information</em>
+        </blockquote>
+ 
+              
+
+              <br>
+              </br>
+              <List>
             {this.state.events.map(eve => {
                   return(
                     <ListItem>
@@ -57,9 +78,14 @@ class Event extends Component {
                   </ListItem>
                   )
                 })}
+                      
             </List>
-
-            <Modal />
+            </Jumbotron>
+          
+ </article>
+ <FormLogin>
+              </FormLogin>
+            
       </Container>
     );
   }

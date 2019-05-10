@@ -1,0 +1,49 @@
+#eventMainDetail {
+    background-image:  url("../../images/conferencePic.jpg"); 
+    height: 600px;
+    width: 700px;
+    padding-top: 40px; 
+    text-align: center;
+    margin-left: -180px;
+    padding-left: 70px;
+    padding-right: 70px;
+    padding-bottom: 00px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+
+@font-face {
+    font-family: 'CallunaRegular';
+    src: url('http://tangledindesign.com/codepen/fonts/Calluna-Regular-webfont.eot');
+    src: url('http://tangledindesign.com/codepen/fonts/Calluna-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('http://tangledindesign.com/codepen/fonts/Calluna-Regular-webfont.woff') format('woff'),
+         url('http://tangledindesign.com/codepen/fonts/Calluna-Regular-webfont.ttf') format('truetype'),
+         url('http://tangledindesign.com/codepen/fonts/Calluna-Regular-webfont.svg#CallunaRegular') format('svg');
+}
+    blockquote {
+        width: 565px;
+        font: 2.65em CallunaRegular;
+        letter-spacing: .0em;
+        float: left;
+        padding: px 0 10px 25px;
+
+        border-top: 6px dotted #da5931;
+        border-bottom: 6px dotted #da5931;
+
+        -webkit-transform: rotate(-4deg);
+    }
+        blockquote:first-line {
+            font: 1.80em "Montserrat";
+            color: #000000;
+        }
+
+        blockquote:first-letter {
+            font-size: 2.6em;
+            text-transform: lowercase;
+            float: left;
+            line-height: .52em;
+            position: relative;
+            z-index: 1;
+        }
+

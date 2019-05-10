@@ -1,0 +1,13 @@
+#form1{
+    /* float: right; */
+    height: 600px;
+    width: 500px;
+    /* padding-top: 40px;  */
+    text-align: center;
+    margin-left: 650px;
+    margin-top: -450px;
+    /* padding-right: 50%; */
+    padding-bottom: 0px;
+    font-family: 'Montserrat', sans-serif;
+    position: absolute;
+}
