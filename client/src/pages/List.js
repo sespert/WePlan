@@ -32,7 +32,7 @@ class EventsList extends Component {
     
 
     componentDidMount() {
-        this.setState({userId: this.props.location.state.userId});
+        // this.setState({userId: this.props.location.state.userId});
         console.log("props", this.props);
     }
 
