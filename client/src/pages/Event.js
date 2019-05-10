@@ -6,16 +6,26 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
+import FormLogin from "../components/FormLogin";
 
 class Conventions extends Component {
   state = {
     events: [{
-      title: "Merchant2019",
-      date: "Sep2019"
+      title: "E-commerce Tech",
+      date: "April-2019"
     },
+
     {
       title: "DogsExpo",
-      date: "Oct2019"
+      date: "September-2019"
+    },
+    {
+      title: "Merchant2019",
+      date: "October-2019"
+    },
+    {
+      title: "GoPro",
+      date: "December-2019"
     }
       ]
   }
@@ -61,11 +71,17 @@ class Conventions extends Component {
   render() {
     return (
       <Container>
+        <article class="container">
             <Jumbotron>
-              <h1>Let us plan your next event</h1>
-            </Jumbotron>
+            <blockquote>
+            <strong>Conference</strong>  <em>information</em>
+        </blockquote>
+ 
+              
 
-            <List>
+              <br>
+              </br>
+              <List>
             {this.state.events.map(eve => {
                   return(
                     <ListItem                       
@@ -73,7 +89,13 @@ class Conventions extends Component {
                     />
                   )
                 })}
+                      
             </List>
+            </Jumbotron>
+          
+ </article>
+ <FormLogin>
+              </FormLogin>
             
       </Container>
     );

@@ -1,18 +1,20 @@
 import React from "react";
+import './nav.css';
+import logo from '../../images/logo.png'
+
 
 function Nav() {
+  console.log(logo)
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-secondary">
-      <a className="navbar-brand" href="/">
-        WePlan
+    <nav id="navBar" className="navbar navbar-expand-lg">
+      <a className="navbar-brand" href='/' >
+      <img   src={logo} height="100" width="150" alt="logo"/> 
       </a>
         <ul className="navbar-nav flex-row ml-md-auto">
           <li className="nav-item">
-          <a class="nav-link" href="/">Login</a>
+          <a className="nav-link" href="/">See More Events</a>
           </li>
-          <li className="nav-item">
-          <a class="nav-link" href="/">Register</a>
-        </li>
+  
         </ul>
     </nav>
       );
