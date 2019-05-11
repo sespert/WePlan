@@ -8,65 +8,6 @@ import { List, ListItem } from "../components/List";
 import FormLogin from "../components/FormLogin";
 
 class Event extends Component {
-<<<<<<< HEAD
-  state = {
-    events: []
-  }
-
-  componentDidMount() {
-    this.loadEvents();
-  }
-
-  loadEvents = () => {
-    API.getEvents()
-      .then(res =>{
-        this.setState({ events: res.data});
-      }
-      )
-      .catch(err => console.log(err));
-  };
-
-
-  // handleInputChange = event => {
-  //   const { name, value } = event.target;
-  //   this.setState({
-  //     [name]: value
-  //   });
-  // };
-
-
-
-  render() {
-    return (
-      <Container>
-        <article className="container">
-          <Jumbotron>
-            <blockquote>
-              <strong>Conference</strong>  <em>information</em>
-            </blockquote>
-            <br></br>
-            <List>
-              {this.state.events.map((eve,i) => {
-                return (
-                  <ListItem 
-                    key = {i}
-                    name = {eve.name}
-                    id = {eve._id} 
-                  />
-                )
-              })}
-
-            </List>
-          </Jumbotron>
-
-        </article>
-        <FormLogin />
-
-      </Container>
-      
-    );
-  }
-=======
 	state = {
 		events: []
 	}
@@ -114,7 +55,6 @@ class Event extends Component {
 			</Container>
 		);
 	}
->>>>>>> 87780c0655adf7ffa97cfa4befbb28d808b8cf92
 }
 
 export default Event;
