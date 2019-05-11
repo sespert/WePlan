@@ -19,13 +19,13 @@ class Admin extends Component {
 
     }
     
-    componentDidMount() {
-        if(this.state.userId) return 
-        this.setState({userId: this.props.location.state.userId});
-        console.log("id" + this.state.userId);
-        console.log("propsID", this.props.location.state.userId);
+    // componentDidMount() {
+    //     if(this.state.userId) return 
+    //     this.setState({userId: this.props.location.state.userId});
+    //     console.log("id" + this.state.userId);
+    //     console.log("propsID", this.props.location.state.userId);
 
-    }
+    // }
 
     handleSubmit = e => {
         e.preventDefault();
