@@ -30,12 +30,12 @@
 
         border-top: 6px dotted #da5931;
         border-bottom: 6px dotted #da5931;
-
         -webkit-transform: rotate(-4deg);
     }
         blockquote:first-line {
             font: 1.80em "Montserrat";
             color: #000000;
+          
         }
 
         blockquote:first-letter {

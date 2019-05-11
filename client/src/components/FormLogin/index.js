@@ -51,7 +51,7 @@ class FormLogin extends Component {
         <input type="password" className="form-control" id="exampleInputPassword1" name="password" placeholder="Password" value={this.state.password} onChange={this.handleChange}/>
       </div>
 
-      <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
+      <button type="submit" id="buttom" className="btn btn-primary"  onClick={this.handleSubmit}>Submit</button>
     </form>
 
   );
