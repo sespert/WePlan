@@ -8,5 +8,6 @@
 .nav-link{
     font-family:'Marcellus SC', serif;
     font-size: 30px;
-    color:white;
+    color:  rgb(7, 63, 7);
+    text-shadow: 2px 2px 5px wheat;
 }

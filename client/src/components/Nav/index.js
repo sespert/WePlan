@@ -13,6 +13,7 @@ function Nav() {
           <li className="nav-item">
           <a className="nav-link" href="/">See More Events</a>
           </li>
+  
         </ul>
     </nav>
       );

@@ -2,7 +2,7 @@ import React, { Component }  from "react";
 import { Redirect } from "react-router-dom";
 import { Input, FormBtn, TextArea } from "../Form";
 import "./style.css";
-// import API from "../../utils/API";
+import API from "../../utils/API";
 
 
 class QuestionAdmin extends Component {
@@ -35,20 +35,20 @@ class QuestionAdmin extends Component {
         this.setState({referrer: '/admin/events/id'});
 
         
-        // API.saveEvent({
-        //     url: "/events/" + this.props.location.state.userId,
-        //     data: {
-        //     name: this.state.name,
-        //     place: this.state.place,
-        //     subject: this.state.subject,
-        //     date: this.state.date,
-        //     numOfDays: this.state.numOfDays,
-        //     startTime: this.state.startTime,
-        //     endTime: this.state.endTime
-        //     }
-        // })
-        //     .then(res => console.log(res))
-        //     .catch(err => console.log(err));
+        API.saveEvent({
+            // url: "/events/" + this.props.location.state.userId,
+            // data: {
+            name: this.state.name,
+            place: this.state.place,
+            subject: this.state.subject,
+            date: this.state.date,
+            numOfDays: this.state.numOfDays,
+            startTime: this.state.startTime,
+            endTime: this.state.endTime
+            // }
+        })
+            .then(res => console.log(res))
+            .catch(err => console.log(err));
     }
       
     render() {
