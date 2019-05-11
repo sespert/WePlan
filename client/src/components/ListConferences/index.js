@@ -27,10 +27,12 @@ export function ConferenceListItem(props) {
             Subject: {props.description}
           </p>
           <p>{props.schedule}</p>
-          <br></br>
+          <br />
         </Col>
         <AddBtn {...props} />
       </Row>
+      <br />
+      
     </Container>
   </li>
 

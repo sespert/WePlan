@@ -26,7 +26,7 @@ export function ListItem(props) {
             {props.subject}
           </p>
           <p>{props.date}</p>
-          
+      
         </Col>
       </Row>
     </Container>
