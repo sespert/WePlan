@@ -8,8 +8,23 @@ import { Redirect } from "react-router-dom";
 
   
 class Admin extends Component {
-    state = {
-        referrer: null
+
+    constructor(props) {
+		super(props);
+
+		this.state = {
+			referrer: null,
+			userId: null
+		}
+
+    }
+    
+    componentDidMount() {
+        if(this.state.userId) return 
+        this.setState({userId: this.props.location.state.userId});
+        console.log("id" + this.state.userId);
+        console.log("propsID", this.props.location.state.userId);
+
     }
 
     handleSubmit = e => {
@@ -17,15 +32,16 @@ class Admin extends Component {
         this.setState({referrer: '/events'});
       }
       render() {
-        const {referrer} = this.state;
-        if (referrer) return <Redirect to={referrer} />;
-      
+        const { referrer } = this.state;
+        if (referrer ) return <Redirect to={{pathname: "/events"}} />;
+		// if (referrer && this.state.userId ) return <Redirect to={{pathname: "/events", state: { userId : this.props.location.state.userId}}} />;
+        // const { userId } = this.props.location.state.userId;
         return (
             <Container > 
                 <Jumbotron>
                     <h1>Tell us all about your event</h1>
                 </Jumbotron>             
-                <QuestionAdmin/>
+                <QuestionAdmin />
                 <FormBtn onClick={this.handleSubmit}>Go to List of Events</FormBtn>
 
             </Container> 
