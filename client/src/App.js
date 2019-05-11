@@ -8,7 +8,6 @@ import Admin from "./pages/Admin";
 import AdminEvent from "./pages/AdminEvent";
 import SingleEvent from "./pages/SingleEvent";
 import UserEvent from "./pages/UserEvent";
-
 import NoMatch from "./pages/NoMatch";
 
 function App() {
@@ -18,7 +17,7 @@ function App() {
         <Nav />
         <Switch>
           <Route exact path="/" component={Event} />
-          <Route exact path="/user" component={Register} />
+          <Route exact path="/register" component={Register} />
           <Route exact path="/events" component={List} />
           <Route exact path="/admin" component={Admin} />
           <Route exact path="/admin/events/id" component={AdminEvent} />
