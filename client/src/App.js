@@ -17,12 +17,12 @@ function App() {
         <Nav />
         <Switch>
           <Route exact path="/" component={Event} />
-          <Route exact path="/register" component={Register} />
+          <Route path="/register" component={Register} />
           <Route exact path="/events" component={List} />
           <Route exact path="/admin" component={Admin} />
-          <Route exact path="/admin/events/id" component={AdminEvent} />
-          <Route exact path="/events/id" component={SingleEvent} />          
-          <Route exact path="/user/event/id" component={UserEvent} />
+          <Route path="/admin/events/id" component={AdminEvent} />
+          <Route path="/events/id" component={SingleEvent} />          
+          <Route path="/user/event/id" component={UserEvent} />
           <Route component={NoMatch} />
         </Switch>
       </div>
