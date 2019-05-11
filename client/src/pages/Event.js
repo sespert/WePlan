@@ -8,62 +8,53 @@ import { List, ListItem } from "../components/List";
 import FormLogin from "../components/FormLogin";
 
 class Event extends Component {
-  state = {
-    events: []
-  }
+	state = {
+		events: []
+	}
 
-  componentDidMount() {
-    this.loadEvents();
-  }
+	componentDidMount() {
+		this.loadEvents();
+	}
 
-  loadEvents = () => {
-    API.getEvents()
-      .then(res =>{
-        this.setState({ events: res.data});
-      }
-      )
-      .catch(err => console.log(err));
-  };
+	loadEvents = () => {
+		API.getEvents()
+			.then(res => {
+				console.log(res);
+				this.setState({ events: res.data });
+			}
+			)
+			.catch(err => console.log(err));
+	};
 
+	render() {
+		return (
+			<Container>
+				<article className="container">
+					<Jumbotron>
+						<blockquote>
+							<strong>Conference</strong>  <em>information</em>
+						</blockquote>
+						<br></br>
+						<List>
+							{this.state.events.map((eve, i) => {
+								return (
+									<ListItem
+										key={i}
+										name={eve.name}
+										id={eve._id}
+									/>
+								)
+							})}
 
-  // handleInputChange = event => {
-  //   const { name, value } = event.target;
-  //   this.setState({
-  //     [name]: value
-  //   });
-  // };
+						</List>
+					</Jumbotron>
 
+				</article>
+				<FormLogin />
 
-
-  render() {
-    return (
-      <Container>
-        <article className="container">
-          <Jumbotron>
-            <blockquote>
-              <strong>Conference</strong>  <em>information</em>
-            </blockquote>
-            <br></br>
-            <List>
-              {this.state.events.map((eve,i) => {
-                return (
-                  <ListItem 
-                    key = {i}
-                    name = {eve.name}
-                    id = {eve._id} 
-                  />
-                )
-              })}
-
-            </List>
-          </Jumbotron>
-
-        </article>
-        <FormLogin />
-
-      </Container>
-    );
-  }
+			</Container>
+		);
+	}
 }
 
 export default Event;
