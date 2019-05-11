@@ -12,17 +12,9 @@ function Nav() {
       </a>
         <ul className="navbar-nav flex-row ml-md-auto">
           <li className="nav-item">
-<<<<<<< HEAD
           <a className="nav-link" href="/">See More Events</a>
           </li>
   
-=======
-          <a className="nav-link" href="/register">Register</a>
-          </li>
-          <li className="nav-item">
-          <a className="nav-link" href="/">Contact Us</a>
-        </li>
->>>>>>> 83b5795944717e41057c173299c8e5a7a7272afb
         </ul>
     </nav>
       );
