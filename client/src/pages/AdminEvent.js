@@ -11,32 +11,36 @@ import API from "../utils/API";
 //TO DO: display all events of user by default?
 
 class AdminEvent extends Component {
+
     state = {
-        event: [{
-            name: "Industrial Exchange 2019",
-            place: "Miami Beach Convention Center",
-            subject: "Over 2,500 attendees from middle-market industrial companies and the private equity community will meet in Miami Beach in May 2019. Don’t miss out on networking opportunities with the group of high level decision makers.",
-            date: "2019-5-6",
-            numOfDays: 3,
-            startTime: 1200,
-            endTime: 1100
-        }],
-        conferences : [{
-            title: "Moneyball: The Art of Winning an Unfair Game",
-            speakers: ["Billy Beane"],
-            description: "Considered one of the most progressive and talented baseball executives in the game today, Billy Beane has molded the Oakland Athletics into one of professional baseball’s most consistent winners since taking over as General Manager…",
-            room: "Ballroom A",
-            // schedule: [{
-            //     day: "",
-            //     time: "",
-            //     duration: ""
-            // }]
-        }],       
+        eName: "",
+        ePlace: "",
+        eSubject: "",
+        eDate: "",
+        eId: "",
+        conferences : [],       
         referrer: null
     }
 
     componentDidMount () {
+        const urlString = window.location.pathname;
+        const urlCut = urlString.substr(14);
+        console.log(urlCut);
+        this.loadEventInfo(urlCut);
         this.loadConferences();
+    }
+
+    loadEventInfo = id => {
+        API.getEventsbyId(id)
+        .then(res => {            
+            this.setState({ 
+                eName: res.data.name,
+                ePlace: res.data.place,
+                eSubject: res.data.subject,
+                eDate: res.data.date,
+                eId: res.data._id
+            });
+        }).catch(err => console.log(err));
     }
 
     loadConferences = () => {
@@ -55,21 +59,7 @@ class AdminEvent extends Component {
             // }]}))
             .catch(err => console.log(err));
     }
-    // getUserEvent = id => {
-    //     API.getEvent(id).then(res => 
-    //       this.setState({
-    //           event : [{
-    //             name: res.name,
-    //             place: res.place,
-    //             subject: res.subject,
-    //             date: res.date,
-    //             numOfDays: res.numOfDays,
-    //             startTime: res.startTime,
-    //             endTime: res.endTime
-    //           }]
-    //       })
-    //     ).catch(err => console.log(err))
-    // }
+  
 
     handleChange = e => {
         this.setState({[e.target.name] :  e.target.value})
@@ -79,18 +69,18 @@ class AdminEvent extends Component {
         e.preventDefault();
         this.setState({referrer: '/events'});
 
-        API.saveConference({
-            title: this.state.title,
-            speakers: this.state.speakers,
-            description: this.state.description,
-            room: this.state.room,
-            // schedule: {
-            //     day:2,
-            //     time: 10,
-            //     duration:2
-            // }
-        }).then(res => console.log(res))
-        .catch(err => console.log(err));
+        // API.saveConference({
+        //     title: this.state.title,
+        //     speakers: this.state.speakers,
+        //     description: this.state.description,
+        //     room: this.state.room,
+        //     // schedule: {
+        //     //     day:2,
+        //     //     time: 10,
+        //     //     duration:2
+        //     // }
+        // }).then(res => console.log(res))
+        // .catch(err => console.log(err));
     }
     
     render() {       
@@ -100,24 +90,17 @@ class AdminEvent extends Component {
         return (
             <Container > 
                 <Jumbotron>
-                    <h1>Add conferences to your event</h1>
-                </Jumbotron> 
-                {!this.state.event.length ? (
-                    <h1>No events to display</h1>
-                ) : (
-                <List> 
-                    {this.state.event.map(elem => {
-                        return(
+                    <h1>Add conferences to {this.state.eName} </h1>
+                    <List> 
                         <ListItem 
-                        key = {elem.name}
-                        name = {elem.name}
-                        location = {elem.place}
-                        subject = {elem.subject}
-                        date = {elem.date}               
-                        /> )
-                        })}
-               </List>
-                )}
+                        key = {this.state.eId}
+                        place = {this.state.ePlace}
+                        subject = {this.state.eSubject}
+                        date = {this.state.eDate}               
+                        />
+                    </List>
+                </Jumbotron> 
+                
                 <h3>Fill the form with the information of a conference</h3>
             <Conference />
             <FormBtn onClick={this.handleSubmit}>Go to List of Events</FormBtn>
