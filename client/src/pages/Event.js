@@ -37,7 +37,7 @@ class Event extends Component {
 						</blockquote>
 						<br></br>
 						<List>
-							{this.state.events.map((eve, i) => {
+							{this.state.events.slice(0,4).map((eve, i) => {
 								return (
 									<ListItem
 										key={i}

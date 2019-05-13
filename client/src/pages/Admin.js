@@ -1,5 +1,4 @@
 import React, { Component }  from "react";
-import Jumbotron from "../components/Jumbotron";
 import { Container } from "../components/Grid";
 import QuestionAdmin from "../components/QuestionAdmin";
 import { FormBtn } from "../components/Form";
@@ -34,13 +33,12 @@ class Admin extends Component {
       render() {
         const { referrer } = this.state;
         if (referrer ) return <Redirect to={{pathname: "/events"}} />;
-		// if (referrer && this.state.userId ) return <Redirect to={{pathname: "/events", state: { userId : this.props.location.state.userId}}} />;
+        // if (referrer && this.state.userId ) return <Redirect to={{pathname: "/events", state: { userId : this.props.location.state.userId}}} />;
         // const { userId } = this.props.location.state.userId;
+        
         return (
             <Container > 
-                <Jumbotron>
                     <h1>Tell us all about your event</h1>
-                </Jumbotron>             
                 <QuestionAdmin />
                 <FormBtn onClick={this.handleSubmit}>Go to List of Events</FormBtn>
 

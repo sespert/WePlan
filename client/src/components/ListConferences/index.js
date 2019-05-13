@@ -20,16 +20,16 @@ export function ConferenceListItem(props) {
     <Container>
       <Row>
         
-        <Col size="xs-8 sm-11">
+        <Col size="sm-12">
           <h3>{props.title}</h3>
           <h4>Location: {props.room}</h4>
           <p>
             Subject: {props.description}
           </p>
-          <p>{props.schedule}</p>
+          {/* <p>{props.schedule.day}</p> */}
           <br />
         </Col>
-        <AddBtn {...props} />
+        <AddBtn onClick = {props.handleAddBtn} />
       </Row>
       <br />
       

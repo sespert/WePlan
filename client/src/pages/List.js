@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Jumbotron from "../components/Jumbotron";
 import { Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { FormBtn } from "../components/Form";
@@ -56,7 +55,6 @@ class EventsList extends Component {
 
 		return (
 			<Container>
-				<Jumbotron>
 					<h1>Click to see the info of an event</h1>
 
 				<List>
@@ -70,7 +68,6 @@ class EventsList extends Component {
 						)
 					})}
 				</List>
-				</Jumbotron>
 				<FormBtn onClick={this.handleSubmit}>Add New Event</FormBtn>
 
 			</Container>

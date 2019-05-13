@@ -1,5 +1,4 @@
 import React , { Component } from "react";
-import Jumbotron from "../components/Jumbotron";
 import { Container } from "../components/Grid";
 // import { List, ListItem } from "../components/ListEvent";
 import { ConferenceList, ConferenceListItem } from "../components/ListConferences";
@@ -23,9 +22,7 @@ class UserEvent extends Component {
     render() {
         return (
             <Container > 
-                <Jumbotron>
                     <h1>See your agenda</h1>
-                </Jumbotron> 
                 <a href={"events/" + this.state._id}>
                         <strong>
                           {this.state.name}
