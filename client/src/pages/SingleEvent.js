@@ -25,8 +25,10 @@ class SingleEvent extends Component {
         const urlCut = urlString.substr(8);
         console.log(urlCut);
         this.loadEventInfo(urlCut);
+        this.loadConferences();
     }
     
+    //Helper function to load the info of the current event
     loadEventInfo = id => {
         API.getEventsbyId(id)
         .then(res => {            
@@ -37,9 +39,17 @@ class SingleEvent extends Component {
                 eDate: res.data.date,
                 eId: res.data._id
             });
-            console.log(this.state.eName);
         }).catch(err => console.log(err));
     }
+
+    //Helper function to load the conferences for the current event
+    loadConferences = () => {
+        API.getConferences()
+        .then(res=>  
+            this.setState({ conferences: res.data }))
+        .catch(err => console.log(err));
+    }
+
 
     handleSubmit = e => {
         e.preventDefault();

@@ -18,13 +18,6 @@ class AdminEvent extends Component {
         eSubject: "",
         eDate: "",
         eId: "",
-        // cTitle: "",
-        // cSpeakers: [],
-        // cDescription: "",
-        // cRoom: "",
-        // cDay: "",
-        // cTime: "",
-        // cDuration: "",
         conferences : [],       
         referrer: null
     }
@@ -77,7 +70,7 @@ class AdminEvent extends Component {
         if (referrer) return <Redirect to={referrer} />;
 
         return (
-            <Container > 
+            <Container>
                 <Jumbotron>
                     <h1>Add conferences to {this.state.eName} </h1>
                     <List> 
@@ -91,12 +84,10 @@ class AdminEvent extends Component {
                 </Jumbotron> 
                 
                 <h3>Fill the form with the information of a conference</h3>
+
             <Conference />
             <FormBtn onClick={this.handleSubmit}>Go to List of Events</FormBtn>
 
-            {/* {!this.state.conference.length ? ( */}
-                    {/* <h1>No conferences to display</h1> */}
-                {/* ) : ( */}
                 <ConferenceList> 
                     {this.state.conferences.map(elem => {
                         return(
@@ -106,15 +97,14 @@ class AdminEvent extends Component {
                         speakers = {elem.speakers}
                         description = {elem.description}
                         room = {elem.room}
-                        // day = {elem.schedule.day}               
                         /> )
                         })}
                </ConferenceList>
-                {/* )} */}
-
-            </Container> 
+               </Container>
+                       )
+             
                       
-        );
+        
     }
 }
 
