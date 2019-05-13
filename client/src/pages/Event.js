@@ -6,6 +6,7 @@ import { Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 // import { Input, TextArea, FormBtn } from "../components/Form";
 import FormLogin from "../components/FormLogin";
+import EventBodyInfo from"../components/EventBodyInfo";
 
 class Event extends Component {
 	state = {
@@ -36,7 +37,7 @@ class Event extends Component {
 						</blockquote>
 						<br></br>
 						<List>
-							{this.state.events.map((eve, i) => {
+							{this.state.events.slice(0,4).map((eve, i) => {
 								return (
 									<ListItem
 										key={i}
@@ -50,9 +51,16 @@ class Event extends Component {
 					</Jumbotron>
 
 				</article>
+	
 				<FormLogin />
+				<EventBodyInfo /> 
+				
+
 
 			</Container>
+	
+
+
 		);
 	}
 }

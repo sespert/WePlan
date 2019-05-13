@@ -21,12 +21,12 @@ export function ListItem(props) {
         
         <Col size="xs-8 sm-9">
           <h3>{props.name}</h3>
-          <h4>Location: {props.location}</h4>
+          <h4>Location: {props.place}</h4>
           <p>
             {props.subject}
           </p>
           <p>{props.date}</p>
-          
+      
         </Col>
       </Row>
     </Container>

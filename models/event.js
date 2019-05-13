@@ -37,10 +37,11 @@ const eventSchema = new Schema({
     type: Number,
     required: true
   },
-  conferences: {
+  conferences: [{
     type: Schema.Types.ObjectId,
     ref: "Conference"
-  },//implementar llenar esto
+  }],
+    //implementar llenar esto
   exhibitors: {
     type: Schema.Types.ObjectId,
     ref: "Exhibitor"

@@ -21,7 +21,6 @@ class QuestionAdmin extends Component {
             userId: null
         };
     }
-
     
     handleChange = e => {
         e.preventDefault();
@@ -30,23 +29,21 @@ class QuestionAdmin extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-    //Deberia guardar el id para llamarla y redirect el routing a la pagina del evento
-    
-        this.setState({referrer: '/admin/events/id'});
 
-        
         API.saveEvent({
-            
             name: this.state.name,
             place: this.state.place,
             subject: this.state.subject,
             date: this.state.date,
             numOfDays: this.state.numOfDays,
             startTime: this.state.startTime,
-            endTime: this.state.endTime
-            
+            endTime: this.state.endTime            
         })
-            .then(res => console.log(res))
+            .then(res => {
+                const eventId = res.data._id;
+                console.log(eventId);
+                this.setState({referrer: `/admin/events/${eventId}`});
+            })
             .catch(err => console.log(err));
     }
       
