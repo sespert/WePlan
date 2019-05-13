@@ -11,7 +11,7 @@ function Nav() {
         </a>
         <ul className="navbar-nav flex-row ml-md-auto">
           <li className="nav-item">
-          <a className="nav-link" href="/">See More Events</a>
+          <a className="nav-link" href="/events">See More Events</a>
           </li>
   
         </ul>

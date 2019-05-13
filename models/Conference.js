@@ -16,8 +16,7 @@ const conferenceSchema = new Schema({
     room: {
         type: String,
         required: true
-    },
-    
+    },    
     schedule: {
         day: Number,
         time: Number,
