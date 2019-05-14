@@ -92,12 +92,13 @@ userSchema.pre("save", function(next) {
 
   // Helper method for password comparison promise based
 userSchema.methods.comparePassword = function (candidatePassword) {
-    return new Promise((resolve, reject) => {
-        bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
-            if (err) reject(err, "passwords not a match");
-            return resolve(isMatch);
-        });
-    });
+    return bcrypt.compareSync(candidatePassword, this.password);
+    // return new Promise((resolve, reject) => {
+    //     bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
+    //         if (err) reject(err, "passwords not a match");
+    //         return resolve(isMatch);
+    //     });
+    // });
 };
 
 const User = mongoose.model("User", userSchema);
