@@ -3,62 +3,204 @@ import { Redirect } from "react-router-dom";
 import { Input, FormBtn } from "../Form";
 import "./style.css";
 import API from "../../utils/API";
+import { getFromStorage, setInStorage } from "../../utils/storage";
+import axios from 'axios';
 
 class QuestionUser extends Component {
 
-    state = {
-        users: [],
-        name: "",
-        email: "",
-        company: "",
-        password: "",
-        referrer: null,
-        userId: ""
+    constructor(props) {
+        super(props);
 
+        this.state = {
+            isLoading: false,
+            token: '',
+            signUpError: '',
+            masterError: '',
+            signUpFullName: '',
+            signUpCompany: '',
+            signUpEmail: '',
+            signUpPassword: '',
+            users: [],
+            referrer: null,
+            userId: ''
+
+        };
+
+        this.onChangeSignUpEmail = this.onChangeSignUpEmail.bind(this);
+        this.onChangeSignUpPassword = this.onChangeSignUpPassword.bind(this);
+        this.onChangeSignUpFullName = this.onChangeSignUpFullName.bind(this);
+        this.onChangeSignUpCompany = this.onChangeSignUpCompany.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange = e => {
-        e.preventDefault();
-        this.setState({ [e.target.name]: e.target.value })
+    onChangeSignUpEmail(e) {
+        this.setState({
+            signUpEmail: e.target.value
+        })
     }
-
+    onChangeSignUpPassword(e) {
+        this.setState({
+            signUpPassword: e.target.value
+        })
+    }
+    onChangeSignUpFullName(e) {
+        this.setState({
+            signUpFullName: e.target.value
+        })
+    }
+    onChangeSignUpCompany(e) {
+        this.setState({
+            signUpCompany: e.target.value
+        })
+    }
     handleSubmit = e => {
         e.preventDefault();
-        if (this.state.name && this.state.email && this.state.password) {
-            
-            this.setState({ referrer: '/events' });
-            API.saveUser({
-                name: this.state.name,
-                email: this.state.email,
-                company: this.state.company,
-                password: this.state.password
+        const {
+            signUpFullName,
+            signUpCompany,
+            signUpEmail,
+            signUpPassword
+        } = this.state;
+
+        this.setState({
+            isLoading: true,
+            referrer: '/events'
+        })
+
+        // post requirest to backend
+        API.saveUser({
+            name: signUpFullName,
+            company: signUpCompany,
+            email: signUpEmail,
+            password: signUpPassword
+        }).then(data => {
+            console.log(data);
+            const response = data.data;
+            if (response.success) {
+                this.setState({
+                    signUpError: response.message,
+                    userId:response._id,
+                    isLoading: false,
+                    signUpEmail: '',
+                    signUpPassword: '',
+                    signUpFullName: '',
+                    signUpCompany: ''
+                });
+            } else {
+                this.setState({
+                    signUpError: response.message,
+                    isLoading: false
+                });
+            }
+        })
+
+    }
+    componentDidMount() {
+        const obj = getFromStorage('the_main_app');
+        if (obj  && obj.token) {
+            //Verify token
+            console.log(obj);
+            const { token } = obj;
+            axios.get('api/user/verify?token=' + token).then(data => {
+                const response = data.data;
+                if (response.success) {
+                    this.setState({
+                        token: token,
+                        isLoading: false
+                    });
+                } else {
+                    this.setState({
+                        isLoading: false
+                    });
+                }
             })
-            .then(res => {                
-                console.log(res);
-                this.setState({userId:res.data._id});
-            
-            })
-            .catch (err => console.log(err));
         } else {
-            alert("Please enter missing fields")
+            this.setState({
+                isLoading: false
+            });
+
         }
     }
 
+    // state = {
+    //     users: [],
+    //     name: "",
+    //     email: "",
+    //     company: "",
+    //     password: "",
+    //     referrer: null,
+    //     userId: ""
+
+    // }
+
+    // handleChange = e => {
+    //     e.preventDefault();
+    //     this.setState({ [e.target.name]: e.target.value })
+    // }
+
+    // handleSubmit = e => {
+    //     e.preventDefault();
+    //     if (this.state.name && this.state.email && this.state.password) {
+            
+    //         this.setState({ referrer: '/events' });
+    //         API.saveUser({
+    //             name: this.state.name,
+    //             email: this.state.email,
+    //             company: this.state.company,
+    //             password: this.state.password
+    //         })
+    //         .then(res => {                
+    //             console.log(res);
+    //             this.setState({userId:res.data._id});
+            
+    //         })
+    //         .catch (err => console.log(err));
+    //     } else {
+    //         alert("Please enter missing fields")
+    //     }
+    // }
+
 
     render() {
-        const { referrer } = this.state;
-        if ( referrer && this.state.userId ) return <Redirect to={{pathname: "/events", state: { userId : this.state.userId}}} />;
+        const { 
+            isLoading,
+            token,
+            signUpError,
+            signUpFullName,
+            signUpCompany,
+            signUpEmail,
+            signUpPassword,
+            referrer,
+            userId       
+        } = this.state;
 
-        return (
-            <form>
-                <Input name="name" placeholder="Full Name (required)" value={this.state.name} onChange={this.handleChange} />
-                <Input name="email" placeholder="Email (required)" value={this.state.email} onChange={this.handleChange} />
-                <Input name="company" placeholder="Your Company" value={this.state.company} onChange={this.handleChange} />
-                <Input name="password" placeholder="Choose a Password" value={this.state.password} onChange={this.handleChange} />
+        if (isLoading) {
+            return (
+                <div><p>Loading...</p></div>
+            );
+        }
 
-                <FormBtn onClick={this.handleSubmit}>Register</FormBtn>
-            </form>
-        )
+        // if ( referrer && this.state.userId ) 
+        if (!token){
+            return (
+                <div>
+                    {
+                        (signUpError) ? (
+                            <p>{signUpError}</p>
+                        ) : (null)
+                    }
+                    <form>
+                        <Input name="name" placeholder="Full Name (required)" value={signUpFullName} onChange={this.onChangeSignUpFullName} />
+                        <Input name="email" placeholder="Email (required)" value={signUpEmail} onChange={this.onChangeSignUpEmail} />
+                        <Input name="company" placeholder="Your Company" value={signUpCompany} onChange={this.onChangeSignUpCompany} />
+                        <Input name="password" placeholder="Choose a Password" value={signUpPassword} onChange={this.onChangeSignUpPassword} />
+
+                        <FormBtn onClick={this.handleSubmit}>Register</FormBtn>
+                    </form>
+                </div>
+            )
+        }
+        return <Redirect to={{pathname: "/events", state: { userId : this.state.userId}}} />;
     }
 }
 

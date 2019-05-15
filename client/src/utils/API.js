@@ -33,16 +33,21 @@ export default {
     return axios.get("/api/user");
   },
   //For the login
+  signin: function (userData) {
+    console.log (userData);
+    return axios.post("/api/user/signin ", userData);
+  },
   // getUserByEmail: function(email) {
   //   return axios.get("/api/user", email);
   // },
   //Save user info (2)
-  saveUser: function(userData) {
+  saveUser: function(userData) {    
     return axios.post("/api/user", userData);
   },
   getExactEmail: function(email) {
     return axios.get("/api/user", email);
   }
   //Save conference to user id (5)
+  
   
 };
