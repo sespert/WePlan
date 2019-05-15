@@ -3,6 +3,7 @@ import "./jumbotronStyle.css";
 
 function Jumbotron({ children }) {
   return (
+    
     <div id="eventMainDetail"
       style={{
 

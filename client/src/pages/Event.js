@@ -111,10 +111,11 @@ class Event extends Component {
 		this.loadEvents();
 	}
 
+	
+
 	loadEvents = () => {
 		API.getEvents()
 			.then(res => {
-				console.log(res);
 				this.setState({ events: res.data });
 			}
 			)
@@ -134,7 +135,7 @@ class Event extends Component {
 			return (
 
 				<Container>
-					<article className="container">
+					{/* <article className="container"> */}
 						<Jumbotron>
 							<blockquote>
 								<strong>Conference</strong>  <em>information</em>
@@ -154,7 +155,7 @@ class Event extends Component {
 							</List>
 						</Jumbotron>
 
-					</article>
+					{/* </article> */}
 
 
 					<form id="form1">

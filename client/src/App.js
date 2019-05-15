@@ -14,7 +14,7 @@ function App() {
   return (
     <Router>
       <div>
-        <Nav />
+        <Nav id={67}/>
         <Switch>
           <Route exact path="/" component={Event} />
           <Route path="/register" component={Register} />

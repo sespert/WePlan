@@ -1,3 +1,24 @@
 .container2{
-    color: green;
+    color: black;
+    width: 600px;
+}
+#cardImage{
+    width:600px;
+}
+#card1{
+    width:500px;
+    margin-left: 3%;
+    margin-top: -25%;
+    color: wheat
+
+}
+#object1{
+    margin-top:-60%;
+}
+
+#card2{
+    width:400px;
+padding-top: -10px;
+margin-left: 50%;
+margin-top: -10px;
 }
