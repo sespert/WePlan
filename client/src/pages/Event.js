@@ -17,10 +17,11 @@ class Event extends Component {
 		this.loadEvents();
 	}
 
+	
+
 	loadEvents = () => {
 		API.getEvents()
 			.then(res => {
-				console.log(res);
 				this.setState({ events: res.data });
 			}
 			)
@@ -30,34 +31,32 @@ class Event extends Component {
 	render() {
 		return (
 			<Container>
-				<article className="container">
-					<Jumbotron>
-						<blockquote>
-							<strong>Conference
-								</strong>  <em>information</em>
-						</blockquote>
-						<br></br>
-						<List>
-							{this.state.events.slice(0,4).map((eve, i) => {
-								return (
-									<ListItem
-										key={i}
-										name={eve.name}
-										id={eve._id}
-									/>
-								)
-							})}
+				{/* <article className="container"> */}
+						<Jumbotron>
+							<blockquote>
+								<strong>Conference
+									</strong>  <em>information</em>
+							</blockquote>
+							<br></br>
+							<List>
+								{this.state.events.slice(0,4).map((eve, i) => {
+									return (
+										<ListItem
+											key={i}
+											name={eve.name}
+											id={eve._id}
+										/>
+									)
+								})}
 
-						</List>
-					</Jumbotron>
+							</List>
+						</Jumbotron>
 
-				</article>
-	
-				<FormLogin />
+				{/* </article> */}
+						<FormLogin />
+
 				<EventBodyInfo /> 
 				
-
-
 			</Container>
 	
 
