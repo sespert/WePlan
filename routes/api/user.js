@@ -16,6 +16,9 @@ router.route("/signin")
     .get(userController.findAll)
     .post(userController.signin);
 
+router.route("/logout")
+    .get(userController.logout);
+
 router.route("/:id")
     .get(userController.findById);
 

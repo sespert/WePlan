@@ -21,7 +21,7 @@ module.exports = {
     const { token } = query;
     //?token=test
 
-
+    console.log("user controller "+token);
     // verify the token is one of a kind
     db.UserSession.find({_id: token, isDeleted: false}, (err, sessions) => {
         if (err) {
@@ -30,6 +30,7 @@ module.exports = {
                 message: 'Error: server error'
             });
         }
+        console.log(sessions.length);
         if (sessions.length != 1) {
             return res.send({
                 success: false,
@@ -127,13 +128,13 @@ module.exports = {
     });
 
   },
+
   update: function(req, res) {
     db.User
       .findOneAndUpdate({ _id: req.params.id }, req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-
 
   signin: (req, res, next) => {
     const { body } = req;
@@ -201,6 +202,28 @@ module.exports = {
             });
         });
 
+    });
+  },
+
+  logout: (req, res, next) => {
+    // Get the token
+    const { query } = req;
+    const { token } = query;
+    //?token=test
+
+    // verify the token is one of a kind
+    db.UserSession.findOneAndUpdate ({_id: token, isDeleted: false}, { $set: {isDeleted: true} }, null, (err, sessions) => {
+        if (err) {
+            return res.send({
+                success: false,
+                message: 'Error: server error'
+            });
+        }
+        return res.send({
+            success: true,
+            message: 'Session Deleted succesfully'
+        });
+        
     });
   }
 };

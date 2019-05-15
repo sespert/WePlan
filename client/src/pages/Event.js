@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Jumbotron from "../components/Jumbotron";
 import "../../src/components/FormLogin/formLogin.css";
 import API from "../utils/API";
-// import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 // import { Input, TextArea, FormBtn } from "../components/Form";
@@ -10,6 +10,7 @@ import { List, ListItem } from "../components/List";
 import EventBodyInfo from"../components/EventBodyInfo";
 
 import { setInStorage, getFromStorage } from "../utils/storage";
+import axios from 'axios';
 
 class Event extends Component {
 	constructor(props) {
@@ -26,6 +27,7 @@ class Event extends Component {
 		this.onChangeEmail = this.onChangeEmail.bind(this);
 		this.onChangePassword = this.onChangePassword.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		
 				
 	}
 	onChangeEmail(e) {
@@ -75,19 +77,49 @@ class Event extends Component {
 	// 	events: []
 	// }
 
-	// componentDidMount() {
-	// 	this.loadEvents();
-	// }
+	componentDidMount() {
+		// const obj = getFromStorage('the_main_app');
+        // if (obj  && obj.token) {
+        //     //Verify token
+        //     // console.log(obj);
+        //     const { token } = obj;
+        //     axios.get('api/user/verify?token=' + token).then(data => {
 
-	// loadEvents = () => {
-	// 	API.getEvents()
-	// 		.then(res => {
-	// 			console.log(res);
-	// 			this.setState({ events: res.data });
-	// 		}
-	// 		)
-	// 		.catch(err => console.log(err));
-	// };
+		// 		const response = data.data;
+		// 		console.log(response);
+		// 		console.log(token);
+        //         if (response.success) {
+		// 			console.log("this state "+this.state.token);
+					
+        //             this.setState({
+        //                 token: token,
+        //                 isLoading: false
+		// 			});
+		// 			console.log("this state 2 "+this.state);
+        //         } else {
+        //             this.setState({
+        //                 isLoading: false
+        //             });
+        //         }
+        //     })
+        // } else {
+        //     this.setState({
+        //         isLoading: false
+        //     });
+
+        // }
+		this.loadEvents();
+	}
+
+	loadEvents = () => {
+		API.getEvents()
+			.then(res => {
+				console.log(res);
+				this.setState({ events: res.data });
+			}
+			)
+			.catch(err => console.log(err));
+	};
 
 	render() {
 		const {
@@ -100,6 +132,7 @@ class Event extends Component {
 		
 		if (!token) {
 			return (
+
 				<Container>
 					<article className="container">
 						<Jumbotron>
@@ -149,15 +182,13 @@ class Event extends Component {
 
 
 				</Container>
-		
-
-
 			);
-		}
-		return (
-			<p> Here goes the link to the events page because the login was successfull</p>
+		} 
 
-		)
+
+		// redirect to /events
+		return <Redirect to={{pathname: "/events", state: { userId : this.state.userId}}} />;
+		
 	}
 }
 
