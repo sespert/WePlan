@@ -219,6 +219,8 @@ module.exports = {
                 message: 'Error: server error'
             });
         }
+        console.log("user session logout:");
+        console.log(sessions);
         return res.send({
             success: true,
             message: 'Session Deleted succesfully'

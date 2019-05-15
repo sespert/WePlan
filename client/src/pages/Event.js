@@ -78,36 +78,37 @@ class Event extends Component {
 	// }
 
 	componentDidMount() {
-		// const obj = getFromStorage('the_main_app');
-        // if (obj  && obj.token) {
-        //     //Verify token
-        //     // console.log(obj);
-        //     const { token } = obj;
-        //     axios.get('api/user/verify?token=' + token).then(data => {
+		console.log("starting token" + this.state.token);
+		const obj = getFromStorage('the_main_app');
+        if (obj  && obj.token) {
+            //Verify token
+            // console.log(obj);
+            const { token } = obj;
+            axios.get('api/user/verify?token=' + token).then(data => {
 
-		// 		const response = data.data;
-		// 		console.log(response);
-		// 		console.log(token);
-        //         if (response.success) {
-		// 			console.log("this state "+this.state.token);
+				const response = data.data;
+				console.log(response);
+				console.log(token);
+                if (response.success) {
+					console.log("this state "+this.state.token);
 					
-        //             this.setState({
-        //                 token: token,
-        //                 isLoading: false
-		// 			});
-		// 			console.log("this state 2 "+this.state);
-        //         } else {
-        //             this.setState({
-        //                 isLoading: false
-        //             });
-        //         }
-        //     })
-        // } else {
-        //     this.setState({
-        //         isLoading: false
-        //     });
+                    this.setState({
+                        token: token,
+                        isLoading: false
+					});
+					console.log("this state 2 "+this.state);
+                } else {
+                    this.setState({
+                        isLoading: false
+                    });
+                }
+            })
+        } else {
+            this.setState({
+                isLoading: false
+            });
 
-        // }
+        }
 		this.loadEvents();
 	}
 
@@ -188,7 +189,7 @@ class Event extends Component {
 
 
 		// redirect to /events
-		return <Redirect to={{pathname: "/events", state: { userId : this.state.userId}}} />;
+		return <Redirect to={{pathname: "/events", state: { token : this.state.token}}} />;
 		
 	}
 }

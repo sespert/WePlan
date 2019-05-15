@@ -15,9 +15,11 @@ class EventsList extends Component {
 	constructor(props) {
 		super(props);
 
+		console.log(props);
+
 		this.state = {
 			isLoading: true,
-			token: '',
+			token: props.location.state.token,
 			events: [],
 			referrer: null,
 			userId: null
@@ -34,11 +36,14 @@ class EventsList extends Component {
 			const { token } = obj;
 			axios.get('api/user/verify?token=' + token).then(data => {
 				const response = data.data;
+				console.log("verify response ");
+				console.log(response);
 				if (response.success) {
 					this.setState({
 						token: token,
 						isLoading: false
 					});
+					console.log("state token"+this.state.token);
 				} else {
 					this.setState({
 						isLoading: false
@@ -58,6 +63,9 @@ class EventsList extends Component {
 		// const userID = this.props.location.state.userId;
 		// console.log("propsID", this.props.location.state.userId);
 		// console.log("id", userID);
+		// let testoken = this.state.token;
+		// console.log(testoken);
+		console.log("state token"+this.state.token);
 
 		this.loadEvents();
 
@@ -80,7 +88,6 @@ class EventsList extends Component {
 	logout() {
 		this.setState({
 			isLoading: true,
-
 		});
 		const obj = getFromStorage('the_main_app');
 		if (obj && obj.token) {
@@ -89,11 +96,14 @@ class EventsList extends Component {
 			const { token } = obj;
 			axios.get('/api/user/logout?token=' + token).then(data => {
 				const response = data.data;
+				console.log("logout response ");
+				console.log(response);
 				if (response.success) {
 					this.setState({
 						token: '',
 						isLoading: false
 					});
+					console.log("state token"+this.state.token);
 				} else {
 					this.setState({
 						isLoading: false
@@ -110,14 +120,15 @@ class EventsList extends Component {
 
 	render() {
 		const { token, referrer } = this.state;
-		if (referrer ) return <Redirect to={{pathname: "/admin"}} />;
+		if (referrer ) return <Redirect to={{pathname: "/admin", }} />;
 		// if (referrer && this.state.userId ) return <Redirect to={{pathname: "/admin", state: { userId : this.props.location.state.userId}}} />;
-	const listStyle={
-	MargingTop: "50%",
-	backgroundColor: "black"
-};
+		const listStyle = {
+			MargingTop: "50%",
+			backgroundColor: "black"
+		};
 
-		// if (!token) return <Redirect to={{pathname: "/"}} />;
+		if (!token) return <Redirect to={{pathname: "/"}} />;
+
 		return (
 			<Container>
 					<h1>Click to see the info of an event</h1>
