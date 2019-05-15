@@ -52,12 +52,16 @@ class EventsList extends Component {
 		const { referrer } = this.state;
 		if (referrer ) return <Redirect to={{pathname: "/admin"}} />;
 		// if (referrer && this.state.userId ) return <Redirect to={{pathname: "/admin", state: { userId : this.props.location.state.userId}}} />;
+	const listStyle={
+	MargingTop: "50%",
+	backgroundColor: "black"
+};
 
 		return (
 			<Container>
 					<h1>Click to see the info of an event</h1>
 
-				<List>
+				<List styleProp={listStyle}>
 					{this.state.events.map((eve, i) => {
 						return (
 							<ListItem

@@ -6,8 +6,17 @@
 
 }
 .nav-link{
-    font-family:'Marcellus SC', serif;
+    font-family:"Montserrat";
     font-size: 30px;
     color:  rgb(7, 63, 7);
     text-shadow: 2px 2px 5px wheat;
+}
+#legend{
+    font-family:"Montserrat";
+
+    font-size: 20px;
+    color: wheat;
+    font-style: italic;
+    margin-bottom: -70px;
+    margin-left: 300px;
 }

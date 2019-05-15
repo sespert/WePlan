@@ -23,27 +23,32 @@
 }
     blockquote {
         width: 565px;
-        font: 2.65em CallunaRegular;
-        letter-spacing: .0em;
+        font: 2.65em "CallunaRegular";
+        letter-spacing: .30em;
         float: left;
-        padding: px 0 10px 25px;
+        padding: 4px 0 10px 25px;
 
-        border-top: 6px dotted #da5931;
-        border-bottom: 6px dotted #da5931;
+        border-top: 8px dotted #da5931;
+        border-bottom: 8px dotted #da5931;
         -webkit-transform: rotate(-4deg);
     }
         blockquote:first-line {
-            font: 1.80em "Montserrat";
+
+            font: 1.60em "Montserrat";
             color: #000000;
           
         }
 
         blockquote:first-letter {
-            font-size: 2.6em;
-            text-transform: lowercase;
+            font-size: 1.90em;
+            /* text-transform: lowercase; */
             float: left;
-            line-height: .52em;
+            padding-top: 3%;
+            line-height: .60em;
             position: relative;
             z-index: 1;
+            font-style: italic;
+            /* padding-left: 10%; */
+            letter-spacing: -.4em;
         }
 

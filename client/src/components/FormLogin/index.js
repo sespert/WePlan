@@ -52,6 +52,10 @@ class FormLogin extends Component {
       </div>
 
       <button type="submit" id="buttom" className="btn btn-primary"  onClick={this.handleSubmit}>Submit</button>
+      <br>
+      </br>
+      <br></br>
+      <a className="link" id="registerLink" href="">Click to Register</a>
     </form>
 
   );

@@ -33,7 +33,8 @@ class Event extends Component {
 				<article className="container">
 					<Jumbotron>
 						<blockquote>
-							<strong>Conference</strong>  <em>information</em>
+							<strong>Conference
+								</strong>  <em>information</em>
 						</blockquote>
 						<br></br>
 						<List>
