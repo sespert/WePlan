@@ -8,6 +8,37 @@
     font-size: 30px;
     color:  rgb(7, 63, 7);
     text-shadow: 2px 2px 5px wheat;
+    font-weight: 600;
+
+}
+
+.link-cont {
+    position: absolute;
+    top:5.2%;
+    right: 1%;
+}
+/* .logout-link{
+    /* position: absolute;
+    top: 5.4%;
+    left: 88.7%; */
+    
+    /* right: 0%;
+    display: table;
+
+}
+
+.guide-link{
+    position: absolute;
+    top:5.2%;
+    right: 9%;
+    display: table;
+} */
+.nav-link3{
+    font-family:"Montserrat";
+    font-size: 30px;
+    color:  rgb(7, 63, 7);
+    text-shadow: 2px 2px 5px wheat;
+    
 }
 #legend{
     font-family:"Montserrat";
