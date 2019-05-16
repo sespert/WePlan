@@ -7,7 +7,7 @@ import { Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 
 import FormLogin from "../components/FormLogin";
-// import FormLogin from "../components/FormLogin";
+
 import EventBodyInfo from"../components/EventBodyInfo";
 import '../components/Nav/nav.css';
 
@@ -41,6 +41,7 @@ class Event extends Component {
 	handleSubmit(e) {
 		e.preventDefault();
 		//Grab State
+		console.log("handlesubmit");
         const {
             signInEmail,
             signInPassword
@@ -147,8 +148,6 @@ class Event extends Component {
 						</li>
 					</ul>
 
-					
-					{/* <article className="container"> */}
 						<Jumbotron>
 							<blockquote>
 								<strong>Conference</strong>  <em>information</em>
@@ -167,8 +166,6 @@ class Event extends Component {
 
 							</List>
 						</Jumbotron>
-
-					{/* </article> */}
 
 
 					<form id="form1">
@@ -193,7 +190,6 @@ class Event extends Component {
 						<a className="link" id="registerLink" href="/register">Click to Register</a>
 					</form>
 		
-					<FormLogin />
 					<EventBodyInfo /> 
 
 
