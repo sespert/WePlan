@@ -26,12 +26,7 @@ class Nav extends Component {
 
           <h3 id="legend"> Life can be easy by just using the right tools!</h3>
 
-          {/* <ul className="navbar-nav flex-row ml-md-auto">
-            <li className="nav-item">
-              <a className="nav-link3" href="/events">Events Guide</a>       
-            </li> 
-            {partial}
-          </ul> */}
+          
       </nav>
     );
 }

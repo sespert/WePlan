@@ -41,6 +41,7 @@ class Event extends Component {
 	handleSubmit(e) {
 		e.preventDefault();
 		//Grab State
+		console.log("handlesubmit");
         const {
             signInEmail,
             signInPassword
@@ -193,7 +194,6 @@ class Event extends Component {
 						<a className="link" id="registerLink" href="/register">Click to Register</a>
 					</form>
 		
-					<FormLogin />
 					<EventBodyInfo /> 
 
 
