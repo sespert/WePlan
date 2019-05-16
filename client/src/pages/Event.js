@@ -191,9 +191,9 @@ class Event extends Component {
 						<br></br>
 						<a className="link" id="registerLink" href="/register">Click to Register</a>
 					</form>
-		
+
 					{/* <FormLogin /> */}
-					<EventBodyInfo /> 
+
 					
 
 
