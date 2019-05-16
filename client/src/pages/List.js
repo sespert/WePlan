@@ -6,6 +6,7 @@ import { Redirect } from "react-router-dom";
 import API from "../utils/API";
 import axios from "axios";
 import { getFromStorage, setInStorage } from "../utils/storage";
+import '../components/Nav/nav.css';
 
 
 //TO DO: Add list of events of the logged user
@@ -130,8 +131,19 @@ class EventsList extends Component {
 		if (!token) return <Redirect to={{pathname: "/"}} />;
 
 		return (
+			
 			<Container>
-					<h1>Click to see the info of an event</h1>
+				<ul className="navbar-nav flex-row ml-md-auto link-cont">
+					<li className="nav-item">
+						<a className="nav-link guide-link mr-3" href="/events">Events Guide</a>
+					</li>
+					<li className="nav-item">
+						<a className="nav-link logout-link" onClick={this.logout} href="#">Log Out</a>  
+					</li>
+				</ul>
+				
+				{/* <button onClick={this.logout}>Logout</button> */}
+				<h1>Click to see the info of an event</h1>
 
 				<List styleProp={listStyle}>
 					{this.state.events.map((eve, i) => {
@@ -145,11 +157,6 @@ class EventsList extends Component {
 					})}
 				</List>
 				<FormBtn onClick={this.handleSubmit}>Add New Event</FormBtn>
-
-				<div>
-					<p>Account</p>
-					<button onClick={this.logout}>Logout</button>
-				</div>
 
 			</Container>
 		)
