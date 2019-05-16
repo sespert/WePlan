@@ -20,6 +20,8 @@ class QuestionUser extends Component {
             signUpCompany: '',
             signUpEmail: '',
             signUpPassword: '',
+            signInEmail:'',
+            signInPassword:'',
             users: [],
             referrer: null,
             userId: ''
@@ -35,12 +37,14 @@ class QuestionUser extends Component {
 
     onChangeSignUpEmail(e) {
         this.setState({
-            signUpEmail: e.target.value
+            signUpEmail: e.target.value,
+            signInEmail: e.target.value
         })
     }
     onChangeSignUpPassword(e) {
         this.setState({
-            signUpPassword: e.target.value
+            signUpPassword: e.target.value,
+            signInPassword: e.target.value
         })
     }
     onChangeSignUpFullName(e) {
@@ -59,7 +63,9 @@ class QuestionUser extends Component {
             signUpFullName,
             signUpCompany,
             signUpEmail,
-            signUpPassword
+            signUpPassword,
+            signInEmail,
+            signInPassword
         } = this.state;
 
         this.setState({
@@ -91,7 +97,29 @@ class QuestionUser extends Component {
                     signUpError: response.message,
                     isLoading: false
                 });
-            }
+            };
+            API.signin({
+                email: signInEmail,
+                password: signInPassword
+            }).then(data => {
+                console.log(data);
+                const response = data.data;
+                if(response.success) {
+                    setInStorage('the_main_app', { token: response.token });
+                    this.setState({
+                        signInError: response.message,
+                        isLoading: false,
+                        signInEmail:'',
+                        signInPassword: '',
+                        token: response.token
+                    });
+                }else{
+                    this.setState({
+                        signInError: response.message,
+                        isLoading: false
+                    });
+                }            
+            })
         })
 
     }
@@ -200,7 +228,7 @@ class QuestionUser extends Component {
                 </div>
             )
         }
-        return <Redirect to={{pathname: "/events", state: { userId : this.state.userId}}} />;
+        return <Redirect to={{pathname: "/events", state: { token : this.state.token}}} />;
     }
 }
 
