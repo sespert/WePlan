@@ -18,9 +18,12 @@ const conferenceSchema = new Schema({
         required: true
     },    
     schedule: {
-        day: Number,
-        time: Number,
+        day: String,
+        time: String,
         duration: Number
+    },
+    eventId: {
+        type: String
     }
 });
 

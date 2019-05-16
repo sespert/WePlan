@@ -58,8 +58,8 @@ class QuestionAdmin extends Component {
             <TextArea name="subject" placeholder="Description of the event" value={this.state.subject} onChange={this.handleChange}/>
             <Input name="date" placeholder="Event Start Date: MM/DD/YYYY (required)" value={this.state.date} onChange={this.handleChange}/>   
             <Input name="numOfDays" placeholder="Number of Days (required)" value={this.state.numOfDays} onChange={this.handleChange}/>  
-            <Input name="startTime" placeholder="Start time: 12:00 (required)" value={this.state.startTime} onChange={this.handleChange}/> 
-            <Input name="endTime" placeholder="End time: 12:00 (required)" value={this.state.endTime} onChange={this.handleChange}/> 
+            <Input name="startTime" placeholder="Start time: 12:00 AM (required)" value={this.state.startTime} onChange={this.handleChange}/> 
+            <Input name="endTime" placeholder="End time: 12:00 AM (required)" value={this.state.endTime} onChange={this.handleChange}/> 
             <h2>{this.props.userId}</h2>
             <FormBtn onClick={this.handleSubmit}>Create Event</FormBtn>
         </form>

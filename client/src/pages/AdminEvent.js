@@ -7,6 +7,8 @@ import Conference from "../components/Conference";
 import { FormBtn } from "../components/Form";
 import { Redirect } from "react-router-dom";
 import API from "../utils/API";
+// import Moment from 'react-moment';
+import moment from 'moment';
 
 //TO DO: display all events of user by default?
 
@@ -17,17 +19,18 @@ class AdminEvent extends Component {
         ePlace: "",
         eSubject: "",
         eDate: "",
-        eId: "",
+        eId: (window.location.pathname).substr(14),
+        eNumOfDays: "",
+        eStartTime: "",
+        eEndTime: "",
+        eDuration: "",
         conferences : [],       
         referrer: null
     }
 
     componentDidMount () {
-        const urlString = window.location.pathname;
-        const urlCut = urlString.substr(14);
-        console.log(urlCut);
-        this.loadEventInfo(urlCut);
-        this.loadConferences(urlCut);
+        this.loadEventInfo(this.state.eId);
+        this.loadConferences(this.state.eId);
     }
    
     //Helper function to load the info of the current event
@@ -39,7 +42,11 @@ class AdminEvent extends Component {
                 ePlace: res.data.place,
                 eSubject: res.data.subject,
                 eDate: res.data.date,
-                eId: res.data._id
+                eId: res.data._id,
+                eNumOfDays: res.data.numOfDays,
+                eStartTime: res.data.startTime,
+                eEndTime: res.data.endTime,
+
             });
         }).catch(err => console.log(err));
     }
@@ -68,6 +75,10 @@ class AdminEvent extends Component {
     render() {       
         const {referrer} = this.state;
         if (referrer) return <Redirect to={referrer} />;
+        const eventTime= moment(this.state.eDate, "YYYY MM DD").format('MMMM DD YYYY'); 
+        // const endDate = eventTime;
+        const lengthDays = moment('2019-07-01', 'YYYY-MM-DD').add(1, 'day');
+
 
         return (
             <Container>
@@ -78,14 +89,18 @@ class AdminEvent extends Component {
                         key = {this.state.eId}
                         place = {this.state.ePlace}
                         subject = {this.state.eSubject}
-                        date = {this.state.eDate}               
+                        date = {eventTime}   
+                        duration = {this.state.eNumOfDays}
+                        endDate = {lengthDays}       
                         />
                     </List>
                 </Jumbotron> 
                 
+
+                
                 <h3>Fill the form with the information of a conference</h3>
 
-            <Conference />
+            <Conference eventId={this.state.eId}/>
             <FormBtn onClick={this.handleSubmit}>Go to List of Events</FormBtn>
 
                 <ConferenceList> 
@@ -97,6 +112,7 @@ class AdminEvent extends Component {
                         speakers = {elem.speakers}
                         description = {elem.description}
                         room = {elem.room}
+
                         /> )
                         })}
                </ConferenceList>

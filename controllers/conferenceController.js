@@ -13,7 +13,7 @@ module.exports = {
     db.Conference
       .create(req.body)
       .then(function(dbConference) {
-        return db.Event.findOneAndUpdate({_id: req.params.id}, { $push: {conferences: dbConference._id}});
+        return db.Event.findOneAndUpdate({_id: dbConference.eventId}, { $push: {conferences: dbConference._id}});
       })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
