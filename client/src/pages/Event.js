@@ -7,7 +7,7 @@ import { Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 
 import FormLogin from "../components/FormLogin";
-// import FormLogin from "../components/FormLogin";
+
 import EventBodyInfo from"../components/EventBodyInfo";
 import '../components/Nav/nav.css';
 
@@ -148,8 +148,6 @@ class Event extends Component {
 						</li>
 					</ul>
 
-					
-					{/* <article className="container"> */}
 						<Jumbotron>
 							<blockquote>
 								<strong>Conference</strong>  <em>information</em>
@@ -168,8 +166,6 @@ class Event extends Component {
 
 							</List>
 						</Jumbotron>
-
-					{/* </article> */}
 
 
 					<form id="form1">
