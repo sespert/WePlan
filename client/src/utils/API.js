@@ -24,6 +24,9 @@ export default {
   getConferences: function() {
     return axios.get("/api/conferences");
   },
+  getConferencesbyEvent: function(id) {
+    return axios.get("/api/conferences/" + id);
+  },
   //Get google maps for the venue location
   getMap: function(query) {
     //GoogleMap API
@@ -47,7 +50,6 @@ export default {
   getExactEmail: function(email) {
     return axios.get("/api/user", email);
   }
-  //Save conference to user id (5)
   
   
 };

@@ -27,7 +27,7 @@ class AdminEvent extends Component {
         const urlCut = urlString.substr(14);
         console.log(urlCut);
         this.loadEventInfo(urlCut);
-        this.loadConferences();
+        this.loadConferences(urlCut);
     }
    
     //Helper function to load the info of the current event
@@ -45,12 +45,12 @@ class AdminEvent extends Component {
     }
 
     //Helper function to load the conferences for the current event
-    loadConferences = () => {
-        API.getConferences()
+    loadConferences = id => {
+        API.getConferencesbyEvent(id)
         .then(res=>  
-            // console.log(res.data))
+            // console.log(res.data.conferences))
             
-            this.setState({ conferences: res.data }))
+            this.setState({ conferences: res.data.conferences }))
         .catch(err => console.log(err));
     }
   
