@@ -6,7 +6,8 @@ import { Redirect } from "react-router-dom";
 import { Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 // import { Input, TextArea, FormBtn } from "../components/Form";
-import EventBodyInfo from"../components/EventBodyInfo";
+import FormLogin from "../components/FormLogin";
+
 
 import { setInStorage, getFromStorage } from "../utils/storage";
 import axios from 'axios';
@@ -179,7 +180,9 @@ class Event extends Component {
 						<br></br>
 						<a className="link" id="registerLink" href="/register">Click to Register</a>
 					</form>
-					<EventBodyInfo /> 
+
+					<FormLogin />
+
 					
 
 
