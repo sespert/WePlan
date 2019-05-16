@@ -5,9 +5,11 @@ import API from "../utils/API";
 import { Redirect } from "react-router-dom";
 import { Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
-// import { Input, TextArea, FormBtn } from "../components/Form";
+
 import FormLogin from "../components/FormLogin";
+// import FormLogin from "../components/FormLogin";
 import EventBodyInfo from"../components/EventBodyInfo";
+import '../components/Nav/nav.css';
 
 import { setInStorage, getFromStorage } from "../utils/storage";
 import axios from 'axios';
@@ -136,6 +138,16 @@ class Event extends Component {
 			return (
 
 				<Container>
+					<ul className="navbar-nav flex-row ml-md-auto link-cont">
+						<li className="nav-item">
+							<a className="nav-link guide-link mr-3" href="/events">Events Guide</a>
+						</li>
+						<li className="nav-item">
+							<a className="nav-link logout-link" onClick={this.handleSubmit} href="#">Log In</a>
+						</li>
+					</ul>
+
+					
 					{/* <article className="container"> */}
 						<Jumbotron>
 							<blockquote>
@@ -183,6 +195,9 @@ class Event extends Component {
 		
 					<FormLogin />
 					<EventBodyInfo /> 
+
+
+
 					
 
 
