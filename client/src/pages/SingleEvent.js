@@ -6,6 +6,7 @@ import { ConferenceList, ConferenceListItem } from "../components/ListConference
 import { FormBtn } from "../components/Form";
 import { Redirect } from "react-router-dom";
 import API from "../utils/API";
+// import Moment from 'react-moment';
 
 
 class SingleEvent extends Component {
@@ -88,6 +89,7 @@ class SingleEvent extends Component {
                         date = {this.state.eDate}               
                         />
                     </List>
+                    {/* <h3>Time of the event: <Moment format="hh:mm A">{timeToFormat}</Moment></h3> */}
                 </Jumbotron> 
 
                 <br></br> 

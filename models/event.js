@@ -30,22 +30,21 @@ const eventSchema = new Schema({
     required: true
   },
   startTime: {
-    type: Number,
+    type: String,
     required: true
   },
   endTime: {
-    type: Number,
+    type: String,
     required: true
   },
   conferences: [{
     type: Schema.Types.ObjectId,
     ref: "Conference"
   }],
-    //implementar llenar esto
-  exhibitors: {
+  exhibitors: [{
     type: Schema.Types.ObjectId,
     ref: "Exhibitor"
-  }//implemntar llenar esto
+  }]//implemntar llenar esto
 });
 
 const Event = mongoose.model("Event", eventSchema);
