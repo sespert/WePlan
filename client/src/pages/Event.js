@@ -6,7 +6,7 @@ import { Redirect } from "react-router-dom";
 import { Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 // import { Input, TextArea, FormBtn } from "../components/Form";
-// import FormLogin from "../components/FormLogin";
+import FormLogin from "../components/FormLogin";
 import EventBodyInfo from"../components/EventBodyInfo";
 
 import { setInStorage, getFromStorage } from "../utils/storage";
@@ -178,7 +178,7 @@ class Event extends Component {
 						<button type="submit" id="buttom" className="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
 					</form>
 		
-					{/* <FormLogin /> */}
+					<FormLogin />
 					<EventBodyInfo /> 
 					
 
