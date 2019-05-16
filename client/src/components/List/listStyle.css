@@ -1,17 +1,21 @@
 .list-overflow-container {
   margin-top: 35%;
     max-height: 545px;
-    border: 3px rgb(221, 196, 53) solid;
+    /* border: 3px rgb(221, 196, 53) solid; */
     border-radius: 4px;
     overflow-y: scroll;
     overflow-x: hidden;
-    font: 1.300em "Montserrat", bolder;
-    color:rgb(3, 71, 3);
+    font: 1.100em "Montserrat", bolder;
+    border-color: rgba(248, 248, 244, 0.486);
+    /* color:black; */
+
   
   }
   
   .list-overflow-container ul {
     margin: 40px;
+    border-color: rgba(248, 248, 244, 0.486);
+
   
   }
   
@@ -20,11 +24,15 @@
     border-left: none;
     border-right: none;
     text-align: center;
-    background-color: rgba(248, 248, 244, 0.575);
+    background-color: rgba(248, 248, 244, 0.486);
+    border-color: rgba(248, 248, 244, 0.486);
+
+ 
   }
   
   .list-overflow-container li * {
     cursor: pointer;
+  
   }
   
   /* .list-overflow-container li a {

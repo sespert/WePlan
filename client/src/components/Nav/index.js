@@ -3,18 +3,18 @@ import './nav.css';
 import logo from '../../images/logo.png'
 
 
-class Nav extends Component {
 
-  
+class Nav extends Component {
+ 
   render() {
     let partial;
     if(this.props.id) {
       partial = <li className="nav-item-2">
-        <a className="nav-link" href="/">Log Out</a>          
+        <a className="nav-link3" href="/">Log Out</a>          
       </li>  
     } else {
       partial = <li className="nav-item-2">
-      <a className="nav-link" href="/">Log In</a>          
+      <a className="nav-link3" href="/">Log In</a>          
     </li>  
 
     }
@@ -26,12 +26,12 @@ class Nav extends Component {
 
           <h3 id="legend"> Life can be easy by just using the right tools!</h3>
 
-          <ul className="navbar-nav flex-row ml-md-auto">
+          {/* <ul className="navbar-nav flex-row ml-md-auto">
             <li className="nav-item">
-              <a className="nav-link" href="/events">Events Guide</a>       
+              <a className="nav-link3" href="/events">Events Guide</a>       
             </li> 
             {partial}
-          </ul>
+          </ul> */}
       </nav>
     );
 }
