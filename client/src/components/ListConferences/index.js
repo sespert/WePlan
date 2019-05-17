@@ -27,7 +27,8 @@ export function ConferenceList({ children }) {
       <Row>
         
         <Col size="sm-12">
-          <h3>{props.title}</h3>  
+          <h2>{props.eventName}</h2>
+          <h3>Conference: {props.title}</h3>  
           <h4>Room: {props.room}</h4>
           <p>Subject: {props.description}</p>
           <p>Speakers: {props.speakers}</p>
@@ -35,14 +36,12 @@ export function ConferenceList({ children }) {
           <p>From {moment(props.time, "hh:mm a").format("hh:mm a")} to {moment(props.time, "hh:mm a").add(props.duration, 'minutes').format("hh:mm a")}</p>
         
         </Col>
-        <AddBtn onClick = {props.handleAddBtn} />
+        <AddBtn onClick = {props.handleAddBtn} id={props.id} />
       </Row>
       <br />
       
     </Container>
   </li>
-
-
 
   );
 // }

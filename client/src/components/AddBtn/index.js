@@ -4,9 +4,9 @@ import React from "react";
 
 function AddBtn(props) {
   return (
-    <span className="add-btn" {...props} role="button" tabIndex="0">
-      <i className="fas fa-folder-plus fa-2x"></i>
-    </span>
+    <button className="btn" >
+      <i className="fas fa-folder-plus fa-2x" {...props}></i>
+    </button>
   );
 }
 
