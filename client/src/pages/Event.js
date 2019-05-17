@@ -5,7 +5,6 @@ import API from "../utils/API";
 import { Redirect } from "react-router-dom";
 import { Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
-
 import EventBodyInfo from"../components/EventBodyInfo";
 import '../components/Nav/nav.css';
 
