@@ -5,13 +5,6 @@ import API from "../utils/API";
 import { Redirect } from "react-router-dom";
 import { Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
-<<<<<<< HEAD
-// import { Input, TextArea, FormBtn } from "../components/Form";
-import FormLogin from "../components/FormLogin";
-// import FormLogin from "../components/FormLogin";
-=======
-
->>>>>>> 5520ee8516cc31e34861033a77b257cdab63bc1a
 import EventBodyInfo from"../components/EventBodyInfo";
 import '../components/Nav/nav.css';
 
@@ -145,11 +138,7 @@ class Event extends Component {
 				<Container>
 					<ul className="navbar-nav flex-row ml-md-auto link-cont">
 						<li className="nav-item">
-<<<<<<< HEAD
-							<a className="nav-link guide-link mr-3" href="/events">Complete Events Guide</a>
-=======
 							<a className="nav-link guide-link mr-3" onClick={this.setTokenToZero} href="/events">Events Guide</a>
->>>>>>> 5520ee8516cc31e34861033a77b257cdab63bc1a
 						</li>
 						<li className="nav-item">
 							{/* <a className="nav-link logout-link" onClick={this.handleSubmit} href="#">Log In</a> */}
