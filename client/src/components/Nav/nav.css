@@ -5,13 +5,15 @@
 }
 .nav-link{
     font-family:"Montserrat";
-    font-size: 30px;
+    font-size: 25px;
     color:  rgb(7, 63, 7);
     text-shadow: 2px 2px 5px wheat;
     font-weight: 600;
-
+    margin-right: 30px;
 }
-
+a:hover {
+    color:  wheat;
+  }
 .link-cont {
     position: absolute;
     top:5.2%;
