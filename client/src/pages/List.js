@@ -20,7 +20,7 @@ class EventsList extends Component {
 
 		this.state = {
 			isLoading: true,
-			token: '',
+			token: this.props.location.state.token,
 			events: [],
 			referrer: null,
 			userId: null
@@ -58,15 +58,7 @@ class EventsList extends Component {
 			});
 
 		}
-		// if(this.state.userId) return 
-		// this.setState({userId: this.props.location.state.userId});
-		// console.log("id" + this.state.userId);
-
-		// const userID = this.props.location.state.userId;
-		// console.log("propsID", this.props.location.state.userId);
-		// console.log("id", userID);
-		// let testoken = this.state.token;
-		// console.log(testoken);
+	
 		console.log("state token"+this.state.token);
 
 		this.loadEvents();
@@ -122,14 +114,14 @@ class EventsList extends Component {
 
 	render() {
 		const { token, referrer } = this.state;
-		if (referrer ) return <Redirect to={{pathname: "/admin", }} />;
+		if (referrer ) return <Redirect to={{pathname: "/admin", state: { token: this.state.token} }} />;
 		// if (referrer && this.state.userId ) return <Redirect to={{pathname: "/admin", state: { userId : this.props.location.state.userId}}} />;
 		const listStyle = {
 			MargingTop: "50%",
 			backgroundColor: "black"
 		};
 		console.log(token);
-		if (!token) {
+		if (token === "0") {
 			return(
 				<Container>
 					<ul className="navbar-nav flex-row ml-md-auto link-cont">
@@ -155,7 +147,6 @@ class EventsList extends Component {
 							)
 						})}
 					</List>
-					{/* <FormBtn onClick={this.handleSubmit}>Add New Event</FormBtn> */}
 
 				</Container>
 			)
@@ -165,15 +156,12 @@ class EventsList extends Component {
 			
 			<Container>
 				<ul className="navbar-nav flex-row ml-md-auto link-cont">
-					{/* <li className="nav-item">
-						<a className="nav-link guide-link mr-3" href="/events">Events Guide</a>
-					</li> */}
+					
 					<li className="nav-item">
 						<a className="nav-link logout-link" onClick={this.logout} href="/">Log Out</a>  
 					</li>
 				</ul>
 				
-				{/* <button onClick={this.logout}>Logout</button> */}
 				<h1>Click to see the info of an event</h1>
 
 				<List styleProp={listStyle}>

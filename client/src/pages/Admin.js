@@ -12,19 +12,22 @@ class Admin extends Component {
 		super(props);
 
 		this.state = {
+      token: this.props.location.state.token,
 			referrer: null,
 			userId: null
 		}
 
     }
     
-    // componentDidMount() {
-    //     if(this.state.userId) return 
-    //     this.setState({userId: this.props.location.state.userId});
-    //     console.log("id" + this.state.userId);
-    //     console.log("propsID", this.props.location.state.userId);
+    componentDidMount() {
+      const token = this.state.token;
 
-    // }
+        // if(this.state.userId) return 
+        // this.setState({userId: this.props.location.state.userId});
+        // console.log("id" + this.state.userId);
+        // console.log("propsID", this.props.location.state.userId);
+
+    }
 
     handleSubmit = e => {
         e.preventDefault();
