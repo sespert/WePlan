@@ -21,16 +21,10 @@ export function ListItem(props) {
       <Row>
         
         <Col size="xs-8 sm-9">
-          <h3>{props.name}</h3>
           
           <h4>Location: {props.place}</h4>
-          <h4>Date: {props.date}</h4>
 
-          <p>Duration {props.endDate}</p>
-          {/* <p>{props.endDate}</p> */}
-
-          {/* {props.duration == 1 ? <p>{props.date}</p> : <p>From {props.date} to {props.endDate}</p>} */}
-          
+          {props.duration == 1 ? <p>{props.date}</p> : <p>From {props.eFirstDay} to {props.endDate}</p>}
           
           <p>{props.subject}</p>
           
