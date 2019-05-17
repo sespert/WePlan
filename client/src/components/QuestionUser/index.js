@@ -216,9 +216,9 @@ class QuestionUser extends Component {
                         <li className="nav-item">
                             <a className="nav-link guide-link mr-3" href="/events">Events Guide</a>
                         </li>
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                             <a className="nav-link logout-link" onClick={this.handleSubmit} href="#">Register</a>
-                        </li>
+                        </li> */}
                     </ul>
                     {
                         (signUpError) ? (

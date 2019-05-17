@@ -174,7 +174,7 @@ class EventsList extends Component {
 				</ul>
 				
 				{/* <button onClick={this.logout}>Logout</button> */}
-				<h1>Click to see the info of an event</h1>
+				<h1>Register to plan your next </h1>
 
 				<List styleProp={listStyle}>
 					{this.state.events.map((eve, i) => {

@@ -1,12 +1,16 @@
 import React from "react";
 import { Container } from "../components/Grid";
 import QuestionUser from "../components/QuestionUser";
+import RegisterContainer from"../components/RegisterContainer";
 
 function Register() {
     
     return (
         <Container >  
-              <h1>Let us plan your next event</h1>
+<RegisterContainer />
+
+
+              <h1>planer</h1>
             <QuestionUser/>
            
         </Container>           
