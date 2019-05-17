@@ -31,12 +31,10 @@ class Conference extends Component {
             title: this.state.title,
             speakers: this.state.speakers,
             description: this.state.description,
-            room: this.state.room,
-            schedule: {
-                    day: this.state.day,
-                    time: this.state.time,
-                    duration: this.state.duration
-                }
+            room: this.state.room,        
+            day: this.state.day,
+            time: this.state.time,
+            duration: this.state.duration
             })
             .then(res => {
                 console.log(res);

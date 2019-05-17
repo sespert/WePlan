@@ -7,7 +7,6 @@ import Conference from "../components/Conference";
 import { FormBtn } from "../components/Form";
 import { Redirect } from "react-router-dom";
 import API from "../utils/API";
-// import Moment from 'react-moment';
 import moment from 'moment';
 
 //TO DO: display all events of user by default?
@@ -23,7 +22,6 @@ class AdminEvent extends Component {
         eNumOfDays: "",
         eStartTime: "",
         eEndTime: "",
-        eDuration: "",
         conferences : [],       
         referrer: null
     }
@@ -54,9 +52,7 @@ class AdminEvent extends Component {
     //Helper function to load the conferences for the current event
     loadConferences = id => {
         API.getConferencesbyEvent(id)
-        .then(res=>  
-            // console.log(res.data.conferences))
-            
+        .then(res=>    
             this.setState({ conferences: res.data.conferences }))
         .catch(err => console.log(err));
     }
@@ -75,9 +71,9 @@ class AdminEvent extends Component {
     render() {       
         const {referrer} = this.state;
         if (referrer) return <Redirect to={referrer} />;
-        const eventTime= moment(this.state.eDate, "YYYY MM DD").format('MMMM DD YYYY'); 
-        // const endDate = eventTime;
-        const lengthDays = moment('2019-07-01', 'YYYY-MM-DD').add(1, 'day');
+        const eventTime = moment(this.state.eDate, "YYYY MM DD").format('MMMM DD YYYY'); 
+        const lengthDays = moment(this.state.eDate, "YYYY MM DD").add(this.state.eNumOfDays, 'days').format('MMMM DD YYYY');
+        const firstDay = moment(this.state.eDate, "YYYY MM DD").format('MMMM DD'); 
 
 
         return (
@@ -91,7 +87,8 @@ class AdminEvent extends Component {
                         subject = {this.state.eSubject}
                         date = {eventTime}   
                         duration = {this.state.eNumOfDays}
-                        endDate = {lengthDays}       
+                        endDate = {lengthDays}   
+                        eFirstDay = {firstDay}   
                         />
                     </List>
                 </Jumbotron> 
@@ -112,7 +109,9 @@ class AdminEvent extends Component {
                         speakers = {elem.speakers}
                         description = {elem.description}
                         room = {elem.room}
-
+                        date = {elem.day}
+                        time = {elem.time}
+                        duration = {elem.duration}
                         /> )
                         })}
                </ConferenceList>
