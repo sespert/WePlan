@@ -5,9 +5,13 @@ import API from "../utils/API";
 import { Redirect } from "react-router-dom";
 import { Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
+<<<<<<< HEAD
 // import { Input, TextArea, FormBtn } from "../components/Form";
 import FormLogin from "../components/FormLogin";
 // import FormLogin from "../components/FormLogin";
+=======
+
+>>>>>>> 5520ee8516cc31e34861033a77b257cdab63bc1a
 import EventBodyInfo from"../components/EventBodyInfo";
 import '../components/Nav/nav.css';
 
@@ -29,7 +33,7 @@ class Event extends Component {
 		this.onChangeEmail = this.onChangeEmail.bind(this);
 		this.onChangePassword = this.onChangePassword.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
-		
+		this.setTokenToZero = this.setTokenToZero.bind(this);
 				
 	}
 	onChangeEmail(e) {
@@ -41,6 +45,7 @@ class Event extends Component {
 	handleSubmit(e) {
 		e.preventDefault();
 		//Grab State
+		console.log("handlesubmit");
         const {
             signInEmail,
             signInPassword
@@ -75,16 +80,16 @@ class Event extends Component {
         })
 	}
 
-	// state = {
-	// 	events: []
-	// }
+	setTokenToZero() {
+		this.setState({token: "0"});
+	}
 
 	componentDidMount() {
 		console.log("starting token" + this.state.token);
 		const obj = getFromStorage('the_main_app');
         if (obj  && obj.token) {
             //Verify token
-            // console.log(obj);
+            
             const { token } = obj;
             axios.get('api/user/verify?token=' + token).then(data => {
 
@@ -140,35 +145,35 @@ class Event extends Component {
 				<Container>
 					<ul className="navbar-nav flex-row ml-md-auto link-cont">
 						<li className="nav-item">
+<<<<<<< HEAD
 							<a className="nav-link guide-link mr-3" href="/events">Complete Events Guide</a>
+=======
+							<a className="nav-link guide-link mr-3" onClick={this.setTokenToZero} href="/events">Events Guide</a>
+>>>>>>> 5520ee8516cc31e34861033a77b257cdab63bc1a
 						</li>
 						<li className="nav-item">
 							{/* <a className="nav-link logout-link" onClick={this.handleSubmit} href="#">Log In</a> */}
 						</li>
 					</ul>
 
-					
-					{/* <article className="container"> */}
-						<Jumbotron>
-							<blockquote>
-								<strong>Conference</strong>  <em>information</em>
-							</blockquote>
-							<br></br>
-							<List>
-								{this.state.events.slice(0,4).map((eve, i) => {
-									return (
-										<ListItem
-											key={i}
-											name={eve.name}
-											id={eve._id}
-										/>
-									)
-								})}
+					<Jumbotron>
+						<blockquote>
+							<strong>Conference</strong>  <em>information</em>
+						</blockquote>
+						<br></br>
+						<List>
+							{this.state.events.slice(0, 4).map((eve, i) => {
+								return (
+									<ListItem
+										key={i}
+										name={eve.name}
+										id={eve._id}
+									/>
+								)
+							})}
 
-							</List>
-						</Jumbotron>
-
-					{/* </article> */}
+						</List>
+					</Jumbotron>
 
 
 					<form id="form1">
@@ -193,7 +198,6 @@ class Event extends Component {
 						<a className="link" id="registerLink" href="/register">Click to Register</a>
 					</form>
 		
-					<FormLogin />
 					<EventBodyInfo /> 
 
 

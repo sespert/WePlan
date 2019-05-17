@@ -20,7 +20,7 @@ class EventsList extends Component {
 
 		this.state = {
 			isLoading: true,
-			token: props.location.state.token,
+			token: '',
 			events: [],
 			referrer: null,
 			userId: null
@@ -30,6 +30,7 @@ class EventsList extends Component {
 	}
 
 	componentDidMount() {
+		
 		const obj = getFromStorage('the_main_app');
 		if (obj && obj.token) {
 			//Verify token
@@ -127,18 +128,48 @@ class EventsList extends Component {
 			MargingTop: "50%",
 			backgroundColor: "black"
 		};
+		console.log(token);
+		if (!token) {
+			return(
+				<Container>
+					<ul className="navbar-nav flex-row ml-md-auto link-cont">
+						{/* <li className="nav-item">
+							<a className="nav-link guide-link mr-3" href="/events">Events Guide</a>
+						</li> */}
+						<li className="nav-item">
+							<a className="nav-link logout-link" href="/">Log In</a>
+						</li>
+					</ul>
 
-		if (!token) return <Redirect to={{pathname: "/"}} />;
+					{/* <button onClick={this.logout}>Logout</button> */}
+					<h1>Click to see the info of an event</h1>
+
+					<List styleProp={listStyle}>
+						{this.state.events.map((eve, i) => {
+							return (
+								<ListItem
+									key={i}
+									name={eve.name}
+									id={eve._id}
+								/>
+							)
+						})}
+					</List>
+					{/* <FormBtn onClick={this.handleSubmit}>Add New Event</FormBtn> */}
+
+				</Container>
+			)
+		}
 
 		return (
 			
 			<Container>
 				<ul className="navbar-nav flex-row ml-md-auto link-cont">
-					<li className="nav-item">
+					{/* <li className="nav-item">
 						<a className="nav-link guide-link mr-3" href="/events">Events Guide</a>
-					</li>
+					</li> */}
 					<li className="nav-item">
-						<a className="nav-link logout-link" onClick={this.logout} href="#">Log Out</a>  
+						<a className="nav-link logout-link" onClick={this.logout} href="/">Log Out</a>  
 					</li>
 				</ul>
 				
