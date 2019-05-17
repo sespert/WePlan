@@ -6,8 +6,6 @@ import { Redirect } from "react-router-dom";
 import { Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 
-import FormLogin from "../components/FormLogin";
-
 import EventBodyInfo from"../components/EventBodyInfo";
 import '../components/Nav/nav.css';
 
@@ -29,7 +27,7 @@ class Event extends Component {
 		this.onChangeEmail = this.onChangeEmail.bind(this);
 		this.onChangePassword = this.onChangePassword.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
-		
+		this.setTokenToZero = this.setTokenToZero.bind(this);
 				
 	}
 	onChangeEmail(e) {
@@ -76,16 +74,16 @@ class Event extends Component {
         })
 	}
 
-	// state = {
-	// 	events: []
-	// }
+	setTokenToZero() {
+		this.setState({token: "0"});
+	}
 
 	componentDidMount() {
 		console.log("starting token" + this.state.token);
 		const obj = getFromStorage('the_main_app');
         if (obj  && obj.token) {
             //Verify token
-            // console.log(obj);
+            
             const { token } = obj;
             axios.get('api/user/verify?token=' + token).then(data => {
 
@@ -141,31 +139,31 @@ class Event extends Component {
 				<Container>
 					<ul className="navbar-nav flex-row ml-md-auto link-cont">
 						<li className="nav-item">
-							<a className="nav-link guide-link mr-3" href="/events">Events Guide</a>
+							<a className="nav-link guide-link mr-3" onClick={this.setTokenToZero} href="/events">Events Guide</a>
 						</li>
 						<li className="nav-item">
 							<a className="nav-link logout-link" onClick={this.handleSubmit} href="#">Log In</a>
 						</li>
 					</ul>
 
-						<Jumbotron>
-							<blockquote>
-								<strong>Conference</strong>  <em>information</em>
-							</blockquote>
-							<br></br>
-							<List>
-								{this.state.events.slice(0,4).map((eve, i) => {
-									return (
-										<ListItem
-											key={i}
-											name={eve.name}
-											id={eve._id}
-										/>
-									)
-								})}
+					<Jumbotron>
+						<blockquote>
+							<strong>Conference</strong>  <em>information</em>
+						</blockquote>
+						<br></br>
+						<List>
+							{this.state.events.slice(0, 4).map((eve, i) => {
+								return (
+									<ListItem
+										key={i}
+										name={eve.name}
+										id={eve._id}
+									/>
+								)
+							})}
 
-							</List>
-						</Jumbotron>
+						</List>
+					</Jumbotron>
 
 
 					<form id="form1">
