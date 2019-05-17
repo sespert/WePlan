@@ -6,7 +6,7 @@ import { ConferenceList, ConferenceListItem } from "../components/ListConference
 import { FormBtn } from "../components/Form";
 import { Redirect } from "react-router-dom";
 import API from "../utils/API";
-// import Moment from 'react-moment';
+import moment from 'moment';
 
 
 class SingleEvent extends Component {
@@ -17,16 +17,17 @@ class SingleEvent extends Component {
         eSubject: "",
         eDate: "",
         eId: "",
+        eNumOfDays: "",
+        eStartTime: "",
+        eEndTime: "",
+        eId: (window.location.pathname).substr(8),
         conferences : [], 
         referrer: null,
     }
 
     componentDidMount() {
-        const urlString = window.location.pathname;
-        const urlCut = urlString.substr(8);
-        console.log(urlCut);
-        this.loadEventInfo(urlCut);
-        this.loadConferences(urlCut);
+        this.loadEventInfo(this.state.eId);
+        this.loadConferences(this.state.eId);
     }
     
     //Helper function to load the info of the current event
@@ -38,7 +39,10 @@ class SingleEvent extends Component {
                 ePlace: res.data.place,
                 eSubject: res.data.subject,
                 eDate: res.data.date,
-                eId: res.data._id
+                eId: res.data._id,
+                eNumOfDays: res.data.numOfDays,
+                eStartTime: res.data.startTime,
+                eEndTime: res.data.endTime,
             });
         }).catch(err => console.log(err));
     }
@@ -46,9 +50,7 @@ class SingleEvent extends Component {
     //Helper function to load the conferences for the current event
     loadConferences = id => {
         API.getConferencesbyEvent(id)
-        .then(res=>  
-            // console.log(res.data))
-
+        .then(res=> 
             this.setState({ conferences: res.data.conferences }))
         .catch(err => console.log(err));
     }
@@ -76,6 +78,9 @@ class SingleEvent extends Component {
     render() {
         const {referrer} = this.state;
         if (referrer) return <Redirect to={referrer} />;
+        const eventTime = moment(this.state.eDate, "YYYY MM DD").format('MMMM DD YYYY'); 
+        const lengthDays = moment(this.state.eDate, "YYYY MM DD").add(this.state.eNumOfDays, 'days').format('MMMM DD YYYY');
+        const firstDay = moment(this.state.eDate, "YYYY MM DD").format('MMMM DD'); 
 
         return (
             <Container > 
@@ -86,10 +91,12 @@ class SingleEvent extends Component {
                         key = {this.state.eId}
                         place = {this.state.ePlace}
                         subject = {this.state.eSubject}
-                        date = {this.state.eDate}               
+                        date = {this.state.eDate} 
+                        duration = {this.state.eNumOfDays}
+                        endDate = {lengthDays}   
+                        eFirstDay = {firstDay} 
                         />
                     </List>
-                    {/* <h3>Time of the event: <Moment format="hh:mm A">{timeToFormat}</Moment></h3> */}
                 </Jumbotron> 
 
                 <br></br> 
@@ -107,7 +114,9 @@ class SingleEvent extends Component {
                         speakers = {elem.speakers}
                         description = {elem.description}
                         room = {elem.room}
-                        schedule = {elem.schedule}   
+                        date = {elem.day}
+                        time = {elem.time}
+                        duration = {elem.duration} 
                         onClick = {this.handleAddBtn}            
                         /> 
                         )

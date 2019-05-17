@@ -17,10 +17,14 @@ const conferenceSchema = new Schema({
         type: String,
         required: true
     },    
-    schedule: {
-        day: String,
-        time: String,
-        duration: Number
+    day: {
+        type: String,
+    },
+    time:{
+        type: String,
+    },    
+    duration:{
+        type: Number
     },
     eventId: {
         type: String
