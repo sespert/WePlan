@@ -2,23 +2,52 @@ import React , { Component } from "react";
 import { Container } from "../components/Grid";
 // import { List, ListItem } from "../components/ListEvent";
 import { ConferenceList, ConferenceListItem } from "../components/ListConferences";
-// import API from "../utils";
+import API from "../utils/API";
+import moment from 'moment';
 
-//TODO: Add list of user events
 
 class UserEvent extends Component {
     state = {
-        name : "Info2019",
-        conferences : [{
-            title: "Moneyball: The Art of Winning an Unfair Game",
-            speakers: ["Billy Beane"],
-            description: "Considered one of the most progressive and talented baseball executives in the game today, Billy Beane has molded the Oakland Athletics into one of professional baseball’s most consistent winners since taking over as General Manager…",
-            room: "Ballroom A",
-            schedule:"12:55 pm - 1:50 pm",
-        }]
-
+        conferences : []
+    }
+    
+    componentDidMount() {
+        // this.loadEventInfo(this.state.eId);
+        this.loadConferences("5cdc8c97219fb81d367050ea");
     }
 
+    loadConferences = id => {
+        const list = [];
+        API.getConferencesbyUserId(id) 
+        .then(res=> {
+            this.setState({ conferences: res.data.conferences })
+            console.log(this.state.conferences)
+            this.state.conferences.map((elem,i) => {
+                API.getEventsbyId(elem.eventId).then(
+                    res => {
+                        list.push(res.data.name);
+
+                    }
+                    
+                    // // this.state.eventName.concat(res.data.name)
+                    // })
+            )
+            // this.state.conferences.map((elem,i) => {
+                // elem.eventName = "java"
+               
+            })
+            this.setState({eventName: list})
+            console.log(list);
+            console.log(this.state.eventName)
+           
+
+        })
+        // .then(
+        //     // API.getEventsbyId()
+        // )
+        .catch(err => console.log(err));
+    }
+     
     render() {
         return (
             <Container > 
@@ -33,12 +62,15 @@ class UserEvent extends Component {
                         return(
                         <ConferenceListItem 
                         key = {elem.title}
+                        eventName = {elem.eventName}
                         title = {elem.title}
                         speakers = {elem.speakers}
                         description = {elem.description}
                         room = {elem.room}
-                        schedule = {elem.schedule}   
-                        onClick = {this.handleAddBtn}            
+                        date = {elem.day}
+                        time = {elem.time}
+                        duration = {elem.duration} 
+                        // onClick = {this.handleAddBtn}            
                         /> 
                         )
                        

@@ -14,7 +14,6 @@ import moment from 'moment';
 class AdminEvent extends Component {
 
     state = {
-        eName: "",
         ePlace: "",
         eSubject: "",
         eDate: "",
@@ -36,7 +35,6 @@ class AdminEvent extends Component {
         API.getEventsbyId(id)
         .then(res => {            
             this.setState({ 
-                eName: res.data.name,
                 ePlace: res.data.place,
                 eSubject: res.data.subject,
                 eDate: res.data.date,
@@ -46,7 +44,9 @@ class AdminEvent extends Component {
                 eEndTime: res.data.endTime,
 
             });
-        }).catch(err => console.log(err));
+         
+        })
+        .catch(err => console.log(err));
     }
 
     //Helper function to load the conferences for the current event
@@ -74,7 +74,7 @@ class AdminEvent extends Component {
         const eventTime = moment(this.state.eDate, "YYYY MM DD").format('MMMM DD YYYY'); 
         const lengthDays = moment(this.state.eDate, "YYYY MM DD").add(this.state.eNumOfDays, 'days').format('MMMM DD YYYY');
         const firstDay = moment(this.state.eDate, "YYYY MM DD").format('MMMM DD'); 
-
+       
 
         return (
             <Container>
@@ -95,7 +95,7 @@ class AdminEvent extends Component {
                 
 
                 
-                <h3>Fill the form with the information of a conference</h3>
+                <h3>Fill the form with the information of a conference of {this.state.eName}</h3>
 
             <Conference eventId={this.state.eId}/>
             <FormBtn onClick={this.handleSubmit}>Go to List of Events</FormBtn>

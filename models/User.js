@@ -41,23 +41,32 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    sched:{
-        day: Number,
-        hour: Number,
-        //conference or 101 or available
-        meetingType:{
-            type: String,
-            default: null
-        },
-        conf: [{
-            type: Schema.Types.ObjectId,
-            ref: "Conference"
-        }],
-        exhibit: [{
-            type: Schema.Types.ObjectId,
-            ref: "Exhibitor"
-        }]
-    },
+    conferences: [{
+        type: Schema.Types.ObjectId,
+        ref: "Conference"
+    }],
+    events: [{
+        type: Schema.Types.ObjectId,
+        ref: "Event"
+    }]
+
+    // sched:{
+    //     day: Number,
+    //     hour: Number,
+    //     //conference or 101 or available
+    //     meetingType:{
+    //         type: String,
+    //         default: null
+    //     },
+    //     conf: [{
+    //         type: Schema.Types.ObjectId,
+    //         ref: "Conference"
+    //     }],
+    //     exhibit: [{
+    //         type: Schema.Types.ObjectId,
+    //         ref: "Exhibitor"
+    //     }]
+    // },
     // sched:{
     //     type:[{
     //         type:Schema.Types.ObjectId,
@@ -65,10 +74,7 @@ const userSchema = new Schema({
     //     }], 
     //     required: false              
     // },    
-    events: {
-        type: Schema.Types.ObjectId,
-        ref: "Event"
-    }
+   
 });
 
 // Pre save hook to hash passwords

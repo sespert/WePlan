@@ -3,7 +3,8 @@ const userController = require("../../controllers/userController");
 
 router.route("/")
     .get(userController.findAll)
-    .post(userController.create);
+    .post(userController.create)
+    .put(userController.update);
 
 // router.route("/user")
 //     .get(userController.findAll)
@@ -21,10 +22,10 @@ router.route("/logout")
 
 router.route("/:id")
     .get(userController.findById);
+    // .put(userController.update);
 
 router.route("/:email")
     .get(userController.find);
-
 
 
 

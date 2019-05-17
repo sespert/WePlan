@@ -28,6 +28,9 @@ const conferenceSchema = new Schema({
     },
     eventId: {
         type: String
+    },
+    eventName: {
+        type: String
     }
 });
 
