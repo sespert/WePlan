@@ -1,3 +1,21 @@
+#cardImage3div{
+
+    margin-right: 25%;
+
+}
 #cardImage3{
-    width:300px;
+
+    margin-top: 40px;
+    margin-right: 25%;  
+}
+
+
+#cardImage4{
+
+    margin-top: 40px;
+
+}
+
+#cardImage4div{
+    margin-left:25%;
 }
