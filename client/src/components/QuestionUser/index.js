@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { Input, FormBtn } from "../Form";
-import "./style.css";
+import "./QuestionUser.css";
 import API from "../../utils/API";
 import { getFromStorage, setInStorage } from "../../utils/storage";
 import axios from 'axios';
@@ -225,13 +225,13 @@ class QuestionUser extends Component {
                             <p>{signUpError}</p>
                         ) : (null)
                     }
-                    <form>
-                        <Input name="name" placeholder="Full Name (required)" value={signUpFullName} onChange={this.onChangeSignUpFullName} />
-                        <Input name="email" placeholder="Email (required)" value={signUpEmail} onChange={this.onChangeSignUpEmail} />
-                        <Input name="company" placeholder="Your Company" value={signUpCompany} onChange={this.onChangeSignUpCompany} />
-                        <Input name="password" placeholder="Choose a Password" value={signUpPassword} onChange={this.onChangeSignUpPassword} />
+                    <form className="col-6" id="formRegister"> 
+                        <Input id="name" name="name" placeholder="Full Name (required)" value={signUpFullName} onChange={this.onChangeSignUpFullName} />
+                        <Input id="email" name="email" placeholder="Email (required)" value={signUpEmail} onChange={this.onChangeSignUpEmail} />
+                        <Input id="company" name="company" placeholder="Your Company" value={signUpCompany} onChange={this.onChangeSignUpCompany} />
+                        <Input id="password" name="password" placeholder="Choose a Password" value={signUpPassword} onChange={this.onChangeSignUpPassword} />
 
-                        <FormBtn onClick={this.handleSubmit}>Register</FormBtn>
+                        <FormBtn id="registerButton" onClick={this.handleSubmit}>Register</FormBtn>
                     </form>
                 </div>
             )

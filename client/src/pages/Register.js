@@ -6,11 +6,11 @@ import RegisterContainer from"../components/RegisterContainer";
 function Register() {
     
     return (
-        <Container >  
+
+        <Container fluid="fluid">  
+
 <RegisterContainer />
 
-
-              <h1>planer</h1>
             <QuestionUser/>
            
         </Container>           
