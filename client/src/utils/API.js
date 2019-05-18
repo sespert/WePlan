@@ -10,6 +10,9 @@ export default {
   getEventsbyId: function(id) {
     return axios.get("/api/events/" + id);
   },
+  findEventSession: function(token) {
+    return axios.get("/events/api/events/findsession" + token);
+  },
   // Deletes the event with the given id
   deleteEvent: function(id) {
     return axios.delete("/api/events/" + id);
