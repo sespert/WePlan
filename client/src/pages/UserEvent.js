@@ -4,6 +4,8 @@ import { Container } from "../components/Grid";
 import { ConferenceList, ConferenceListItem } from "../components/ListConferences";
 import API from "../utils/API";
 import moment from 'moment';
+import { getFromStorage } from '../utils/storage';
+import axios from 'axios';
 
 
 class UserEvent extends Component {
@@ -13,8 +15,22 @@ class UserEvent extends Component {
     }
     
     componentDidMount() {
-        // this.loadEventInfo(this.state.eId);
-        this.loadConferences(userId);
+
+        console.log(this.props.location);
+        const obj = getFromStorage('the_main_app');
+        const { token }= obj;
+        console.log("token didmount: "+ token);
+        API.findConferenceSession(token).then(data => {   
+        // axios.get('/api/user/findsession/'+token).then(data=> {
+            const response = data.data;
+            this.setState({
+                userId: response.userId
+            });
+            console.log("userId did mount"+ this.state.userId);
+            this.loadConferences(response.userId);
+        });
+        
+        
     }
 
     loadConferences = id => {

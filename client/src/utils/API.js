@@ -1,4 +1,5 @@
 import axios from "axios";
+import { func } from "prop-types";
 // import { func } from "prop-types";
 
 export default {
@@ -49,6 +50,9 @@ export default {
   },
   findSession:  function (sessionToken) {
     return axios.get("api/user/findsession/"+ sessionToken);
+  },
+  findConferenceSession: function (sessionToken) {
+    return axios.get("/api/user/findsession/"+ sessionToken);
   },
   // getUserByEmail: function(email) {
   //   return axios.get("/api/user", email);

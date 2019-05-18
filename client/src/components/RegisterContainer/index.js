@@ -2,6 +2,7 @@ import React from "react";
 import "./RegisterContainer.css";
 import planerImage from '../../images/planerImage.png';
 import participantImage from '../../images/participantImage.png'
+
 function RegisterContainer() 
 {
     return(

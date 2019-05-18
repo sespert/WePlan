@@ -62,12 +62,14 @@ module.exports = {
             console.log("sessio token ", sessionToken);
             console.log("session data ", sessions);
             if (err) {
+                console.log(err);
                 return res.send({
                     success: false,
                     message: 'Error: server error'
                 });
             }
-            return res.send({
+            
+                res.send({
                 success: true,
                 userId: sessions.userId
             })
