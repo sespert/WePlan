@@ -17,6 +17,9 @@ router.route("/signin")
     .get(userController.findAll)
     .post(userController.signin);
 
+router.route("/findsession/:sessionToken")
+    .get(userController.findSession);
+
 router.route("/logout")
     .get(userController.logout);
 

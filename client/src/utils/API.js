@@ -10,6 +10,9 @@ export default {
   getEventsbyId: function(id) {
     return axios.get("/api/events/" + id);
   },
+  findEventSession: function(token) {
+    return axios.get("/events/api/events/findsession" + token);
+  },
   // Deletes the event with the given id
   deleteEvent: function(id) {
     return axios.delete("/api/events/" + id);
@@ -40,6 +43,9 @@ export default {
   signin: function (userData) {
     console.log (userData);
     return axios.post("/api/user/signin ", userData);
+  },
+  findSession:  function (sessionToken) {
+    return axios.get("api/user/findsession/"+ sessionToken);
   },
   // getUserByEmail: function(email) {
   //   return axios.get("/api/user", email);
