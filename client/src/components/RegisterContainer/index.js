@@ -1,7 +1,7 @@
 import React from "react";
 import "./RegisterContainer.css";
-import PlanerImage from '../../images/PlanerImage.png';
-import AttendeeImage from '../../images/AttendeeImage.png'
+import planerImage from '../../images/planerImage.png';
+import attendeeImage from '../../images/attendeeImage.png'
 function RegisterContainer() 
 {
     return(
@@ -9,10 +9,10 @@ function RegisterContainer()
 <div className="container">
 <div className="row">
   <div className="col">
-  <img className="card__image" id="cardImage3" src={PlanerImage} alt=""/>
+  <img className="card__image" id="cardImage3" src={planerImage} alt=""/>
   </div>
   <div className="col">
-  <img className="card__image" id="cardImage3" src={AttendeeImage} alt=""/>
+  <img className="card__image" id="cardImage3" src={attendeeImage} alt=""/>
   </div>
 </div>
 </div>
