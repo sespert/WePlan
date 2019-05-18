@@ -7,6 +7,7 @@ router.route("/")
 
 
 router.route("/:id")
-  .get(conferenceController.findById);
+  .get(conferenceController.findById)
+  .delete(conferenceController.remove);
 
 module.exports = router;

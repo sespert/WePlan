@@ -8,12 +8,13 @@ import moment from 'moment';
 
 class UserEvent extends Component {
     state = {
-        conferences : []
+        conferences : [],
+        userId: null
     }
     
     componentDidMount() {
         // this.loadEventInfo(this.state.eId);
-        this.loadConferences("5cdc8c97219fb81d367050ea");
+        this.loadConferences(userId);
     }
 
     loadConferences = id => {
@@ -47,6 +48,18 @@ class UserEvent extends Component {
         // )
         .catch(err => console.log(err));
     }
+    handleDelBtn = e => {
+        e.preventDefault();
+        alert("deleted");
+         API.deleteConfFromUser({
+            confId: e.target.id,
+            userId: this.state.userId
+        })
+        .then(res => {
+            console.log(res)
+        })            
+        .catch(err => console.log(err))
+    }
      
     render() {
         return (
@@ -70,7 +83,9 @@ class UserEvent extends Component {
                         date = {elem.day}
                         time = {elem.time}
                         duration = {elem.duration} 
-                        // onClick = {this.handleAddBtn}            
+                        id = {elem._id} 
+                        delVal={"a"}   
+                        handleDelBtn = {this.handleDelBtn} 
                         /> 
                         )
                        

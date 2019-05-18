@@ -90,7 +90,7 @@ class SingleEvent extends Component {
         
         API.saveConfToUser({
             confId: e.target.id,
-            userId: "5cdc8c97219fb81d367050ea"
+            userId: this.state.userId
         })
         .then(res => {
             console.log(res)
@@ -151,6 +151,8 @@ class SingleEvent extends Component {
                             duration = {elem.duration} 
                             handleAddBtn = {this.handleAddBtn} 
                             id = {elem._id}  
+                            addVal={"a"}
+                            delVal={""}
                             /> 
                             )
                         

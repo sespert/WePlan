@@ -30,6 +30,9 @@ export default {
   getConferencesbyEvent: function(id) {
     return axios.get("/api/conferences/" + id);
   },
+  deleteConference: function(id) {
+    return axios.delete("/api/conferences/" + id)
+  },
   
   //Get google maps for the venue location
   getMap: function(query) {
@@ -63,6 +66,9 @@ export default {
   getConferencesbyUserId: function(id) {
     return axios.get("/api/user/" + id);
   },
+  deleteConfFromUser: function(data) {
+    return axios.delete("/api/user/", data);
+  }
   
   
 };

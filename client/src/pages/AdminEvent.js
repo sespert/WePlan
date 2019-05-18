@@ -77,7 +77,16 @@ class AdminEvent extends Component {
     handleSubmit = e => {
         e.preventDefault();
         this.setState({referrer: '/events'});
+    }
 
+    handleDelBtn = e => {
+        e.preventDefault();
+        alert("deleted");
+        API.deleteConference(e.target.id)
+        .then(res => {
+            console.log(res)
+        })            
+        .catch(err => console.log(err))
     }
     
     render() {       
@@ -124,6 +133,8 @@ class AdminEvent extends Component {
                                 date={elem.day}
                                 time={elem.time}
                                 duration={elem.duration}
+                                delVal={"a"}
+                                handleDelBtn = {this.handleDelBtn} 
                             />)
                     })}
                 </ConferenceList>
