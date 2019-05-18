@@ -1,6 +1,6 @@
 import React from "react";
 import "./RegisterContainer.css";
-import PlanerImage from '../../images/PlanerImage.png';
+import PlanerImage from '../../images/planerImage.png';
 import AttendeeImage from '../../images/AttendeeImage.png'
 function RegisterContainer() 
 {
