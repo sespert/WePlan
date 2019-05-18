@@ -30,11 +30,12 @@ class SingleEvent extends Component {
     }
 
     componentDidMount() {
+        
         const obj = getFromStorage('the_main_app');
         const { token }= obj;
         console.log("token didmount: "+ token);
-        // API.findSession(token).then(data => {   
-        axios.get('../api/user/findsession/'+token).then(data=> {
+        // API.findEventSession(token).then(data => {   
+        axios.get('/../api/user/findsession/'+ token).then(data=> {
             const response = data.data;
             this.setState({
                 userId: response.userId
@@ -81,16 +82,17 @@ class SingleEvent extends Component {
 
     handleClick = e => {
         e.preventDefault();
-        this.setState({referrer: '/user/events/5cdc8c97219fb81d367050ea'})
+        this.setState({referrer: '/user/events/'+ this.state.userId})
     }
 
     handleAddBtn = e => {
         alert("added");
         e.preventDefault();
+        const { userId } = this.state;
         
         API.saveConfToUser({
             confId: e.target.id,
-            userId: "5cdc8c97219fb81d367050ea"
+            userId: userId
         })
         .then(res => {
             console.log(res)
@@ -106,7 +108,7 @@ class SingleEvent extends Component {
         const {referrer} = this.state;
         
 
-        if (referrer) return <Redirect to={referrer} />;
+        if (referrer) return <Redirect to={{pathname:referrer, state: { token : this.state.token}}} />;
         const eventTime = moment(this.state.eDate, "YYYY MM DD").format('MMMM DD YYYY'); 
         const lengthDays = moment(this.state.eDate, "YYYY MM DD").add(this.state.eNumOfDays, 'days').format('MMMM DD YYYY');
         const firstDay = moment(this.state.eDate, "YYYY MM DD").format('MMMM DD'); 
