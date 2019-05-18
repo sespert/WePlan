@@ -40,6 +40,9 @@ export default {
     console.log (userData);
     return axios.post("/api/user/signin ", userData);
   },
+  findSession:  function (sessionToken) {
+    return axios.get("api/user/findsession/"+ sessionToken);
+  },
   // getUserByEmail: function(email) {
   //   return axios.get("/api/user", email);
   // },

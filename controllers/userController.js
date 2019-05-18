@@ -52,6 +52,26 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+
+  findSession: function(req, res) {
+      console.log(req.params);
+      const { sessionToken } = req.params;
+
+      db.UserSession.findById(sessionToken, (err, sessions) => {
+            console.log("sessio token ", sessionToken);
+            console.log("session data ", sessions);
+            if (err) {
+                return res.send({
+                    success: false,
+                    message: 'Error: server error'
+                });
+            }
+            return res.send({
+                success: true,
+                userId: sessions.userId
+            })
+      })
+  },
   // create: function(req, res) {
   //   db.User
   //   // .save(req.body)
