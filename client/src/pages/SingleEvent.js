@@ -153,6 +153,8 @@ class SingleEvent extends Component {
                             duration = {elem.duration} 
                             handleAddBtn = {this.handleAddBtn} 
                             id = {elem._id}  
+                            addVal={"a"}
+                            delVal={""}
                             /> 
                             )
                         
