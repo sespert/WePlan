@@ -16,12 +16,12 @@ class SingleEvent extends Component {
         ePlace: "",
         eSubject: "",
         eDate: "",
-        eId: "",
         eNumOfDays: "",
         eStartTime: "",
         eEndTime: "",
         eId: (window.location.pathname).substr(8),
         conferences : [], 
+        userId: "",
         referrer: null,
     }
 
@@ -63,16 +63,22 @@ class SingleEvent extends Component {
 
     handleClick = e => {
         e.preventDefault();
-        this.setState({referrer: '/user/event/id'})
+        this.setState({referrer: '/user/events/5cdc8c97219fb81d367050ea'})
     }
 
     handleAddBtn = e => {
         alert("added");
         e.preventDefault();
-        // API.saveConferenceAttendee({
-        //     save data to database
-        // })
-        // .then()
+        
+        API.saveConfToUser({
+            confId: e.target.id,
+            userId: "5cdc8c97219fb81d367050ea"
+        })
+        .then(res => {
+            console.log(res)
+        })            
+        .catch(err => console.log(err))
+
     }
 
     render() {
@@ -117,7 +123,8 @@ class SingleEvent extends Component {
                         date = {elem.day}
                         time = {elem.time}
                         duration = {elem.duration} 
-                        onClick = {this.handleAddBtn}            
+                        handleAddBtn = {this.handleAddBtn} 
+                        id = {elem._id}  
                         /> 
                         )
                        

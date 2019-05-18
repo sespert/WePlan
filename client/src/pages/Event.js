@@ -5,7 +5,6 @@ import API from "../utils/API";
 import { Redirect } from "react-router-dom";
 import { Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
-
 import EventBodyInfo from"../components/EventBodyInfo";
 import '../components/Nav/nav.css';
 
@@ -142,7 +141,7 @@ class Event extends Component {
 							<a className="nav-link guide-link mr-3" onClick={this.setTokenToZero} href="/events">Events Guide</a>
 						</li>
 						<li className="nav-item">
-							<a className="nav-link logout-link" onClick={this.handleSubmit} href="#">Log In</a>
+							{/* <a className="nav-link logout-link" onClick={this.handleSubmit} href="#">Log In</a> */}
 						</li>
 					</ul>
 

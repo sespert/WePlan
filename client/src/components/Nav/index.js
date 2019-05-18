@@ -20,7 +20,7 @@ class Nav extends Component {
     }
     return (
       <nav id="navBar" className="navbar navbar-expand-lg">
-          <a className="navbar-brand" href='/' >
+          <a className="navbar-brand" >
             <img src={logo} height="100" width="150" alt="logo"/> 
           </a>
 

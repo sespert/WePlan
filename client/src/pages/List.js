@@ -162,7 +162,7 @@ class EventsList extends Component {
 					</li>
 				</ul>
 				
-				<h1>Click to see the info of an event</h1>
+				<h1>Register to plan your next </h1>
 
 				<List styleProp={listStyle}>
 					{this.state.events.map((eve, i) => {
