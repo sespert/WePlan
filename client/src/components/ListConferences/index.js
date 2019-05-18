@@ -2,8 +2,11 @@ import React from "react";
 import "./style.css";
 import { Container, Row, Col } from "../Grid";
 import AddBtn from "../AddBtn";
+import DeleteBtn from "../DeleteBtn";
 import moment from 'moment';
-// This file exports both the List and ListItem components
+
+//This file exports the conferences list for when the event creator adds conferences or when the attendee
+// wants to attend a conference
 
 export function ConferenceList({ children }) {
   return (
@@ -15,10 +18,6 @@ export function ConferenceList({ children }) {
 }
 
  export function ConferenceListItem (props) {
-  
-    // const endTime = moment(this.state.time, "hh:mm a").add(this.state.duration, 'minutes');
-    // const test = moment("11:30 AM", "hh:mm a");
-    // console.log("time" + this.state.time);
 
   return (
 
@@ -36,7 +35,9 @@ export function ConferenceList({ children }) {
           <p>From {moment(props.time, "hh:mm a").format("hh:mm a")} to {moment(props.time, "hh:mm a").add(props.duration, 'minutes').format("hh:mm a")}</p>
         
         </Col>
-        <AddBtn onClick = {props.handleAddBtn} id={props.id} />
+        <AddBtn onClick = {props.handleAddBtn} id={props.id} disabled={!props.addVal}/>  
+        <DeleteBtn onClick = {props.handleDelBtn} id= {props.id} disabled={!props.delVal}/>
+        
       </Row>
       <br />
       
@@ -44,5 +45,5 @@ export function ConferenceList({ children }) {
   </li>
 
   );
-// }
+
 }

@@ -4,7 +4,8 @@ const userController = require("../../controllers/userController");
 router.route("/")
     .get(userController.findAll)
     .post(userController.create)
-    .put(userController.update);
+    .put(userController.update)
+    .delete(userController.updateAndDelete);
 
 // router.route("/user")
 //     .get(userController.findAll)

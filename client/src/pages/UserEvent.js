@@ -4,16 +4,33 @@ import { Container } from "../components/Grid";
 import { ConferenceList, ConferenceListItem } from "../components/ListConferences";
 import API from "../utils/API";
 import moment from 'moment';
+import { getFromStorage } from '../utils/storage';
+import axios from 'axios';
 
 
 class UserEvent extends Component {
     state = {
-        conferences : []
+        conferences : [],
+        userId: null
     }
     
     componentDidMount() {
-        // this.loadEventInfo(this.state.eId);
-        this.loadConferences("5cdc8c97219fb81d367050ea");
+
+        console.log(this.props.location);
+        const obj = getFromStorage('the_main_app');
+        const { token }= obj;
+        console.log("token didmount: "+ token);
+        API.findConferenceSession(token).then(data => {   
+        // axios.get('/api/user/findsession/'+token).then(data=> {
+            const response = data.data;
+            this.setState({
+                userId: response.userId
+            });
+            console.log("userId did mount"+ this.state.userId);
+            this.loadConferences(response.userId);
+        });
+        
+        
     }
 
     loadConferences = id => {
@@ -47,6 +64,18 @@ class UserEvent extends Component {
         // )
         .catch(err => console.log(err));
     }
+    handleDelBtn = e => {
+        e.preventDefault();
+        alert("deleted");
+         API.deleteConfFromUser({
+            confId: e.target.id,
+            userId: this.state.userId
+        })
+        .then(res => {
+            console.log(res)
+        })            
+        .catch(err => console.log(err))
+    }
      
     render() {
         return (
@@ -70,7 +99,9 @@ class UserEvent extends Component {
                         date = {elem.day}
                         time = {elem.time}
                         duration = {elem.duration} 
-                        // onClick = {this.handleAddBtn}            
+                        id = {elem._id} 
+                        delVal={"a"}   
+                        handleDelBtn = {this.handleDelBtn} 
                         /> 
                         )
                        

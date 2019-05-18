@@ -62,12 +62,14 @@ module.exports = {
             console.log("sessio token ", sessionToken);
             console.log("session data ", sessions);
             if (err) {
+                console.log(err);
                 return res.send({
                     success: false,
                     message: 'Error: server error'
                 });
             }
-            return res.send({
+            
+                res.send({
                 success: true,
                 userId: sessions.userId
             })
@@ -151,10 +153,15 @@ module.exports = {
   },
 
   update: function(req, res) {
-
-    // console.log(req.body);
     db.User
       .findOneAndUpdate({ _id: req.body.userId}, { $push: {conferences: req.body.confId}})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  
+  updateAndDelete: function(req, res) {
+    db.User
+      .findOneAndUpdate({ _id: req.body.userId}, { $pull: {conferences: req.body.confId}})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
