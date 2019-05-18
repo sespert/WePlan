@@ -8,13 +8,14 @@ import { FormBtn } from "../components/Form";
 import { Redirect } from "react-router-dom";
 import API from "../utils/API";
 import moment from 'moment';
+import { getFromStorage } from "../utils/storage";
 
 //TO DO: display all events of user by default?
 
 class AdminEvent extends Component {
 
     state = {
-        eName: "",
+        eAdmin:"",
         ePlace: "",
         eSubject: "",
         eDate: "",
@@ -23,10 +24,19 @@ class AdminEvent extends Component {
         eStartTime: "",
         eEndTime: "",
         conferences : [],       
-        referrer: null
+        referrer: null,
+        userId: null,
     }
 
     componentDidMount () {
+        const obj = getFromStorage('the_main_app');
+        const { token }= obj;
+        API.findEventSession(token).then(data => {           
+            const response = data.data;
+            this.setState({
+                userId: response.userId
+            });
+        });
         this.loadEventInfo(this.state.eId);
         this.loadConferences(this.state.eId);
     }
@@ -36,7 +46,7 @@ class AdminEvent extends Component {
         API.getEventsbyId(id)
         .then(res => {            
             this.setState({ 
-                eName: res.data.name,
+                eAdmin: res.data.admin,
                 ePlace: res.data.place,
                 eSubject: res.data.subject,
                 eDate: res.data.date,
@@ -46,7 +56,9 @@ class AdminEvent extends Component {
                 eEndTime: res.data.endTime,
 
             });
-        }).catch(err => console.log(err));
+         
+        })
+        .catch(err => console.log(err));
     }
 
     //Helper function to load the conferences for the current event
@@ -74,49 +86,49 @@ class AdminEvent extends Component {
         const eventTime = moment(this.state.eDate, "YYYY MM DD").format('MMMM DD YYYY'); 
         const lengthDays = moment(this.state.eDate, "YYYY MM DD").add(this.state.eNumOfDays, 'days').format('MMMM DD YYYY');
         const firstDay = moment(this.state.eDate, "YYYY MM DD").format('MMMM DD'); 
-
+       
 
         return (
             <Container>
                 <Jumbotron>
                     <h1>Add conferences to {this.state.eName} </h1>
-                    <List> 
-                        <ListItem 
-                        key = {this.state.eId}
-                        place = {this.state.ePlace}
-                        subject = {this.state.eSubject}
-                        date = {eventTime}   
-                        duration = {this.state.eNumOfDays}
-                        endDate = {lengthDays}   
-                        eFirstDay = {firstDay}   
+                    <List>
+                        <ListItem
+                            key={this.state.eId}
+                            place={this.state.ePlace}
+                            subject={this.state.eSubject}
+                            date={eventTime}
+                            duration={this.state.eNumOfDays}
+                            endDate={lengthDays}
+                            eFirstDay={firstDay}
                         />
                     </List>
-                </Jumbotron> 
-                
+                </Jumbotron>
 
-                
-                <h3>Fill the form with the information of a conference</h3>
 
-            <Conference eventId={this.state.eId}/>
-            <FormBtn onClick={this.handleSubmit}>Go to List of Events</FormBtn>
 
-                <ConferenceList> 
+                <h3>Fill the form with the information of a conference of {this.state.eName}</h3>
+
+                <Conference eventId={this.state.eId} />
+                <FormBtn onClick={this.handleSubmit}>Go to List of Events</FormBtn>
+
+                <ConferenceList>
                     {this.state.conferences.map(elem => {
-                        return(
-                        <ConferenceListItem 
-                        key = {elem._id}
-                        title = {elem.title}
-                        speakers = {elem.speakers}
-                        description = {elem.description}
-                        room = {elem.room}
-                        date = {elem.day}
-                        time = {elem.time}
-                        duration = {elem.duration}
-                        /> )
-                        })}
-               </ConferenceList>
-               </Container>
-                       )
+                        return (
+                            <ConferenceListItem
+                                key={elem._id}
+                                title={elem.title}
+                                speakers={elem.speakers}
+                                description={elem.description}
+                                room={elem.room}
+                                date={elem.day}
+                                time={elem.time}
+                                duration={elem.duration}
+                            />)
+                    })}
+                </ConferenceList>
+            </Container>
+        )
              
                       
         

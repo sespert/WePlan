@@ -21,7 +21,8 @@ class QuestionAdmin extends Component {
             userId: null
         };
     }
-    
+
+       
     handleChange = e => {
         e.preventDefault();
         this.setState({[e.target.name] :  e.target.value})
@@ -31,13 +32,15 @@ class QuestionAdmin extends Component {
         e.preventDefault();
 
         API.saveEvent({
+            admin: this.props.adminId,
             name: this.state.name,
             place: this.state.place,
             subject: this.state.subject,
             date: this.state.date,
             numOfDays: this.state.numOfDays,
             startTime: this.state.startTime,
-            endTime: this.state.endTime            
+            endTime: this.state.endTime
+
         })
             .then(res => {
                 const eventId = res.data._id;
@@ -52,17 +55,18 @@ class QuestionAdmin extends Component {
         if (referrer) return <Redirect to={referrer} />;
 
         return (
-        <form>
-            <Input name="name" placeholder="Name of the event (required)" value={this.state.name} onChange={this.handleChange}/>
-            <Input name="place" placeholder="Place (required)" value={this.state.place} onChange={this.handleChange}/>
-            <TextArea name="subject" placeholder="Description of the event" value={this.state.subject} onChange={this.handleChange}/>
-            <Input name="date" placeholder="Event Start Date: MM/DD/YYYY (required)" value={this.state.date} onChange={this.handleChange}/>   
-            <Input name="numOfDays" placeholder="Number of Days (required)" value={this.state.numOfDays} onChange={this.handleChange}/>  
-            <Input name="startTime" placeholder="Start time: 12:00 AM (required)" value={this.state.startTime} onChange={this.handleChange}/> 
-            <Input name="endTime" placeholder="End time: 12:00 AM (required)" value={this.state.endTime} onChange={this.handleChange}/> 
-            <h2>{this.props.userId}</h2>
-            <FormBtn onClick={this.handleSubmit}>Create Event</FormBtn>
-        </form>
+            
+            <form>
+                <Input name="name" placeholder="Name of the event (required)" value={this.state.name} onChange={this.handleChange}/>
+                <Input name="place" placeholder="Place (required)" value={this.state.place} onChange={this.handleChange}/>
+                <TextArea name="subject" placeholder="Description of the event" value={this.state.subject} onChange={this.handleChange}/>
+                <Input name="date" placeholder="Event Start Date: MM/DD/YYYY (required)" value={this.state.date} onChange={this.handleChange}/>   
+                <Input name="numOfDays" placeholder="Number of Days (required)" value={this.state.numOfDays} onChange={this.handleChange}/>  
+                <Input name="startTime" placeholder="Start time: 12:00 AM (required)" value={this.state.startTime} onChange={this.handleChange}/> 
+                <Input name="endTime" placeholder="End time: 12:00 AM (required)" value={this.state.endTime} onChange={this.handleChange}/> 
+                <h2>{this.props.userId}</h2>
+                <FormBtn onClick={this.handleSubmit}>Create Event</FormBtn>
+            </form>
       
         )
     }

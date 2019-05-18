@@ -13,4 +13,6 @@ router.route("/:id")
   .put(eventController.update)
   .delete(eventController.remove);
 
+router.route("/findsession/:sessionToken")
+  .get(eventController.findSession);
 module.exports = router;

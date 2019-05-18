@@ -15,7 +15,8 @@ class Conference extends Component {
             day: "",
             time: "",
             duration: "",
-            eventId: props.eventId   
+            eventId: props.eventId,
+            eventName: ""
         }
     }
 
@@ -26,16 +27,23 @@ class Conference extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        API.saveConference({
-            eventId: this.state.eventId,
-            title: this.state.title,
-            speakers: this.state.speakers,
-            description: this.state.description,
-            room: this.state.room,        
-            day: this.state.day,
-            time: this.state.time,
-            duration: this.state.duration
+        API.getEventsbyId(this.state.eventId).
+        then(res => {
+            // console.log(res.data.name)
+            this.setState({eventName: res.data.name});
+
+            API.saveConference({
+                eventId: this.state.eventId,
+                eventName: this.state.eventName,
+                title: this.state.title,
+                speakers: this.state.speakers,
+                description: this.state.description,
+                room: this.state.room,        
+                day: this.state.day,
+                time: this.state.time,
+                duration: this.state.duration
             })
+        })
             .then(res => {
                 console.log(res);
                 // this.forceUpdate();

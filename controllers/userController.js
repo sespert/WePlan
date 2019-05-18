@@ -49,8 +49,29 @@ module.exports = {
   findById: function(req, res) {
     db.User
       .findById(req.params.id)
+      .populate("conferences")
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+
+  findSession: function(req, res) {
+      console.log(req.params);
+      const { sessionToken } = req.params;
+
+      db.UserSession.findById(sessionToken, (err, sessions) => {
+            console.log("sessio token ", sessionToken);
+            console.log("session data ", sessions);
+            if (err) {
+                return res.send({
+                    success: false,
+                    message: 'Error: server error'
+                });
+            }
+            return res.send({
+                success: true,
+                userId: sessions.userId
+            })
+      })
   },
   // create: function(req, res) {
   //   db.User
@@ -130,8 +151,10 @@ module.exports = {
   },
 
   update: function(req, res) {
+
+    // console.log(req.body);
     db.User
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .findOneAndUpdate({ _id: req.body.userId}, { $push: {conferences: req.body.confId}})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

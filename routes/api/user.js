@@ -3,7 +3,8 @@ const userController = require("../../controllers/userController");
 
 router.route("/")
     .get(userController.findAll)
-    .post(userController.create);
+    .post(userController.create)
+    .put(userController.update);
 
 // router.route("/user")
 //     .get(userController.findAll)
@@ -16,15 +17,18 @@ router.route("/signin")
     .get(userController.findAll)
     .post(userController.signin);
 
+router.route("/findsession/:sessionToken")
+    .get(userController.findSession);
+
 router.route("/logout")
     .get(userController.logout);
 
 router.route("/:id")
     .get(userController.findById);
+    // .put(userController.update);
 
 router.route("/:email")
     .get(userController.find);
-
 
 
 
