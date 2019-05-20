@@ -101,6 +101,39 @@ class SingleEvent extends Component {
 
     }
 
+    logout() {
+		this.setState({
+			isLoading: true,
+		});
+		const obj = getFromStorage('the_main_app');
+		if (obj && obj.token) {
+			//Verify token
+			console.log(obj);
+			const { token } = obj;
+			axios.get('/api/user/logout?token=' + token).then(data => {
+				const response = data.data;
+				console.log("logout response ");
+				console.log(response);
+				if (response.success) {
+					this.setState({
+						token: '',
+						isLoading: false
+					});
+					console.log("state token"+this.state.token);
+				} else {
+					this.setState({
+						isLoading: false
+					});
+				}
+			})
+		} else {
+			this.setState({
+				isLoading: false
+			});
+
+		}
+	}
+
     render() {
         
         const { userId } = this.state;
@@ -116,6 +149,11 @@ class SingleEvent extends Component {
         if (userId !== eAdmin ) {
             return (
                 <Container > 
+                    <ul className="navbar-nav flex-row ml-md-auto link-cont">
+                        <li className="nav-item">
+                            <a className="nav-link logout-link" onClick={this.logout} href="/">Log Out</a>
+                        </li>
+                    </ul>
                     {console.log("User: "+userId)}
                     {console.log("Admin: "+eAdmin)}
                     <Jumbotron>
@@ -169,6 +207,11 @@ class SingleEvent extends Component {
         }
         return (
             <Container>
+                <ul className="navbar-nav flex-row ml-md-auto link-cont">
+                    <li className="nav-item">
+                        <a className="nav-link logout-link" onClick={this.logout} href="/">Log Out</a>
+                    </li>
+                </ul>
                 <Jumbotron>
                     <h1>Add conferences to {this.state.eName} </h1>
                     <List>

@@ -155,8 +155,7 @@ class EventsList extends Component {
 		return (
 			
 			<Container>
-				<ul className="navbar-nav flex-row ml-md-auto link-cont">
-					
+				<ul className="navbar-nav flex-row ml-md-auto link-cont">					
 					<li className="nav-item">
 						<a className="nav-link logout-link" onClick={this.logout} href="/">Log Out</a>  
 					</li>
