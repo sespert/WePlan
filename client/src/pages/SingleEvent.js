@@ -10,6 +10,7 @@ import API from "../utils/API";
 import moment from 'moment';
 import { getFromStorage } from "../utils/storage";
 import axios from 'axios';
+import SweetAlert from 'react-bootstrap-sweetalert';
 
 
 class SingleEvent extends Component {
@@ -27,6 +28,7 @@ class SingleEvent extends Component {
         conferences : [], 
         userId: null,
         referrer: null,
+        alert: null
     }
 
     componentDidMount() {
@@ -86,20 +88,102 @@ class SingleEvent extends Component {
     }
 
     handleAddBtn = e => {
-        alert("added");
         e.preventDefault();
+
         const { userId } = this.state;
+        const confId = e.target.id;
+        let confArr = [];
+
+        API.getConferencesbyUserId(userId)
+        .then(res => res.data.conferences.map(elem => 
+            confArr.push(elem._id)))
+        .then(() => {
+            if(confArr.some(
+            function(elem) {
+                return elem === confId
+            }
+        )) {
+            const getAlert = () => (
+                <SweetAlert 
+                danger 
+                title="This conference is already in your schedule" 
+                onConfirm={() => this.hideAlert()}
+                >
+                </SweetAlert>
+            );
         
-        API.saveConfToUser({
-            confId: e.target.id,
-            userId: userId
-        })
+            this.setState({
+                alert: getAlert()
+            });        } else {
+
+            const getAlert = () => (
+                <SweetAlert 
+                success 
+                title="You added this conference to your schedule!" 
+                onConfirm={() => this.hideAlert()}
+                >
+                </SweetAlert>
+            );
+        
+            this.setState({
+                alert: getAlert()
+            });
+
+            API.saveConfToUser({
+                    confId: confId,
+                    userId: userId
+                })
+                .then(res => {
+                    console.log(res)
+                })            
+                .catch(err => console.log(err))
+        }}).catch(err => console.log(err))   
+
+    }
+
+    
+    handleDelBtn = e => {
+        e.preventDefault();
+
+        const idBtn = e.target.id;
+
+        const getAlert = () => (
+            <SweetAlert 
+            warning
+            showCancel
+            confirmBtnText="Yes, delete it!"
+            confirmBtnBsStyle="danger"
+            cancelBtnBsStyle="default"
+            title="Are you sure?"
+            onConfirm={() => this.deleteFile(idBtn)}
+            onCancel={() => this.hideAlert()}
+            >
+                You will not be able to recover this conference!
+            </SweetAlert>
+        );
+    
+        this.setState({
+            alert: getAlert()
+        }); 
+    }
+
+    deleteFile(id) {
+        this.hideAlert();
+
+        API.deleteConference(id)
         .then(res => {
             console.log(res)
         })            
         .catch(err => console.log(err))
-
     }
+
+    hideAlert() {
+        console.log('Hiding alert...');
+        this.setState({
+          alert: null
+        });
+    }
+    
 
     logout() {
 		this.setState({
@@ -192,13 +276,14 @@ class SingleEvent extends Component {
                             handleAddBtn = {this.handleAddBtn} 
                             id = {elem._id}  
                             addVal={"a"}
-                            delVal={""}
                             /> 
                             )
                         
                             } )}
                             
                 </ConferenceList>
+                {this.state.alert}
+
                 <FormBtn onClick={this.handleClick}>See my schedule</FormBtn> 
     
                 <FormBtn onClick={this.handleSubmit}>Go to List of Events</FormBtn> 
@@ -246,9 +331,13 @@ class SingleEvent extends Component {
                                 date={elem.day}
                                 time={elem.time}
                                 duration={elem.duration}
+                                id = {elem._id}  
+                                handleDelBtn = {this.handleDelBtn} 
+                                delVal={"a"}
                             />)
                     })}
                 </ConferenceList>
+                {this.state.alert}
             </Container>
         )
     }
