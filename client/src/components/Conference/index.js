@@ -1,6 +1,7 @@
 import React, { Component }  from "react";
 import { Input, FormBtn, TextArea } from "../Form";
 import API from "../../utils/API";
+import SweetAlert from 'react-bootstrap-sweetalert';
 // import "./style.css";
 
 
@@ -16,7 +17,8 @@ class Conference extends Component {
             time: "",
             duration: "",
             eventId: props.eventId,
-            eventName: ""
+            eventName: "",
+            alert: null
         }
     }
 
@@ -27,28 +29,65 @@ class Conference extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        API.getEventsbyId(this.state.eventId).
-        then(res => {
-            // console.log(res.data.name)
-            this.setState({eventName: res.data.name});
+       
+        if(this.state.title && this.state.description && this.state.room) {
+        
+            const getAlert = () => (
+                <SweetAlert 
+                success 
+                title="Conference Added Succesfully!" 
+                onConfirm={() => this.hideAlert()}
+                >
+                </SweetAlert>
+            );
+        
+            this.setState({
+                alert: getAlert()
+            });
 
-            API.saveConference({
-                eventId: this.state.eventId,
-                eventName: this.state.eventName,
-                title: this.state.title,
-                speakers: this.state.speakers,
-                description: this.state.description,
-                room: this.state.room,        
-                day: this.state.day,
-                time: this.state.time,
-                duration: this.state.duration
+            API.getEventsbyId(this.state.eventId).
+            then(res => {
+                // console.log(res.data.name)
+                this.setState({eventName: res.data.name});
+
+                API.saveConference({
+                    eventId: this.state.eventId,
+                    eventName: this.state.eventName,
+                    title: this.state.title,
+                    speakers: this.state.speakers,
+                    description: this.state.description,
+                    room: this.state.room,        
+                    day: this.state.day,
+                    time: this.state.time,
+                    duration: this.state.duration
+                })
             })
-        })
-            .then(res => {
-                console.log(res);
-                // this.forceUpdate();
-            })
-            .catch(err => console.log(err))
+                .then(res => {
+                    console.log(res);
+                    // this.forceUpdate();
+                })
+                .catch(err => console.log(err))
+        } else {
+            const getAlert = () => (
+                <SweetAlert  
+                title="Please fill the required fields" 
+                onConfirm={() => this.hideAlert()}
+                >
+                </SweetAlert>
+            );
+        
+            this.setState({
+                alert: getAlert()
+            });
+
+        }
+    }
+
+    hideAlert() {
+        console.log('Hiding alert...');
+        this.setState({
+          alert: null
+        });
     }
 
     render() {
@@ -64,7 +103,7 @@ class Conference extends Component {
             <Input name="duration" placeholder="Duration of conference in minutes" value={this.state.duration} onChange={this.handleChange}/> 
 
             <FormBtn onClick={this.handleSubmit}>Add a Conference to Your Event</FormBtn>
-            
+            {this.state.alert}
             </form>
 
             

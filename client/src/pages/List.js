@@ -9,8 +9,6 @@ import { getFromStorage, setInStorage } from "../utils/storage";
 import '../components/Nav/nav.css';
 
 
-//TO DO: Add list of events of the logged user
-
 class EventsList extends Component {
 
 	constructor(props) {
@@ -22,6 +20,7 @@ class EventsList extends Component {
 			isLoading: true,
 			token: this.props.location.state.token,
 			events: [],
+			adminEvents: [],
 			referrer: null,
 			userId: null
 		};
@@ -62,6 +61,7 @@ class EventsList extends Component {
 		console.log("state token"+this.state.token);
 
 		this.loadEvents();
+		this.loadAdminEvents();
 
 	}
 
@@ -69,9 +69,16 @@ class EventsList extends Component {
 	    API.getEvents()
 	    .then(res =>
 	        this.setState({ events: res.data })
-	    )
+		)
+		.then(res => console.log(this.state.events))
 	    .catch(err => console.log(err));
 	};
+
+	loadAdminEvents = () => {
+		API.getEventsByAdmin("5ce2e564e0331616a2fb39d7")
+		.then(res => this.setState({ adminEvents: res.data }))
+		.catch(err => console.log(err));
+	}
 
 	handleSubmit = e => {
 		e.preventDefault();
@@ -176,6 +183,18 @@ class EventsList extends Component {
 					})}
 				</List>
 				<FormBtn onClick={this.handleSubmit}>Add New Event</FormBtn>
+				<h1>Your events</h1>
+				<List styleProp={listStyle}>
+					{this.state.adminEvents.map((eve, i) => {
+						return (
+							<ListItem
+										key={i}
+										name={eve.name}
+										id={eve._id}
+									/>
+						)
+					})}
+				</List>
 
 			</Container>
 		)

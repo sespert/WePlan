@@ -15,4 +15,9 @@ router.route("/:id")
 
 router.route("/findsession/:sessionToken")
   .get(eventController.findSession);
+
+router.route("/admin/:id")
+  .get(eventController.findEventsById);
+
+
 module.exports = router;

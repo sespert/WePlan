@@ -7,10 +7,6 @@ router.route("/")
     .put(userController.update)
     .delete(userController.updateAndDelete);
 
-// router.route("/user")
-//     .get(userController.findAll)
-//     .post(userController.create);
-
 router.route("/verify")
     .get(userController.find);
 
@@ -30,8 +26,5 @@ router.route("/:id")
 
 router.route("/:email")
     .get(userController.find);
-
-
-
 
 module.exports = router;
