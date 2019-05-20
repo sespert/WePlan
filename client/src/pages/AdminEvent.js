@@ -9,6 +9,7 @@ import { Redirect } from "react-router-dom";
 import API from "../utils/API";
 import moment from 'moment';
 import { getFromStorage } from "../utils/storage";
+import SweetAlert from 'react-bootstrap-sweetalert';
 
 //TO DO: display all events of user by default?
 
@@ -81,12 +82,44 @@ class AdminEvent extends Component {
 
     handleDelBtn = e => {
         e.preventDefault();
-        alert("deleted");
-        API.deleteConference(e.target.id)
+
+        const idBtn = e.target.id;
+
+        const getAlert = () => (
+            <SweetAlert 
+            warning
+            showCancel
+            confirmBtnText="Yes, delete it!"
+            confirmBtnBsStyle="danger"
+            cancelBtnBsStyle="default"
+            title="Are you sure?"
+            onConfirm={() => this.deleteFile(idBtn)}
+            onCancel={() => this.hideAlert()}
+            >
+                You will not be able to recover this conference!
+            </SweetAlert>
+        );
+    
+        this.setState({
+            alert: getAlert()
+        });
+    }
+
+    deleteFile(id) {
+        this.hideAlert();
+
+        API.deleteConference(id)
         .then(res => {
             console.log(res)
         })            
         .catch(err => console.log(err))
+    }
+
+    hideAlert() {
+        console.log('Hiding alert...');
+        this.setState({
+          alert: null
+        });
     }
     
     render() {       
@@ -133,11 +166,14 @@ class AdminEvent extends Component {
                                 date={elem.day}
                                 time={elem.time}
                                 duration={elem.duration}
+                                id = {elem._id}
                                 delVal={"a"}
                                 handleDelBtn = {this.handleDelBtn} 
                             />)
                     })}
                 </ConferenceList>
+                {this.state.alert}
+
             </Container>
         )
              

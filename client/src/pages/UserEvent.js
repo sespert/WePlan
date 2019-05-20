@@ -6,6 +6,8 @@ import API from "../utils/API";
 import moment from 'moment';
 import { getFromStorage } from '../utils/storage';
 import axios from 'axios';
+import SweetAlert from 'react-bootstrap-sweetalert';
+
 
 
 class UserEvent extends Component {
@@ -66,15 +68,50 @@ class UserEvent extends Component {
     }
     handleDelBtn = e => {
         e.preventDefault();
-        alert("deleted");
-         API.deleteConfFromUser({
-            confId: e.target.id,
+
+        const idBtn = e.target.id;
+
+        const getAlert = () => (
+            <SweetAlert 
+            warning
+            showCancel
+            confirmBtnText="Yes, delete it!"
+            confirmBtnBsStyle="danger"
+            cancelBtnBsStyle="default"
+            title="Are you sure?"
+            onConfirm={() => this.deleteFile(idBtn)}
+            onCancel={() => this.hideAlert()}
+            >
+                You are removing this conference from your schedule.
+            </SweetAlert>
+        );
+    
+        this.setState({
+            alert: getAlert()
+        }); 
+     
+    }
+
+    deleteFile(id) {
+        this.hideAlert();
+
+        API.deleteConfFromUser({
+            // confId: '5cdf18747b3ba0098546984a',
+            // userId: '5ce2e564e0331616a2fb39d7'
+            confId: id,
             userId: this.state.userId
         })
         .then(res => {
             console.log(res)
         })            
         .catch(err => console.log(err))
+    }
+
+    hideAlert() {
+        console.log('Hiding alert...');
+        this.setState({
+          alert: null
+        });
     }
      
     render() {
@@ -102,14 +139,11 @@ class UserEvent extends Component {
                         id = {elem._id} 
                         delVal={"a"}   
                         handleDelBtn = {this.handleDelBtn} 
-                        /> 
-                        )
-                       
-                        } )}
-                        
+                        />)
+                    })}
                </ConferenceList>
+               {this.state.alert}
             </Container> 
-
         )
     }
 }
