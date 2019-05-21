@@ -1,36 +1,49 @@
 import React , { Component } from "react";
 import { Container } from "../components/Grid";
+import { Redirect } from "react-router-dom";
 // import { List, ListItem } from "../components/ListEvent";
 import { ConferenceList, ConferenceListItem } from "../components/ListConferences";
 import API from "../utils/API";
 import moment from 'moment';
-import { getFromStorage } from '../utils/storage';
+import { getFromStorage, deleteFromStorage } from '../utils/storage';
 import axios from 'axios';
 import SweetAlert from 'react-bootstrap-sweetalert';
 
 
 
 class UserEvent extends Component {
-    state = {
-        conferences : [],
-        userId: null
+    constructor(props) {
+        super (props);
+        this.state = {
+            isLoading: true,
+            conferences : [],
+            userId: null,
+            token:'',
+            referrer: null
+        }
+        this.logout=this.logout.bind(this);
+
     }
+
+    
     
     componentDidMount() {
 
         console.log(this.props.location);
         const obj = getFromStorage('the_main_app');
-        const { token }= obj;
-        console.log("token didmount: "+ token);
-        API.findConferenceSession(token).then(data => {   
-        // axios.get('/api/user/findsession/'+token).then(data=> {
-            const response = data.data;
-            this.setState({
-                userId: response.userId
+        if (obj){
+            const { token }= obj;
+            console.log("token did mount: "+ token);
+            API.findConferenceSession(token).then(data => {   
+            // axios.get('/api/user/findsession/'+token).then(data=> {
+                const response = data.data;
+                this.setState({
+                    userId: response.userId
+                });
+                console.log("userId did mount"+ this.state.userId);
+                this.loadConferences(response.userId);
             });
-            console.log("userId did mount"+ this.state.userId);
-            this.loadConferences(response.userId);
-        });
+        }
         
         
     }
@@ -113,13 +126,52 @@ class UserEvent extends Component {
           alert: null
         });
     }
+
+    logout() {
+		this.setState({
+			isLoading: true,
+		});
+		const obj = getFromStorage('the_main_app');
+		if (obj && obj.token) {
+			//Verify token
+			console.log(obj);
+			const { token } = obj;
+			axios.get('/api/user/logout?token=' + token).then(data => {
+				const response = data.data;
+				console.log("logout response ");
+				console.log(response);
+				if (response.success) {
+                    deleteFromStorage('the_main_app');
+					this.setState({
+						token: '',
+                        isLoading: false,
+                        referrer: '/'
+                    });
+                    
+                    console.log("state token"+this.state.token);
+                    
+				} else {
+					this.setState({
+						isLoading: false
+					});
+				}
+			})
+		} else {
+			this.setState({
+				isLoading: false
+			});
+
+		}
+	}
      
     render() {
+        const { referrer } = this.state;
+        if (referrer) return <Redirect to={{pathname: referrer}} />;
         return (
             <Container > 
                 <ul className="navbar-nav flex-row ml-md-auto link-cont">					
 					<li className="nav-item">
-						<a className="nav-link logout-link" onClick={this.logout} href="/">Log Out</a>  
+						<a className="nav-link logout-link" onClick={this.logout} href="#" >Log Out</a>  
 					</li>
 				</ul>
                 <h1>See your agenda</h1>

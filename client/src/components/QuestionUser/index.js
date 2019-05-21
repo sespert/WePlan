@@ -59,6 +59,7 @@ class QuestionUser extends Component {
     }
     handleSubmit = e => {
         e.preventDefault();
+        console.log ("Entra a handle submit");
         const {
             signUpFullName,
             signUpCompany,
@@ -92,34 +93,35 @@ class QuestionUser extends Component {
                     signUpFullName: '',
                     signUpCompany: ''
                 });
+                API.signin({
+                    email: signInEmail,
+                    password: signInPassword
+                }).then(data => {
+                    console.log(data);
+                    const response = data.data;
+                    if(response.success) {
+                        setInStorage('the_main_app', { token: response.token });
+                        this.setState({
+                            signInError: response.message,
+                            isLoading: false,
+                            signInEmail:'',
+                            signInPassword: '',
+                            token: response.token
+                        });
+                    }else{
+                        this.setState({
+                            signInError: response.message,
+                            isLoading: false
+                        });
+                    }            
+                })
             } else {
                 this.setState({
                     signUpError: response.message,
                     isLoading: false
                 });
             };
-            API.signin({
-                email: signInEmail,
-                password: signInPassword
-            }).then(data => {
-                console.log(data);
-                const response = data.data;
-                if(response.success) {
-                    setInStorage('the_main_app', { token: response.token });
-                    this.setState({
-                        signInError: response.message,
-                        isLoading: false,
-                        signInEmail:'',
-                        signInPassword: '',
-                        token: response.token
-                    });
-                }else{
-                    this.setState({
-                        signInError: response.message,
-                        isLoading: false
-                    });
-                }            
-            })
+            
         })
 
     }
@@ -150,45 +152,6 @@ class QuestionUser extends Component {
         }
     }
 
-    // state = {
-    //     users: [],
-    //     name: "",
-    //     email: "",
-    //     company: "",
-    //     password: "",
-    //     referrer: null,
-    //     userId: ""
-
-    // }
-
-    // handleChange = e => {
-    //     e.preventDefault();
-    //     this.setState({ [e.target.name]: e.target.value })
-    // }
-
-    // handleSubmit = e => {
-    //     e.preventDefault();
-    //     if (this.state.name && this.state.email && this.state.password) {
-            
-    //         this.setState({ referrer: '/events' });
-    //         API.saveUser({
-    //             name: this.state.name,
-    //             email: this.state.email,
-    //             company: this.state.company,
-    //             password: this.state.password
-    //         })
-    //         .then(res => {                
-    //             console.log(res);
-    //             this.setState({userId:res.data._id});
-            
-    //         })
-    //         .catch (err => console.log(err));
-    //     } else {
-    //         alert("Please enter missing fields")
-    //     }
-    // }
-
-
     render() {
         const { 
             isLoading,
@@ -214,11 +177,9 @@ class QuestionUser extends Component {
                 <div>
                     <ul className="navbar-nav flex-row ml-md-auto link-cont">
                         <li className="nav-item">
-                            <a className="nav-link guide-link mr-3" href="/events">Events Guide</a>
+                            <a className="nav-link guide-link mr-3" href="/">Home</a>
                         </li>
-                        {/* <li className="nav-item">
-                            <a className="nav-link logout-link" onClick={this.handleSubmit} href="#">Register</a>
-                        </li> */}
+                        
                     </ul>
                     {
                         (signUpError) ? (

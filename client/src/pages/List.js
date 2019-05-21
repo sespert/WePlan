@@ -5,7 +5,7 @@ import { FormBtn } from "../components/Form";
 import { Redirect } from "react-router-dom";
 import API from "../utils/API";
 import axios from "axios";
-import { getFromStorage, setInStorage } from "../utils/storage";
+import { getFromStorage, setInStorage, deleteFromStorage } from "../utils/storage";
 import '../components/Nav/nav.css';
 
 
@@ -104,6 +104,7 @@ class EventsList extends Component {
 						token: '',
 						isLoading: false
 					});
+					deleteFromStorage('the_main_app');
 					console.log("state token"+this.state.token);
 				} else {
 					this.setState({

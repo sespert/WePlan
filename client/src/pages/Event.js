@@ -80,6 +80,7 @@ class Event extends Component {
 	componentDidMount() {
 		console.log("starting token" + this.state.token);
 		const obj = getFromStorage('the_main_app');
+		console.log(obj);
         if (obj  && obj.token) {
             //Verify token
             
