@@ -9,6 +9,7 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+
   findSession: function (req, res) {
     console.log(req.params);
     const { sessionToken } = req.params;
@@ -28,6 +29,13 @@ module.exports = {
       })
     })
   },
+
+  findEventsById: function(req, res) {
+    db.Event
+      .find({admin: req.params.id})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   
   findById: function(req, res) {
     db.Event
@@ -35,6 +43,7 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+
   create: function(req, res) {
     db.Event
       .create(req.body)
@@ -51,6 +60,7 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+
   remove: function(req, res) {
     db.Event
       .findById({ _id: req.params.id })

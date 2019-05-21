@@ -161,7 +161,7 @@ module.exports = {
   
   updateAndDelete: function(req, res) {
     db.User
-      .findOneAndUpdate({ _id: req.body.userId}, { $pull: {conferences: req.body.confId}})
+      .update({ _id: req.body.userId}, { $pull: {conferences:  req.body.confId}})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
