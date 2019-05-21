@@ -181,17 +181,17 @@ class QuestionUser extends Component {
                         </li>
                         
                     </ul>
-                    {
-                        (signUpError) ? (
-                            <p>{signUpError}</p>
-                        ) : (null)
-                    }
+                    
                     <form className="col-6" id="formRegister"> 
                         <Input id="name" name="name" placeholder="Full Name (required)" value={signUpFullName} onChange={this.onChangeSignUpFullName} />
                         <Input id="email" name="email" placeholder="Email (required)" value={signUpEmail} onChange={this.onChangeSignUpEmail} />
                         <Input id="company" name="company" placeholder="Your Company" value={signUpCompany} onChange={this.onChangeSignUpCompany} />
                         <Input id="password" name="password" placeholder="Choose a Password" value={signUpPassword} onChange={this.onChangeSignUpPassword} />
-
+                        {
+                            (signUpError) ? (
+                                <p>{signUpError}</p>
+                            ) : (null)
+                        }
                         <FormBtn id="registerButton" onClick={this.handleSubmit}>Register</FormBtn>
                     </form>
                 </div>
