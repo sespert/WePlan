@@ -1,0 +1,25 @@
+svg {
+ margin-left: 10%;
+}
+
+text {
+  fill: #35322a;
+  filter: url('#money');
+  font-family: 'Kodchasan', sans-serif;
+  font-size: 50px;
+  font-weight: 300;
+}
+
+#buttonsEvent{
+    margin-left: 30%;
+ font-family: "Montserrat", bolder;   
+ margin-top: -3.7%;
+
+}
+
+#questionAdmin{
+    margin-top: -10%;
+    font-family: "Montserrat", bolder;
+
+
+}

@@ -7,8 +7,10 @@ import API from "../utils/API";
 import axios from "axios";
 import { getFromStorage, setInStorage } from "../utils/storage";
 import '../components/Nav/nav.css';
-// import AddNextEvent from"../components/AddNextEvent";
-// import { FormBtn } from "../../components/Form";
+import Jumbotron from"../components/JumbotronListEvents";
+import Jumbotron3 from"../components/AddNextEvent";
+
+
 
 
 
@@ -143,7 +145,7 @@ class EventsList extends Component {
 							<a className="nav-link logout-link" href="/">Log In</a>
 						</li>
 					</ul>
-
+         
 					{/* <button onClick={this.logout}>Logout</button> */}
 					<h1>Click to see the event's information</h1>
 			
@@ -159,7 +161,7 @@ class EventsList extends Component {
 							)
 						})}
 					</List>
-
+			
 				</Container>
 			)
 		}
@@ -167,6 +169,7 @@ class EventsList extends Component {
 		return (
 			
 			<Container>
+						<Jumbotron>
 				<ul className="navbar-nav flex-row ml-md-auto link-cont">
 				
 					<li className="nav-item">
@@ -179,29 +182,29 @@ class EventsList extends Component {
 		
 				<List>
 
-				<h1>Current Events </h1>
+				<h1 id="currentEvents">Current Events </h1>
 						
 		
 					{this.state.events.map((eve, i) => {
 						return (
-							<ListItem
+							<ListItem id="items"
 										key={i}
 										name={eve.name}
 										id={eve._id}
 									/>
 						)
 					})}
-				
+			
 				</List>
-		
+				</Jumbotron>	
 
 		
-		
-<h1>Click to add your next event </h1>
+<Jumbotron3 className="jumbotron3">
 
+<h3  id="addEvent">Click to add your next event </h3>
 
-				<FormBtn onClick={this.handleSubmit}>Add New Event</FormBtn>
-				<h1>Your events</h1>
+				<FormBtn id="addNewEvent" onClick={this.handleSubmit}>New Event</FormBtn>
+
 				<List styleProp={listStyle}>
 					{this.state.adminEvents.map((eve, i) => {
 						return (
@@ -213,7 +216,7 @@ class EventsList extends Component {
 						)
 					})}
 				</List>
-
+				</Jumbotron3>
 			</Container>
 		)
 	}

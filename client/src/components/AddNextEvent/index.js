@@ -1,13 +1,16 @@
-// import React from "react";
+import React from "react";
+import "./AddNextEvent.css";
 
+function Jumbotron3({ children } ){
+    return(
+    <div id="nextEvent"
+    className="jumbotron3">
+    
 
-// function AddNextEvent()
+         {children}
 
-// {
-//     return(
+    </div>
+    );
+};
 
-
-//     );
-// }
-
-// export default AddNextEvent;
+export default Jumbotron3;
