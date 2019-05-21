@@ -24,3 +24,14 @@ export function setInStorage(key, obj) {
         console.log(err);
     }
 }
+
+export function deleteFromStorage (key) {
+    if (!key) {
+        console.log('Error: keyy is missing');
+    }
+    try {
+        localStorage.removeItem(key);
+    } catch(err) {
+        console.log(err);
+    }
+}
