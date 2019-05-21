@@ -2,6 +2,9 @@ import React, { Component }  from "react";
 import { Input, FormBtn, TextArea } from "../Form";
 import API from "../../utils/API";
 import SweetAlert from 'react-bootstrap-sweetalert';
+import moment from "moment";
+import FormErrors from "../FormErrors";
+
 // import "./style.css";
 
 
@@ -18,13 +21,83 @@ class Conference extends Component {
             duration: "",
             eventId: props.eventId,
             eventName: "",
-            alert: null
+            alert: null,
+            formErrors: {title: "", speakers: "", description: "", room: "", day: "",
+            time: "", duration: ""},
+            titleValid: false,
+            speakersValid: false,
+            descriptionValid: false,
+            roomValid: false,
+            dayValid: false,
+            timeValid: false,
+            durationValid: false
         }
     }
 
-
     handleChange = e => {
-        this.setState({[e.target.name] :  e.target.value})
+        const name = e.target.name;
+        const value = e.target.value;
+        this.setState(
+            {[name] : value},
+            () => { this.validateField(name, value) }
+        );
+    }
+
+    validateField(fieldName, value) {
+        let fieldValidationErrors = this.state.formErrors;
+        let titleValid = this.state.titleValid;
+        let speakersValid = this.state.speakersValid;
+        let descriptionValid = this.state.descriptionValid;
+        let roomValid = this.state.roomValid;
+        let dayValid = this.state.dayValid;
+        let timeValid = this.state.timeValid;
+        let durationValid = this.state.durationValid;
+
+        switch(fieldName) {
+            case 'title':
+                titleValid = value.length > 0;
+                fieldValidationErrors.title = titleValid ? '' : ' is empty';
+                break;
+            case 'speakers':
+                speakersValid = (/\D/.test(value));
+                fieldValidationErrors.speakers = speakersValid ? '' : ' is invalid';
+                break;
+            case 'description':
+                descriptionValid = value.length > 0;
+                fieldValidationErrors.description = descriptionValid ? '' : ' is empty';
+                break;
+            case 'room':
+                roomValid = value.length > 0;
+                fieldValidationErrors.room = roomValid ? '' : ' is empty';
+                break;
+            case 'day':
+                dayValid = moment(value, 'MM/DD/YYYY',true).isValid();
+                fieldValidationErrors.day = dayValid ? '' : ' is invalid';
+                break;
+            case 'time':
+                timeValid = moment(value, 'h:mm a', true).isValid();
+                fieldValidationErrors.time = timeValid ? '' : ' is invalid';
+                break;
+            case 'duration':
+                durationValid = (!/\D/.test(value));
+                fieldValidationErrors.duration = durationValid ? '' : ' is invalid';
+                break;
+            default:
+                break;
+        }
+        this.setState({formErrors: fieldValidationErrors,
+            titleValid: titleValid,
+            descriptionValid: descriptionValid,
+            speakersValid: speakersValid,
+            roomValid: roomValid,
+            dayValid: dayValid,
+            timeValid: timeValid,
+            durationValid: durationValid
+          }, this.validateForm);
+    }
+
+    validateForm() {
+        this.setState({formValid: this.state.titleValid  && this.state.descriptionValid && this.state.roomValid });
     }
 
     handleSubmit = e => {
@@ -93,7 +166,7 @@ class Conference extends Component {
     render() {
         return (
             <form>
-
+            <FormErrors formErrors={this.state.formErrors} />
             <Input name="title" placeholder="Title of the conference (required)" value={this.state.title} onChange={this.handleChange}/>
             <Input name="speakers" placeholder="Speakers" value={this.state.speakers} onChange={this.handleChange}/>
             <TextArea name="description" placeholder="Description of the event (required)" value={this.state.description} onChange={this.handleChange}/>
@@ -102,7 +175,7 @@ class Conference extends Component {
             <Input name="time" placeholder="Start time: 12:00 AM" value={this.state.time} onChange={this.handleChange}/> 
             <Input name="duration" placeholder="Duration of conference in minutes" value={this.state.duration} onChange={this.handleChange}/> 
 
-            <FormBtn onClick={this.handleSubmit}>Add a Conference to Your Event</FormBtn>
+            <FormBtn onClick={this.handleSubmit} disabled={!this.state.formValid}>Add a Conference to Your Event</FormBtn>
             {this.state.alert}
             </form>
 
