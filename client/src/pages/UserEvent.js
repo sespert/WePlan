@@ -94,10 +94,9 @@ class UserEvent extends Component {
 
     deleteFile(id) {
         this.hideAlert();
-
+        console.log("id: " + id);
+        console.log("userId: " + this.state.userId);
         API.deleteConfFromUser({
-            // confId: '5cdf18747b3ba0098546984a',
-            // userId: '5ce2e564e0331616a2fb39d7'
             confId: id,
             userId: this.state.userId
         })

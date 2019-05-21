@@ -73,8 +73,11 @@ export default {
   getConferencesbyUserId: function(id) {
     return axios.get("/api/user/" + id);
   },
+  // deleteConfFromUser: function(params) {
+  //   return axios.delete("/api/user/", params);
+  // }
   deleteConfFromUser: function(data) {
-    return axios.delete("/api/user/", data);
+    return axios.put("/api/user/conf", data);
   }
   
   
