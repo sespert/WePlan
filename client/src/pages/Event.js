@@ -190,16 +190,10 @@ class Event extends Component {
 		
 					<EventBodyInfo /> 
 
-
-
-					
-
-
 				</Container>
 			);
 		} 
-
-
+		
 		// redirect to /events
 		return <Redirect to={{pathname: "/events", state: { token : this.state.token}}} />;
 		

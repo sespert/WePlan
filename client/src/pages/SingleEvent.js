@@ -13,7 +13,6 @@ import axios from 'axios';
 import SweetAlert from 'react-bootstrap-sweetalert';
 import { object } from "prop-types";
 
-
 class SingleEvent extends Component {
 
     constructor(props) {
