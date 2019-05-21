@@ -39,8 +39,8 @@ class Admin extends Component {
     this.setState({ referrer: '/events' });
   }
   render() {
-    const { referrer } = this.state;
-    if (referrer) return <Redirect to={{ pathname: "/events" }} />;
+    const { token, referrer } = this.state;
+    if (referrer) return <Redirect to={{pathname:referrer, state: { token : this.state.token}}} />;
     // if (referrer && this.state.userId ) return <Redirect to={{pathname: "/events", state: { userId : this.props.location.state.userId}}} />;
     // const { userId } = this.props.location.state.userId;
 
