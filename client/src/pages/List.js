@@ -61,7 +61,7 @@ class EventsList extends Component {
 		console.log("state token"+this.state.token);
 
 		this.loadEvents();
-		this.loadAdminEvents();
+		this.loadAdminEvents(this.state.token);
 
 	}
 
@@ -74,10 +74,13 @@ class EventsList extends Component {
 	    .catch(err => console.log(err));
 	};
 
-	loadAdminEvents = () => {
-		API.getEventsByAdmin("5ce2e564e0331616a2fb39d7")
-		.then(res => this.setState({ adminEvents: res.data }))
-		.catch(err => console.log(err));
+	loadAdminEvents = token => {
+		axios.get('/../api/user/findsession/'+ token).then(data=> {
+			const response = data.data;
+			API.getEventsByAdmin(response.userId)
+			.then(res => this.setState({ adminEvents: res.data }))
+		}).catch(err => console.log(err))
+		
 	}
 
 	handleSubmit = e => {
@@ -188,10 +191,10 @@ class EventsList extends Component {
 					{this.state.adminEvents.map((eve, i) => {
 						return (
 							<ListItem
-										key={i}
-										name={eve.name}
-										id={eve._id}
-									/>
+								key={i}
+								name={eve.name}
+								id={eve._id}
+							/>
 						)
 					})}
 				</List>

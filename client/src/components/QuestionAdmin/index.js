@@ -33,7 +33,6 @@ class QuestionAdmin extends Component {
         };
     }
 
-       
     handleChange = e => {
         const name = e.target.name;
         const value = e.target.value;
@@ -134,7 +133,6 @@ class QuestionAdmin extends Component {
                 <Input name="endTime" placeholder="End time: 12:00 AM (required)" value={this.state.endTime} onChange={this.handleChange}/> 
                 <h2>{this.props.userId}</h2>
                 <FormBtn onClick={this.handleSubmit} disabled={!this.state.formValid} >Create Event</FormBtn>
-                <FormErrors formErrors={this.state.formErrors} />
             </form>
       
         )
