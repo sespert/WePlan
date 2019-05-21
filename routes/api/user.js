@@ -4,8 +4,7 @@ const userController = require("../../controllers/userController");
 router.route("/")
     .get(userController.findAll)
     .post(userController.create)
-    .put(userController.update)
-    .delete(userController.updateAndDelete);
+    .put(userController.update);
 
 router.route("/verify")
     .get(userController.find);
@@ -22,9 +21,12 @@ router.route("/logout")
 
 router.route("/:id")
     .get(userController.findById);
-    // .put(userController.update);
+
 
 router.route("/:email")
     .get(userController.find);
+
+router.route("/conf")
+    .put(userController.updateAndDelete);   
 
 module.exports = router;
