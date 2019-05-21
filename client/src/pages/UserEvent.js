@@ -7,8 +7,9 @@ import API from "../utils/API";
 import moment from 'moment';
 import { getFromStorage, deleteFromStorage } from '../utils/storage';
 import axios from 'axios';
+import { FormBtn } from "../components/Form";
 import SweetAlert from 'react-bootstrap-sweetalert';
-
+import { object } from "prop-types";
 
 
 class UserEvent extends Component {
@@ -78,6 +79,10 @@ class UserEvent extends Component {
         //     // API.getEventsbyId()
         // )
         .catch(err => console.log(err));
+    }
+    handleSubmit = e => {
+        e.preventDefault();
+        this.setState({referrer: '/events'});
     }
     handleDelBtn = e => {
         e.preventDefault();
@@ -199,6 +204,7 @@ class UserEvent extends Component {
                     })}
                </ConferenceList>
                {this.state.alert}
+               <FormBtn onClick={this.handleSubmit}>Go to List of Events</FormBtn> 
             </Container> 
         )
     }
