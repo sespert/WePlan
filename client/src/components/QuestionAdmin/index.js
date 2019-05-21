@@ -1,8 +1,8 @@
 import React, { Component }  from "react";
 import { Redirect } from "react-router-dom";
 import { Input, FormBtn, TextArea } from "../Form";
+import "./QuestionAdmin.css";
 import FormErrors from "../FormErrors";
-import "./style.css";
 import API from "../../utils/API";
 import moment from "moment";
 
@@ -125,14 +125,23 @@ class QuestionAdmin extends Component {
             <form>
                 <FormErrors formErrors={this.state.formErrors} />
                 <Input name="name" placeholder="Name of the event (required)" value={this.state.name} onChange={this.handleChange}/>
+                <br/>
                 <Input name="place" placeholder="Place (required)" value={this.state.place} onChange={this.handleChange}/>
+                <br/>
                 <TextArea name="subject" placeholder="Description of the event" value={this.state.subject} onChange={this.handleChange}/>
+                <br/>
                 <Input name="date" placeholder="Event Start Date: MM/DD/YYYY (required)" value={this.state.date} onChange={this.handleChange}/>   
+                <br/>
                 <Input name="numOfDays" placeholder="Number of Days (required)" value={this.state.numOfDays} onChange={this.handleChange}/>  
+                <br/>
                 <Input name="startTime" placeholder="Start time: 12:00 AM (required)" value={this.state.startTime} onChange={this.handleChange}/> 
+                <br/>
                 <Input name="endTime" placeholder="End time: 12:00 AM (required)" value={this.state.endTime} onChange={this.handleChange}/> 
                 <h2>{this.props.userId}</h2>
-                <FormBtn onClick={this.handleSubmit} disabled={!this.state.formValid} >Create Event</FormBtn>
+                <br></br>
+             
+         
+                <FormBtn id="createE" onClick={this.handleSubmit} disabled={!this.state.formValid} >Create Event</FormBtn>
             </form>
       
         )

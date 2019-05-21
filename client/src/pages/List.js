@@ -7,6 +7,12 @@ import API from "../utils/API";
 import axios from "axios";
 import { getFromStorage, setInStorage, deleteFromStorage } from "../utils/storage";
 import '../components/Nav/nav.css';
+import Jumbotron from"../components/JumbotronListEvents";
+import Jumbotron3 from"../components/AddNextEvent";
+
+
+
+
 
 
 class EventsList extends Component {
@@ -143,11 +149,12 @@ class EventsList extends Component {
 							<a className="nav-link logout-link" href="/">Log In</a>
 						</li>
 					</ul>
-
+         
 					{/* <button onClick={this.logout}>Logout</button> */}
-					<h1>Click to see the info of an event</h1>
-
+					<h1>Click to see the event's information</h1>
+			
 					<List styleProp={listStyle}>
+					
 						{this.state.events.map((eve, i) => {
 							return (
 								<ListItem
@@ -158,7 +165,7 @@ class EventsList extends Component {
 							)
 						})}
 					</List>
-
+			
 				</Container>
 			)
 		}
@@ -166,27 +173,42 @@ class EventsList extends Component {
 		return (
 			
 			<Container>
-				<ul className="navbar-nav flex-row ml-md-auto link-cont">					
+						<Jumbotron>
+				<ul className="navbar-nav flex-row ml-md-auto link-cont">
+				
 					<li className="nav-item">
 						<a className="nav-link logout-link" onClick={this.logout} href="/">Log Out</a>  
 					</li>
 				</ul>
 				
-				<h1>Register to plan your next </h1>
 
-				<List styleProp={listStyle}>
+			
+		
+				<List>
+
+				<h1 id="currentEvents">Current Events </h1>
+						
+		
 					{this.state.events.map((eve, i) => {
 						return (
-							<ListItem
+							<ListItem id="items"
 										key={i}
 										name={eve.name}
 										id={eve._id}
 									/>
 						)
 					})}
+			
 				</List>
-				<FormBtn onClick={this.handleSubmit}>Add New Event</FormBtn>
-				<h1>Your events</h1>
+				</Jumbotron>	
+
+		
+<Jumbotron3 className="jumbotron3">
+
+<h3  id="addEvent">Click to add your next event </h3>
+
+				<FormBtn id="addNewEvent" onClick={this.handleSubmit}>New Event</FormBtn>
+
 				<List styleProp={listStyle}>
 					{this.state.adminEvents.map((eve, i) => {
 						return (
@@ -198,7 +220,7 @@ class EventsList extends Component {
 						)
 					})}
 				</List>
-
+				</Jumbotron3>
 			</Container>
 		)
 	}
