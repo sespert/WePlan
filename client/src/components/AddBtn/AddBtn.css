@@ -1,0 +1,9 @@
+.btn{
+    background-color: rgb(216, 97, 67);
+   margin-top: 4px;
+   font-family: "Montserrat", bolder;
+   border: none;
+
+   
+   }
+   .btn:hover {background-color:  rgb(216, 97, 67)}

@@ -4,8 +4,8 @@
   border-radius: 10px;
   overflow-y: scroll;
   overflow-x: hidden;
-  border-top: 1px solid;
-  border-bottom: 1px solid;
+  border-top: 1px solid rgb(107, 106, 106);
+  border-bottom: 1px solid rgb(107, 106, 106);
   margin-top: 10px;
 }
 
@@ -20,7 +20,7 @@
   /* border-bottom: 1px black solid; */
   margin-bottom: 25px;
   border-radius: 10px;
-  border: .5px  solid;
+  border: .5px  solid rgb(107, 106, 106);
   /* box-shadow: 2px 2px 5px  rgba(0, 0, 0, 0.22) ; */
   border-radius: 10px;
 
@@ -32,8 +32,9 @@
 }
 
 .list-overflow-container li a {
-  color:rgb(0, 59, 0);
+  color:black;
   font-style: italic;
+  border: 0px rgb(107, 106, 106) solid;
 }
 
 .list-overflow-container li:first-child {

@@ -109,7 +109,7 @@ class SingleEvent extends Component {
     handleAddBtn = e => {
         e.preventDefault();
 
-        const { userId } = this.state;
+        const { userId, eId } = this.state;
         const confId = e.target.id;
         let confArr = [];
 
@@ -117,46 +117,49 @@ class SingleEvent extends Component {
         .then(res => res.data.conferences.map(elem => 
             confArr.push(elem._id)))
         .then(() => {
-            if(confArr.some(
-            function(elem) {
-                return elem === confId
-            }
-        )) {
-            const getAlert = () => (
-                <SweetAlert 
-                danger 
-                title="This conference is already in your schedule" 
-                onConfirm={() => this.hideAlert()}
-                >
-                </SweetAlert>
-            );
-        
-            this.setState({
-                alert: getAlert()
-            });        } else {
+            if (confArr.some(
+                function (elem) {
+                    return elem === confId
+                }
+            )) {
+                const getAlert = () => (
+                    <SweetAlert
+                        danger
+                        title="This conference is already in your schedule"
+                        onConfirm={() => this.hideAlert()}
+                    >
+                    </SweetAlert>
+                );
 
-            const getAlert = () => (
-                <SweetAlert 
-                success 
-                title="You added this conference to your schedule!" 
-                onConfirm={() => this.hideAlert()}
-                >
-                </SweetAlert>
-            );
-        
-            this.setState({
-                alert: getAlert()
-            });
+                this.setState({
+                    alert: getAlert()
+                });
+            } else {
 
-            API.saveConfToUser({
+                const getAlert = () => (
+                    <SweetAlert
+                        success
+                        title="You added this conference to your schedule!"
+                        onConfirm={() => this.hideAlert()}
+                    >
+                    </SweetAlert>
+                );
+
+                this.setState({
+                    alert: getAlert()
+                });
+
+                API.saveConfToUser({
                     confId: confId,
-                    userId: userId
+                    userId: userId,
+                    eId: eId
                 })
-                .then(res => {
-                    console.log(res)
-                })            
-                .catch(err => console.log(err))
-        }}).catch(err => console.log(err))   
+                    .then(res => {
+                        console.log(res)
+                    })
+                    .catch(err => console.log(err))
+            }
+        }).catch(err => console.log(err))   
 
     }
 
@@ -297,6 +300,7 @@ class SingleEvent extends Component {
                             key = {elem.title}
                             title = {elem.title}
                             speakers = {elem.speakers}
+                            event = {elem.eventId}
                             description = {elem.description}
                             room = {elem.room}
                             date = {elem.day}

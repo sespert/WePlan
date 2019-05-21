@@ -1,16 +1,17 @@
 import React from "react";
-import "./jumbotronStyle.css";
+import "./JumbotronListEvents.css";
 
 function Jumbotron({ children }) {
   return (
     
-    <div id="eventMainDetail"
-
-      className="jumbotron"
+    <div id="jumbotron1"
+    className="jumbotron"
     >
       {children}
     </div>
   );
-}
+};
+
+
 
 export default Jumbotron;

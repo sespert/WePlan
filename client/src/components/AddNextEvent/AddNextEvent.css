@@ -1,0 +1,39 @@
+.jumbotron3{
+    background-color: rgb(226, 183, 43);
+    position: relative;
+    -webkit-box-shadow: 0 15px 10px #777;
+    -moz-box-shadow: 0 15px 10px #777;
+    box-shadow: 0 15px 10px #777;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    text-align: center;
+    border-radius: 15px;
+    /* margin-left: 5%;
+    margin-right: 5%; */
+    
+}
+
+#addEvent{
+    padding-top: 2%;
+    font-family: 'Kodchasan', sans-serif;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    font-size: 28px;
+    position: center;
+}
+
+#addNewEvent{
+ background-color: rgb(216, 97, 67);
+margin-top: 4px;
+font-family: "Montserrat", bolder;
+border-color:  rgb(216, 97, 67);
+border: none;
+padding-bottom: 00px;
+}
+
+#addNewEvent:hover {background-color:  rgb(216, 97, 67)}
+
+#addNewEvent:active {
+    background-color: rgb(216, 97, 67);
+    box-shadow: 0 3px #666;
+    transform: translateY(2px);
+    padding-bottom: 00px;
+  }

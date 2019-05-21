@@ -152,12 +152,32 @@ module.exports = {
 
   },
 
-  update: function(req, res) {
-    db.User
-      .findOneAndUpdate({ _id: req.body.userId}, { $push: {conferences: req.body.confId}})
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
+    update: function (req, res) {
+        const { userId, 
+            confId,
+            eId}= req.body;
+        db.User
+            .findOneAndUpdate({ _id: req.body.userId }, { $push: { conferences: req.body.confId } })
+            .then(dbModel => {
+                console.log("dbModel");
+                console.log(dbModel);
+                const userEvents = dbModel.events;
+                if (userEvents.length == 0) {
+                    userEvents.push(eId);
+                } else{
+                    for (let i=0; i< userEvents.length; i++) {
+                        if (eId != userEvents[i]) {
+                            userEvents.push(eId);
+                        }
+                    }
+                }
+                db.User.findOneAndUpdate({_id: userId}, { $set: { events: userEvents}})
+                .then(updatedUser => {
+                    res.json(updatedUser);
+                })
+            })
+            .catch(err => res.status(422).json(err));
+    },
   
   updateAndDelete: function(req, res) {
     db.User
