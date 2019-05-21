@@ -8,42 +8,57 @@ import { FormBtn } from "../components/Form";
 import { Redirect } from "react-router-dom";
 import API from "../utils/API";
 import moment from 'moment';
-import { getFromStorage } from "../utils/storage";
+import { getFromStorage, deleteFromStorage } from "../utils/storage";
 import axios from 'axios';
 import SweetAlert from 'react-bootstrap-sweetalert';
+import { object } from "prop-types";
 
 
 class SingleEvent extends Component {
 
-    state= {
-        eAdmin: "",
-        eName: "",
-        ePlace: "",
-        eSubject: "",
-        eDate: "",
-        eNumOfDays: "",
-        eStartTime: "",
-        eEndTime: "",
-        eId: (window.location.pathname).substr(8),
-        conferences : [], 
-        userId: null,
-        referrer: null,
-        alert: null
+    constructor(props) {
+        super(props);
+
+        this.state= {
+            eAdmin: "",
+            eName: "",
+            ePlace: "",
+            eSubject: "",
+            eDate: "",
+            eNumOfDays: "",
+            eStartTime: "",
+            eEndTime: "",
+            eId: (window.location.pathname).substr(8),
+            conferences : [], 
+            userId: null,
+            referrer: null,
+            alert: null
+        }
+        this.logout=this.logout.bind(this);
+
     }
+
+    
 
     componentDidMount() {
         
         const obj = getFromStorage('the_main_app');
-        const { token }= obj;
-        console.log("token didmount: "+ token);
-        // API.findEventSession(token).then(data => {   
-        axios.get('/../api/user/findsession/'+ token).then(data=> {
-            const response = data.data;
-            this.setState({
-                userId: response.userId
+        if (obj){
+            const { token }= obj;
+            console.log("token didmount: "+ token);
+            // API.findEventSession(token).then(data => {   
+            axios.get('/../api/user/findsession/'+ token).then(data=> {
+                const response = data.data;
+                this.setState({
+                    userId: response.userId
+                });
+                console.log("userId did mount"+ this.state.userId);
             });
-            console.log("userId did mount"+ this.state.userId);
-        });
+        } else {
+            this.setState({
+                userId: null
+            });
+        }
         this.loadEventInfo(this.state.eId);
         this.loadConferences(this.state.eId);
     }
@@ -85,6 +100,11 @@ class SingleEvent extends Component {
     handleClick = e => {
         e.preventDefault();
         this.setState({referrer: '/user/events/'+ this.state.userId})
+    }
+
+    logInClick = e => {
+        e.preventDefault();
+        this.setState({referrer: '/'})
     }
 
     handleAddBtn = e => {
@@ -185,6 +205,43 @@ class SingleEvent extends Component {
     }
     
 
+    logout() {
+		this.setState({
+			isLoading: true,
+		});
+		const obj = getFromStorage('the_main_app');
+		if (obj && obj.token) {
+			//Verify token
+			console.log(obj);
+			const { token } = obj;
+			axios.get('/api/user/logout?token=' + token).then(data => {
+				const response = data.data;
+				console.log("logout response ");
+				console.log(response);
+				if (response.success) {
+                    deleteFromStorage('the_main_app');
+					this.setState({
+						token: '',
+                        isLoading: false,
+                        userId: null,
+                        referrer:"/"
+                    });
+                    
+					console.log("state token"+this.state.token);
+				} else {
+					this.setState({
+						isLoading: false
+					});
+				}
+			})
+		} else {
+			this.setState({
+				isLoading: false
+			});
+
+		}
+	}
+
     render() {
         
         const { userId } = this.state;
@@ -200,8 +257,19 @@ class SingleEvent extends Component {
         if (userId !== eAdmin ) {
             return (
                 <Container > 
-                    {console.log("User: "+userId)}
-                    {console.log("Admin: "+eAdmin)}
+                    { userId === null ?  
+                        <ul className="navbar-nav flex-row ml-md-auto link-cont">
+                            <li className="nav-item">
+                                <a className="nav-link logout-link" href="/">Log In</a>
+                            </li>
+                        </ul> :
+                        <ul className="navbar-nav flex-row ml-md-auto link-cont">
+                            <li className="nav-item">
+                                <a className="nav-link logout-link" onClick={this.logout} href="#">Log Out</a>
+                            </li>
+                        </ul>}
+
+                    
                     <Jumbotron>
                         <h1>Choose the conferences of {this.state.eName} you want to attend</h1>
                         <List> 
@@ -245,8 +313,11 @@ class SingleEvent extends Component {
                             
                 </ConferenceList>
                 {this.state.alert}
-
-                <FormBtn onClick={this.handleClick}>See my schedule</FormBtn> 
+                
+                { userId === null ?
+                    <FormBtn onClick={this.logInClick}>Log In</FormBtn> :
+                    <FormBtn onClick={this.handleClick}>See my schedule</FormBtn> 
+                }
     
                 <FormBtn onClick={this.handleSubmit}>Go to List of Events</FormBtn> 
                 </Container> 
@@ -254,6 +325,11 @@ class SingleEvent extends Component {
         }
         return (
             <Container>
+                <ul className="navbar-nav flex-row ml-md-auto link-cont">
+                    <li className="nav-item">
+                        <a className="nav-link logout-link" onClick={this.logout} href="/">Log Out</a>
+                    </li>
+                </ul>
                 <Jumbotron>
                     <h1>Add conferences to {this.state.eName} </h1>
                     <List>
