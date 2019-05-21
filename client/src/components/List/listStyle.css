@@ -7,14 +7,15 @@
     overflow-x: hidden;
     font: 1.100em "Montserrat", bolder;
     border-color: rgba(248, 248, 244, 0.486);
-    /* color:black; */
-
+    /* background-color: rgba(248, 248, 244, 0.486);
+   */
   
   }
   
   .list-overflow-container ul {
     margin: 40px;
     border-color: rgba(248, 248, 244, 0.486);
+
 
   
   }
@@ -26,6 +27,7 @@
     text-align: center;
     background-color: rgba(248, 248, 244, 0.486);
     border-color: rgba(248, 248, 244, 0.486);
+    color: black;
 
  
   }
@@ -34,6 +36,8 @@
     cursor: pointer;
   
   }
+
+
   
   /* .list-overflow-container li a {
     color: #2A878C;

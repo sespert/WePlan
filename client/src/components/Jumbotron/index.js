@@ -5,9 +5,7 @@ function Jumbotron({ children }) {
   return (
     
     <div id="eventMainDetail"
-      style={{
 
-      }}
       className="jumbotron"
     >
       {children}

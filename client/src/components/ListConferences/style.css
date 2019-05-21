@@ -32,8 +32,9 @@
 }
 
 .list-overflow-container li a {
-  color:rgb(0, 59, 0);
+  color:black;
   font-style: italic;
+  border: 0px rgb(107, 106, 106) solid;
 }
 
 .list-overflow-container li:first-child {

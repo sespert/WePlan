@@ -7,6 +7,10 @@ import API from "../utils/API";
 import axios from "axios";
 import { getFromStorage, setInStorage } from "../utils/storage";
 import '../components/Nav/nav.css';
+// import AddNextEvent from"../components/AddNextEvent";
+// import { FormBtn } from "../../components/Form";
+
+
 
 
 //TO DO: Add list of events of the logged user
@@ -134,9 +138,10 @@ class EventsList extends Component {
 					</ul>
 
 					{/* <button onClick={this.logout}>Logout</button> */}
-					<h1>Click to see the info of an event</h1>
-
+					<h1>Click to see the event's information</h1>
+			
 					<List styleProp={listStyle}>
+					
 						{this.state.events.map((eve, i) => {
 							return (
 								<ListItem
@@ -156,15 +161,20 @@ class EventsList extends Component {
 			
 			<Container>
 				<ul className="navbar-nav flex-row ml-md-auto link-cont">
-					
+				
 					<li className="nav-item">
 						<a className="nav-link logout-link" onClick={this.logout} href="/">Log Out</a>  
 					</li>
 				</ul>
 				
-				<h1>Register to plan your next </h1>
 
-				<List styleProp={listStyle}>
+			
+		
+				<List>
+
+				<h1>Current Events </h1>
+						
+		
 					{this.state.events.map((eve, i) => {
 						return (
 							<ListItem
@@ -174,8 +184,27 @@ class EventsList extends Component {
 									/>
 						)
 					})}
+				
 				</List>
+		
+
+		
+		
+<h1>Click to add your next event </h1>
+
+
 				<FormBtn onClick={this.handleSubmit}>Add New Event</FormBtn>
+				<List styleProp={listStyle}>
+					{this.state.adminEvents.map((eve, i) => {
+						return (
+							<ListItem
+										key={i}
+										name={eve.name}
+										id={eve._id}
+									/>
+						)
+					})}
+				</List>
 
 			</Container>
 		)
