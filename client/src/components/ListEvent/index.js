@@ -24,7 +24,7 @@ export function ListItem(props) {
           
           <h4>Location: {props.place}</h4>
 
-          {props.duration == 1 ? <p>{props.date}</p> : <p>From {props.eFirstDay} to {props.endDate}</p>}
+          {props.duration === 1 ? <p>{props.date}</p> : <p>From {props.eFirstDay} to {props.endDate}</p>}
           
           <p>{props.subject}</p>
           

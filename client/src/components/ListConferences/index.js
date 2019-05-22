@@ -31,7 +31,7 @@ export function ConferenceList({ children }) {
           <h4>Room: {props.room}</h4>
           <p>Subject: {props.description}</p>
           <p>Speakers: {props.speakers}</p>
-          <p>Date: {moment(props.date, "MM DD YYYY").format('MMMM DD YYYY')}</p>
+          <p>Date: {moment(props.date, "YYYY MM DD").format('MMMM DD YYYY')}</p>
           <p>From {moment(props.time, "hh:mm a").format("hh:mm a")} to {moment(props.time, "hh:mm a").add(props.duration, 'minutes').format("hh:mm a")}</p>
         
         </Col>
