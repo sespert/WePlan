@@ -172,6 +172,7 @@ class EventsList extends Component {
 									key={i}
 									name={eve.name}
 									id={eve._id}
+									toSingleEvent={this.toSingleEvent}
 								/>
 							)
 						})}

@@ -17,7 +17,8 @@ class Event extends Component {
 
 		this.state = {
             isLoading: true,
-            token: '',
+			token: '',
+			referrer: null,
             signInError: '',
             signInPassword: '',
 			signInEmail: '',
@@ -124,14 +125,21 @@ class Event extends Component {
 			.catch(err => console.log(err));
 	};
 
+	toSingleEvent = (id) => {
+		// e.preventDefault();
+		this.setState({ referrer: '/events/' + id });
+	}
+
 	render() {
 		const {
-            isLoading,
+            referrer,
             token,
             signInError,
             signInEmail,
             signInPassword
 		} = this.state;
+		
+		if (referrer) return <Redirect to={{ pathname: referrer, state: { token: this.state.token } }} />;
 		
 		if (!token) {
 			return (
@@ -158,6 +166,7 @@ class Event extends Component {
 										key={i}
 										name={eve.name}
 										id={eve._id}
+										toSingleEvent={this.toSingleEvent}
 									/>
 								)
 							})}
