@@ -218,11 +218,8 @@ class EventsList extends Component {
 				</EventsAdded>
 
 		
-<Jumbotron3 className="jumbotron3">
-
-<h3  id="addEvent">Click to add your next event </h3>
-
-				<FormBtn id="addNewEvent" onClick={this.handleSubmit}><i class="far fa-calendar-plus"></i></FormBtn>
+<Jumbotron3>
+				<FormBtn id="addNewEvent" onClick={this.handleSubmit}>Click to add your next event  <i class="far fa-calendar-plus"></i></FormBtn>
 				</Jumbotron3>
 
 			</Container>
