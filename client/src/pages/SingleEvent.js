@@ -19,6 +19,7 @@ class SingleEvent extends Component {
         super(props);
 
         this.state= {
+            token: this.props.location.state.token,
             eAdmin: "",
             eName: "",
             ePlace: "",
@@ -252,6 +253,7 @@ class SingleEvent extends Component {
         const { userId } = this.state;
         const { eAdmin } = this.state; 
         const {referrer} = this.state;
+        const {token} = this.state;
         
 
         if (referrer) return <Redirect to={{pathname:referrer, state: { token : this.state.token}}} />;
