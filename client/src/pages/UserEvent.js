@@ -110,7 +110,7 @@ class UserEvent extends Component {
             confId: id,
             userId: this.state.userId
         })
-        .then(res => {
+        .then(() => {
             this.loadConferences(this.state.userId);
         })            
         .catch(err => console.log(err))
@@ -160,7 +160,8 @@ class UserEvent extends Component {
 
 		}
 	}
-     
+    
+    
     render() {
         const { referrer } = this.state;
         if (referrer) return <Redirect to={{pathname: referrer, state: { token : this.state.token}}} />;
