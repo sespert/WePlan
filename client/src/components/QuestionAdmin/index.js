@@ -29,7 +29,8 @@ class QuestionAdmin extends Component {
             numOfDaysValid: false,
             startTimeValid: false,
             endTimeValid: false,
-            formValid: false
+            formValid: false,
+            token: this.props.token 
         };
     }
 
@@ -111,14 +112,14 @@ class QuestionAdmin extends Component {
             .then(res => {
                 const eventId = res.data._id;
                 console.log(eventId);
-                this.setState({referrer: `/admin/events/${eventId}`});
+                this.setState({referrer: `/events/${eventId}`});
             })
             .catch(err => console.log(err));
     }
       
     render() {
         const {referrer} = this.state;
-        if (referrer) return <Redirect to={referrer} />;
+        if (referrer) return <Redirect to={{pathname:referrer, state: { token : this.state.token}}} />;
 
         return (
             
@@ -137,7 +138,7 @@ class QuestionAdmin extends Component {
                 <Input name="startTime" placeholder="Start time: 12:00 AM (required)" value={this.state.startTime} onChange={this.handleChange}/> 
                 <br/>
                 <Input name="endTime" placeholder="End time: 12:00 AM (required)" value={this.state.endTime} onChange={this.handleChange}/> 
-                <h2>{this.props.userId}</h2>
+                <h2>{this.props.adminId}</h2>
                 <br></br>
              
          

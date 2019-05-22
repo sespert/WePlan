@@ -94,7 +94,7 @@ class Admin extends Component {
   </text>
 </svg>
 <div id="questionAdmin">
-        <QuestionAdmin  adminId = {this.state.userId} />
+        <QuestionAdmin  adminId = {this.state.userId} token = {this.state.token} />
         </div>
         <div id="buttonsEvent">
         <FormBtn onClick={this.handleSubmit}>List of Events</FormBtn>

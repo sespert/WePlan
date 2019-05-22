@@ -170,7 +170,7 @@ class UserEvent extends Component {
      
     render() {
         const { referrer } = this.state;
-        if (referrer) return <Redirect to={{pathname: referrer}} />;
+        if (referrer) return <Redirect to={{pathname:referrer, state: { token : this.state.token}}} />;
         return (
             <Container > 
                 <ul className="navbar-nav flex-row ml-md-auto link-cont">					

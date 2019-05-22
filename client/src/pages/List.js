@@ -129,9 +129,14 @@ class EventsList extends Component {
 		}
 	}
 
+	toSingleEvent = (id) => {
+		// e.preventDefault();
+		this.setState({referrer: '/events/'+id});
+	}
+
 	render() {
 		const { token, referrer } = this.state;
-		if (referrer ) return <Redirect to={{pathname: "/admin", state: { token: this.state.token} }} />;
+		if (referrer ) return <Redirect to={{pathname: referrer, state: { token: this.state.token} }} />;
 		// if (referrer && this.state.userId ) return <Redirect to={{pathname: "/admin", state: { userId : this.props.location.state.userId}}} />;
 		const listStyle = {
 			MargingTop: "50%",
@@ -173,53 +178,52 @@ class EventsList extends Component {
 		return (
 			
 			<Container>
-						<Jumbotron>
-				<ul className="navbar-nav flex-row ml-md-auto link-cont">
-				
-					<li className="nav-item">
-						<a className="nav-link logout-link" onClick={this.logout} href="/">Log Out</a>  
-					</li>
-				</ul>
-				
+				<Jumbotron>
+					<ul className="navbar-nav flex-row ml-md-auto link-cont">
 
-			
-		
-				<List>
+						<li className="nav-item">
+							<a className="nav-link logout-link" onClick={this.logout} href="/">Log Out</a>
+						</li>
+					</ul>
 
-				<h1 id="currentEvents">Current Events </h1>
-						
-		
-					{this.state.events.map((eve, i) => {
-						return (
-							<ListItem id="items"
-										key={i}
-										name={eve.name}
-										id={eve._id}
-									/>
-						)
-					})}
-			
-				</List>
+					<List>
+
+						<h1 id="currentEvents">Current Events </h1>
+
+
+						{this.state.events.map((eve, i) => {
+							return (
+								<ListItem id="items"
+									key={i}
+									name={eve.name}
+									id={eve._id}
+									toSingleEvent={this.toSingleEvent}
+								/>
+							)
+						})}
+
+					</List>
 				</Jumbotron>	
 
 		
-<Jumbotron3 className="jumbotron3">
+				<Jumbotron3 className="jumbotron3">
 
-<h3  id="addEvent">Click to add your next event </h3>
+					<h3 id="addEvent">Click to add your next event </h3>
 
-				<FormBtn id="addNewEvent" onClick={this.handleSubmit}>New Event</FormBtn>
+					<FormBtn id="addNewEvent" onClick={this.handleSubmit}>New Event</FormBtn>
 
-				<List styleProp={listStyle}>
-					{this.state.adminEvents.map((eve, i) => {
-						return (
-							<ListItem
-								key={i}
-								name={eve.name}
-								id={eve._id}
-							/>
-						)
-					})}
-				</List>
+					<List styleProp={listStyle}>
+						{this.state.adminEvents.map((eve, i) => {
+							return (
+								<ListItem
+									key={i}
+									name={eve.name}
+									id={eve._id}
+									toSingleEvent = {this.toSingleEvent}
+								/>
+							)
+						})}
+					</List>
 				</Jumbotron3>
 			</Container>
 		)
