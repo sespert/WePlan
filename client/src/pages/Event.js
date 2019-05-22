@@ -126,7 +126,7 @@ class Event extends Component {
 
 	render() {
 		const {
-            isLoading,
+            // isLoading,
             token,
             signInError,
             signInEmail,

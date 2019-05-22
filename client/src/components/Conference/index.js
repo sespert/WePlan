@@ -119,8 +119,8 @@ class Conference extends Component {
                 alert: getAlert()
             });
 
-            API.getEventsbyId(this.state.eventId).
-            then(res => {
+            API.getEventsbyId(this.state.eventId)
+            .then(res => {
                 this.setState({eventName: res.data.name});
 
                 API.saveConference({
@@ -136,6 +136,7 @@ class Conference extends Component {
                 })
             })
                 .then(() => {
+                    console.log(this.state.time)
                     this.props.handler();
                 })
                 .catch(err => console.log(err))

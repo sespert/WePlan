@@ -11,7 +11,6 @@ import moment from 'moment';
 import { getFromStorage, deleteFromStorage } from "../utils/storage";
 import axios from 'axios';
 import SweetAlert from 'react-bootstrap-sweetalert';
-import { object } from "prop-types";
 
 class SingleEvent extends Component {
 
@@ -38,10 +37,7 @@ class SingleEvent extends Component {
         this.handler=this.handler.bind(this);
     }
 
-    
-
     componentDidMount() {
-        
         const obj = getFromStorage('the_main_app');
         if (obj){
             const { token }= obj;
@@ -164,7 +160,6 @@ class SingleEvent extends Component {
 
     }
 
-    
     handleDelBtn = e => {
         e.preventDefault();
 
@@ -208,6 +203,7 @@ class SingleEvent extends Component {
     }
     
     handler = () => {
+        console.log("conference added");
         this.loadConferences(this.state.eId);
     }
 
@@ -284,7 +280,7 @@ class SingleEvent extends Component {
                             key = {this.state.eId}
                             place = {this.state.ePlace}
                             subject = {this.state.eSubject}
-                            date = {this.state.eDate} 
+                            date = {eventTime} 
                             duration = {this.state.eNumOfDays}
                             endDate = {lengthDays}   
                             eFirstDay = {firstDay} 

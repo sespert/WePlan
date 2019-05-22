@@ -32,7 +32,6 @@ class UserEvent extends Component {
         if (obj){
             const { token }= obj;
             console.log("token did mount: "+ token);
-            // API.findConferenceSession(token).then(data => {   
             axios.get('/../api/user/findsession/'+token).then(data=> {
                 const response = data.data;
                 this.setState({
@@ -54,7 +53,6 @@ class UserEvent extends Component {
 
     loadConferences = id => {
         const list = [];
-        console.log("top of load")
         API.getConferencesbyUserId(id) 
         .then(res=> {
             this.setState({ conferences: res.data.conferences })
@@ -66,16 +64,20 @@ class UserEvent extends Component {
 
                     })
             })
-            console.log("list", list);
-            console.log(this.state.eventName);
-            this.setState({eventName: list})
+            // this.state.conferences.map((elem,i) => {
+            // console.log(elem.day)
+            // console.log(elem.time)
+            // })
+            
         })
         .catch(err => console.log(err));
     }
+
     handleSubmit = e => {
         e.preventDefault();
         this.setState({referrer: '/events'});
     }
+
     handleDelBtn = e => {
         e.preventDefault();
 
