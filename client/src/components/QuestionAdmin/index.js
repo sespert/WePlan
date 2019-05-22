@@ -138,7 +138,7 @@ class QuestionAdmin extends Component {
                 <br/>
                 <Input name="endTime" placeholder="End time: 12:00 AM (required)" value={this.state.endTime} onChange={this.handleChange}/> 
                 <h2>{this.props.userId}</h2>
-                <br></br>
+                <br/>
              
          
                 <FormBtn id="createE" onClick={this.handleSubmit} disabled={!this.state.formValid} >Create Event</FormBtn>
