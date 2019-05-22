@@ -19,38 +19,42 @@ class UserEvent extends Component {
             isLoading: true,
             conferences : [],
             userId: null,
-            token:'',
+            token: this.props.location.state.token,
             referrer: null
         }
         this.logout=this.logout.bind(this);
 
     }
 
-    
-    
     componentDidMount() {
 
-        console.log(this.props.location);
         const obj = getFromStorage('the_main_app');
         if (obj){
             const { token }= obj;
             console.log("token did mount: "+ token);
-            API.findConferenceSession(token).then(data => {   
-            // axios.get('/api/user/findsession/'+token).then(data=> {
+            // API.findConferenceSession(token).then(data => {   
+            axios.get('/../api/user/findsession/'+token).then(data=> {
                 const response = data.data;
                 this.setState({
                     userId: response.userId
                 });
                 console.log("userId did mount"+ this.state.userId);
-                this.loadConferences(response.userId);
+                this.loadConferences(this.state.userId);
+            });
+        } else {
+            this.setState({
+                userId: null
             });
         }
         
-        
+        this.loadConferences(this.state.userId);
+
     }
+
 
     loadConferences = id => {
         const list = [];
+        console.log("top of load")
         API.getConferencesbyUserId(id) 
         .then(res=> {
             this.setState({ conferences: res.data.conferences })
@@ -60,24 +64,12 @@ class UserEvent extends Component {
                     res => {
                         list.push(res.data.name);
 
-                    }
-                    
-                    // // this.state.eventName.concat(res.data.name)
-                    // })
-            )
-            // this.state.conferences.map((elem,i) => {
-                // elem.eventName = "java"
-               
+                    })
             })
+            console.log("list", list);
+            console.log(this.state.eventName);
             this.setState({eventName: list})
-            console.log(list);
-            console.log(this.state.eventName)
-           
-
         })
-        // .then(
-        //     // API.getEventsbyId()
-        // )
         .catch(err => console.log(err));
     }
     handleSubmit = e => {
@@ -119,7 +111,7 @@ class UserEvent extends Component {
             userId: this.state.userId
         })
         .then(res => {
-            console.log(res)
+            this.loadConferences(this.state.userId);
         })            
         .catch(err => console.log(err))
     }
@@ -129,6 +121,7 @@ class UserEvent extends Component {
         this.setState({
           alert: null
         });
+
     }
 
     logout() {
@@ -170,7 +163,8 @@ class UserEvent extends Component {
      
     render() {
         const { referrer } = this.state;
-        if (referrer) return <Redirect to={{pathname: referrer}} />;
+        const { token } = this.state;
+        if (referrer) return <Redirect to={{pathname: referrer, state: { token : this.state.token}}} />;
         return (
             <Container > 
                 <ul className="navbar-nav flex-row ml-md-auto link-cont">					
