@@ -19,7 +19,7 @@ class UserEvent extends Component {
             isLoading: true,
             conferences : [],
             userId: null,
-            // token:'',
+            token: this.props.location.state.token,
             referrer: null
         }
         this.logout=this.logout.bind(this);
@@ -163,6 +163,7 @@ class UserEvent extends Component {
      
     render() {
         const { referrer } = this.state;
+        const { token } = this.state;
         if (referrer) return <Redirect to={{pathname: referrer, state: { token : this.state.token}}} />;
         return (
             <Container > 

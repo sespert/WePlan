@@ -17,8 +17,8 @@ export function ListItem(props) {
   return (
 
       <li className="list-group-item" {...props}>
-        <a href={"events/" + props.id}  >
-        <strong> {props.name}</strong>                     
+        <a onClick={()=>props.toSingleEvent(props.id)} href="#"  >
+          <strong> {props.name}</strong>                     
         </a>
       </li>
   );
