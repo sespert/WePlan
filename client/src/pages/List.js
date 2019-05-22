@@ -11,10 +11,6 @@ import Jumbotron from"../components/JumbotronListEvents";
 import Jumbotron3 from"../components/AddNextEvent";
 
 
-
-
-
-
 class EventsList extends Component {
 
 	constructor(props) {
@@ -95,6 +91,12 @@ class EventsList extends Component {
 		//set state of user to admin in this step and send info to DB???
 	}
 
+	handleClick = e => {
+		e.preventDefault();
+		console.log(this.state.userId);
+        this.setState({referrer: '/user/events/'+ this.state.userId})
+	}
+	
 	logout() {
 		this.setState({
 			isLoading: true,
@@ -131,7 +133,7 @@ class EventsList extends Component {
 
 	render() {
 		const { token, referrer } = this.state;
-		if (referrer ) return <Redirect to={{pathname: "/admin", state: { token: this.state.token} }} />;
+		if (referrer ) return <Redirect to={{pathname: referrer, state: { token: this.state.token} }} />;
 		// if (referrer && this.state.userId ) return <Redirect to={{pathname: "/admin", state: { userId : this.props.location.state.userId}}} />;
 		const listStyle = {
 			MargingTop: "50%",
@@ -175,7 +177,10 @@ class EventsList extends Component {
 			<Container>
 						<Jumbotron>
 				<ul className="navbar-nav flex-row ml-md-auto link-cont">
-				
+					<li className="nav-item">
+						<a className="nav-link schedule-link"  onClick={this.handleClick} href="/">Your Schedule</a>  
+					</li>
+
 					<li className="nav-item">
 						<a className="nav-link logout-link" onClick={this.logout} href="/">Log Out</a>  
 					</li>

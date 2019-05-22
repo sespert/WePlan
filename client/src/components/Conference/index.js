@@ -97,7 +97,7 @@ class Conference extends Component {
     }
 
     validateForm() {
-        this.setState({formValid: this.state.titleValid  && this.state.descriptionValid && this.state.roomValid });
+        this.setState({formValid: this.state.titleValid  && this.state.descriptionValid && this.state.roomValid && this.state.dayValid && this.state.timeValid && this.state.durationValid});
     }
 
     handleSubmit = e => {
@@ -136,7 +136,7 @@ class Conference extends Component {
                 })
             })
                 .then(res => {
-                    console.log(res);
+                    // console.log(res);
                     // this.forceUpdate();
                 })
                 .catch(err => console.log(err))
@@ -161,6 +161,7 @@ class Conference extends Component {
         this.setState({
           alert: null
         });
+        // window.location.reload();
     }
 
     render() {
@@ -175,7 +176,7 @@ class Conference extends Component {
             <Input name="time" placeholder="Start time: 12:00 AM" value={this.state.time} onChange={this.handleChange}/> 
             <Input name="duration" placeholder="Duration of conference in minutes" value={this.state.duration} onChange={this.handleChange}/> 
 
-            <FormBtn onClick={this.handleSubmit} disabled={!this.state.formValid}>Add a Conference to Your Event</FormBtn>
+            <FormBtn onClick={this.handleSubmit} disabled={!this.state.formValid} >Add a Conference to Your Event</FormBtn>
             {this.state.alert}
             </form>
 
