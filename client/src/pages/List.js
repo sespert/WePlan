@@ -172,6 +172,7 @@ class EventsList extends Component {
 									key={i}
 									name={eve.name}
 									id={eve._id}
+									toSingleEvent={this.toSingleEvent}
 								/>
 							)
 						})}
@@ -230,12 +231,18 @@ class EventsList extends Component {
 					</List>
 				</EventsAdded>
 
+<<<<<<< HEAD
+		
+<Jumbotron3>
+				<FormBtn id="addNewEvent" onClick={this.handleSubmit}>Click to add your next event  <i class="far fa-calendar-plus"></i></FormBtn>
+=======
 
 				<Jumbotron3 className="jumbotron3">
 
 					<h3 id="addEvent">Click to add your next event </h3>
 
 					<FormBtn id="addNewEvent" onClick={this.handleSubmit}><i className="far fa-calendar-plus"></i></FormBtn>
+>>>>>>> ce2e05d2bcc6ea2ea8318b5dd5166e0e2dd850df
 				</Jumbotron3>
 
 			</Container>
