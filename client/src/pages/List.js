@@ -9,6 +9,7 @@ import { getFromStorage, setInStorage, deleteFromStorage } from "../utils/storag
 import '../components/Nav/nav.css';
 import Jumbotron from"../components/JumbotronListEvents";
 import Jumbotron3 from"../components/AddNextEvent";
+import EventsAdded from"../components/EventsAdded";
 
 
 
@@ -140,6 +141,7 @@ class EventsList extends Component {
 		console.log(token);
 		if (token === "0") {
 			return(
+
 				<Container>
 					<ul className="navbar-nav flex-row ml-md-auto link-cont">
 						{/* <li className="nav-item">
@@ -151,6 +153,7 @@ class EventsList extends Component {
 					</ul>
          
 					{/* <button onClick={this.logout}>Logout</button> */}
+					
 					<h1>Click to see the event's information</h1>
 			
 					<List styleProp={listStyle}>
@@ -173,19 +176,15 @@ class EventsList extends Component {
 		return (
 			
 			<Container>
-						<Jumbotron>
 				<ul className="navbar-nav flex-row ml-md-auto link-cont">
 				
 					<li className="nav-item">
 						<a className="nav-link logout-link" onClick={this.logout} href="/">Log Out</a>  
 					</li>
 				</ul>
-				
-
+				<Jumbotron className="currentEvent">
 			
-		
 				<List>
-
 				<h1 id="currentEvents">Current Events </h1>
 						
 		
@@ -202,13 +201,9 @@ class EventsList extends Component {
 				</List>
 				</Jumbotron>	
 
-		
-<Jumbotron3 className="jumbotron3">
 
-<h3  id="addEvent">Click to add your next event </h3>
-
-				<FormBtn id="addNewEvent" onClick={this.handleSubmit}>New Event</FormBtn>
-
+			<EventsAdded>
+				<h3>Events Added </h3>
 				<List styleProp={listStyle}>
 					{this.state.adminEvents.map((eve, i) => {
 						return (
@@ -220,7 +215,16 @@ class EventsList extends Component {
 						)
 					})}
 				</List>
+				</EventsAdded>
+
+		
+<Jumbotron3 className="jumbotron3">
+
+<h3  id="addEvent">Click to add your next event </h3>
+
+				<FormBtn id="addNewEvent" onClick={this.handleSubmit}><i class="far fa-calendar-plus"></i></FormBtn>
 				</Jumbotron3>
+
 			</Container>
 		)
 	}

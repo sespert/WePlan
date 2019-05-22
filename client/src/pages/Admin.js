@@ -96,8 +96,8 @@ class Admin extends Component {
 <div id="questionAdmin">
         <QuestionAdmin  adminId = {this.state.userId} />
         </div>
-        <div id="buttonsEvent">
-        <FormBtn onClick={this.handleSubmit}>List of Events</FormBtn>
+        <div >
+        <FormBtn  id="buttonsEvent" onClick={this.handleSubmit}>List of Events</FormBtn>
         </div>
         </Container4>
       </Container>

@@ -1,11 +1,11 @@
 #jumbotron1 {
     background-image:  url("../../images/eventCalendar.png");
-
 background-position: center;
-
- 
-
+width: 60%;
+margin-left: -10%;
 }
+
+
 #currentEvents{
     padding-left: 40%;
     font-family: 'Montserrat', sans-serif;
