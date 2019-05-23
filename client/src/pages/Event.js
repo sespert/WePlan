@@ -152,13 +152,17 @@ class Event extends Component {
 							{/* <a className="nav-link logout-link" onClick={this.handleSubmit} href="#">Log In</a> */}
 						</li>
 					</ul>
-					
+
+					<div class="row justify-content-start">
+   					 <div class="col-8" id="conferenceInfo">
 					<Jumbotron>
+
 						<blockquote>
 							<strong>Conference</strong>  <em>information</em>
 						</blockquote>
 						<br></br>
 						<List>
+							<div id="listOne">
 							{this.state.events.slice(0, 4).map((eve, i) => {
 								return (
 									<ListItem
@@ -169,11 +173,15 @@ class Event extends Component {
 									/>
 								)
 							})}
-
+							</div>
 						</List>
-						
+					
 					</Jumbotron>
-					<form id="form1">
+					</div>
+						</div>
+
+					<form id="form1" className="col-5">
+						
 						{
 							(signInError) ? (
 								<p>{signInError}</p>

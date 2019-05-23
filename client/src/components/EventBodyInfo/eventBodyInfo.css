@@ -1,49 +1,15 @@
-.container2{
-    color: black;
-    width: 500px;
-    margin-left: -8%;
 
-}
 #cardImage1{
+    padding-top: 10%;
     width:550px;
-
-}
-#paragraph1{
-    widows: 50px;
-    margin-left: 7%;
-    margin-top: -25%;
-    color: wheat;
-    font-size: 19px;
-    font-family: 'Kodchasan', sans-serif;
-    
-
-}
-#object1{
-    margin-top:-40%;
+    margin-right: 22%;
+    margin-left: -12%;
 }
 
-#card2{
-    width:450px;
-padding-top: -10px;
-margin-left: 50%;
-margin-top: -10px;
-}
-
-.imageContainer2{
-    padding-left:750px;
-    margin-top: -97%;
-    width: 480px;
-}
 #cardImage2{
-    width:510px;
+    padding-top: 9%;
+    width:550px;
+    margin-right:-10%;
 
 }
-#paragraph2{
-    width: 490px;
-    margin-left: 1%;
-    margin-top: -7%;
-    font-size: 17px;
-    font-family: 'Kodchasan', sans-serif;
-    position: absolute;
-    color: rgb(3, 59, 3);
-}
+

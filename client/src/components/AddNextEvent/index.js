@@ -1,7 +1,7 @@
 import React from "react";
 import "./AddNextEvent.css";
 
-function Jumbotron3({ children } ){
+function EventsAdded({ children } ){
     return(
     <div id="nextEvent"
     className="jumbotron3">
@@ -13,4 +13,4 @@ function Jumbotron3({ children } ){
     );
 };
 
-export default Jumbotron3;
+export default EventsAdded;

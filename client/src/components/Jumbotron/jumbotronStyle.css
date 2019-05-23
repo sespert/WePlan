@@ -1,19 +1,25 @@
 #eventMainDetail {
-    background-image:  url("../../images/conferencePic.jpg"); 
-    height: 400px;
-    width: 800px;
-    padding-top: 40px; 
+background: none;
+    margin-left: -12%;
+    padding-top: 8%;
+    margin-top: 3%;
     text-align: center;
-    margin-left: -180px;
-    padding-left: 70px;
-    padding-right: 70px;
-    padding-bottom: 00px;
+
     font-family: 'Montserrat', sans-serif;
+}
+#conferenceInfo{
+    background-image:  url("../../images/conferencePic.jpg"); 
+    margin-left: -10%;
+    /* padding-top: 8%; */
+    margin-top: 3%;
+    padding-left: 8%;
+    /* text-align: center; */
 }
 
 blockquote {
-    width: 565px;
-    font: 2.65em "Montserrat";
+    /* width: 565px; */
+    position: relative;
+    font: 2.30em "Montserrat";
     letter-spacing: .30em;
     /* float: left; */
     padding: 4px 0 10px 25px;
@@ -38,6 +44,10 @@ blockquote:first-letter {
     z-index: 1;
     font-style: italic;
     /* padding-left: 10%; */
-    letter-spacing: -.4em;
+    letter-spacing: -.6em;
 }
 
+#fontAdminEvents{
+
+    font-family: 'Montserrat', sans-serif;
+}

@@ -1,18 +1,29 @@
 #jumbotron1 {
     background-image:  url("../../images/eventCalendar.png");
-background-position: center;
-width: 60%;
-margin-left: -10%;
+/* background-position: absolute; */
+background-position: 60%;
+/* width: 60%; */
+/* margin-left: -10%; */
+margin-top: 3%;
+
+background-repeat: no-repeat;
+background-color: white;
+
+position:center;
 }
 
 
 #currentEvents{
     padding-left: 40%;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", bolder;
+    text-shadow: 1px 2px 1px rgba(0,0,0,0.3);
     background: rgba(248, 192, 36, 0.897);
-    font-size: 30px;
     margin-bottom: 3%;
-   
+    font-size: 26px;
+    padding-top: 2%;
+    padding-bottom: 1%;
+    border-radius: 10px; 
+    
 }
 
 
