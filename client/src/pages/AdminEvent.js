@@ -145,9 +145,7 @@ class AdminEvent extends Component {
             <Container>
              
                 <Jumbotron>
-
-                    <div id="adminEvents">
-                    <h1 id="fontAdminEvents">Add conferences to {this.state.eName} </h1>
+                    <h1 id>Add conferences to {this.state.eName} </h1>
                     <List>
                         <ListItem
                             key={this.state.eId}
@@ -160,7 +158,7 @@ class AdminEvent extends Component {
                         />
                        
                     </List>
-                    </div>
+   
     
                 </Jumbotron>
 
