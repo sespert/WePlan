@@ -328,7 +328,7 @@ class SingleEvent extends Component {
                     <FormBtn onClick={this.handleClick}>See my schedule</FormBtn> 
                 }
     
-                <FormBtn onClick={this.handleSubmit}>Go to List of Events</FormBtn> 
+                <FormBtn id="ListOfEventsBtn" onClick={this.handleSubmit}>Go to List of Events</FormBtn> 
                 </Container> 
             );
         }
@@ -384,7 +384,9 @@ class SingleEvent extends Component {
                     <h1 id="fontAdminEvents">
                      {this.state.eName} </h1>
                     <List>
-                        <ListItem   
+                        <div id="fontEvent">
+                        <ListItem 
+                        
                             key={this.state.eId}
                             place={this.state.ePlace}
                             subject={this.state.eSubject}
@@ -393,17 +395,20 @@ class SingleEvent extends Component {
                             endDate={lengthDays}
                             eFirstDay={firstDay}
                         />
+                         </div>
                     </List>
+                   
                 </Jumbotron>
 
 
 
-                <h3>Fill the form with the information of a conference of {this.state.eName}</h3>
+                <h3 id="fontAdmin">Fill the form with the information of a conference of  {this.state.eName}</h3>
 
-                <Conference eventId={this.state.eId} handler={this.handler}/>
+                <Conference id="conferenceFont" eventId={this.state.eId} handler={this.handler}/>
                 <FormBtn onClick={this.handleSubmit}>Go to List of Events</FormBtn>
 
                 <ConferenceList>
+
                     {this.state.conferences.map(elem => {
                         return (
                             <ConferenceListItem
