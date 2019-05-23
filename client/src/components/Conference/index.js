@@ -137,6 +137,15 @@ class Conference extends Component {
                 .then(() => {
                     console.log(this.state.time)
                     this.props.handler();
+                    this.setState({
+                        title: "",
+                        speakers: [],
+                        description: "",
+                        room: "",
+                        day: "",
+                        time: "",
+                        duration: ""
+                    });
                 })
                 .catch(err => console.log(err))
         } else {
