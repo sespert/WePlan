@@ -159,7 +159,7 @@ class Event extends Component {
 
 						<blockquote id="blockquote">
 		
-							<strong>Conference</strong>  <em>information</em>
+							<strong>Event</strong>  <em>information</em>
 				
 						</blockquote>
 						<br/>

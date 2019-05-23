@@ -4,6 +4,7 @@ background: none;
     padding-top: 8%;
     margin-top: 3%;
     text-align: center;
+ 
 
     font-family: 'Montserrat', sans-serif;
 }
@@ -46,9 +47,10 @@ blockquote:first-letter {
     z-index: 1;
     font-style: italic;
     /* padding-left: 10%; */
-    letter-spacing: -.6em;
+    letter-spacing: -.1em;
 }
 
 #fontAdminEvents{
     font-family: 'Montserrat';
+
 }

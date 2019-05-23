@@ -18,7 +18,7 @@ class SingleEvent extends Component {
         super(props);
 
         this.state= {
-            token: this.props.location.state.token,
+            token: null,
             eAdmin: "",
             eName: "",
             ePlace: "",
@@ -38,6 +38,11 @@ class SingleEvent extends Component {
     }
 
     componentDidMount() {
+        if(this.props.location.state){
+            this.setState({
+                token:this.props.location.state.token
+            })
+        }
         const obj = getFromStorage('the_main_app');
         if (obj){
             const { token }= obj;
@@ -335,7 +340,7 @@ class SingleEvent extends Component {
                     </li>
                 </ul>
                 <Jumbotron>
-                    <h1>Add conferences to {this.state.eName} </h1>
+                    <h1 id="fontAdminEvents">Add conferences to {this.state.eName} </h1>
                     <List>
                         <ListItem
                             key={this.state.eId}
