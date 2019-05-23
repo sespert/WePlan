@@ -11,7 +11,6 @@ import moment from 'moment';
 import { getFromStorage, deleteFromStorage } from "../utils/storage";
 import axios from 'axios';
 import SweetAlert from 'react-bootstrap-sweetalert';
-import { object } from "prop-types";
 
 class SingleEvent extends Component {
 
@@ -35,13 +34,10 @@ class SingleEvent extends Component {
             alert: null
         }
         this.logout=this.logout.bind(this);
-
+        this.handler=this.handler.bind(this);
     }
 
-    
-
     componentDidMount() {
-        
         const obj = getFromStorage('the_main_app');
         if (obj){
             const { token }= obj;
@@ -164,7 +160,6 @@ class SingleEvent extends Component {
 
     }
 
-    
     handleDelBtn = e => {
         e.preventDefault();
 
@@ -194,8 +189,8 @@ class SingleEvent extends Component {
         this.hideAlert();
 
         API.deleteConference(id)
-        .then(res => {
-            console.log(res)
+        .then(() => {
+            this.loadConferences(this.state.eId);
         })            
         .catch(err => console.log(err))
     }
@@ -207,6 +202,10 @@ class SingleEvent extends Component {
         });
     }
     
+    handler = () => {
+        console.log("conference added");
+        this.loadConferences(this.state.eId);
+    }
 
     logout() {
 		this.setState({
@@ -281,7 +280,7 @@ class SingleEvent extends Component {
                             key = {this.state.eId}
                             place = {this.state.ePlace}
                             subject = {this.state.eSubject}
-                            date = {this.state.eDate} 
+                            date = {eventTime} 
                             duration = {this.state.eNumOfDays}
                             endDate = {lengthDays}   
                             eFirstDay = {firstDay} 
@@ -354,7 +353,7 @@ class SingleEvent extends Component {
 
                 <h3>Fill the form with the information of a conference of {this.state.eName}</h3>
 
-                <Conference eventId={this.state.eId} />
+                <Conference eventId={this.state.eId} handler={this.handler}/>
                 <FormBtn onClick={this.handleSubmit}>Go to List of Events</FormBtn>
 
                 <ConferenceList>

@@ -23,10 +23,11 @@ class Nav extends Component {
           <a className="navbar-brand" >
             <img src={logo} height="100" width="150" alt="logo"/> 
           </a>
-
-          <h3 id="legend"> Life can be easy by just using the right tools!</h3>
-
-          
+          <div className="collapse navbar-collapse" id="navbarText">
+          <span className="navbar-text" id="legend">
+            Life can be easy by just using the right tools!
+          </span>
+          </div>
       </nav>
     );
 }

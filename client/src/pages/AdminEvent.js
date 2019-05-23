@@ -14,19 +14,25 @@ import SweetAlert from 'react-bootstrap-sweetalert';
 //TO DO: display all events of user by default?
 
 class AdminEvent extends Component {
+    
+    constructor(props) {
+        super(props);
 
-    state = {
-        eAdmin:"",
-        ePlace: "",
-        eSubject: "",
-        eDate: "",
-        eId: (window.location.pathname).substr(14),
-        eNumOfDays: "",
-        eStartTime: "",
-        eEndTime: "",
-        conferences : [],       
-        referrer: null,
-        userId: null,
+        this.state = {
+            eAdmin:"",
+            ePlace: "",
+            eSubject: "",
+            eDate: "",
+            eId: (window.location.pathname).substr(14),
+            eNumOfDays: "",
+            eStartTime: "",
+            eEndTime: "",
+            conferences : [],       
+            referrer: null,
+            userId: null,
+        }
+
+        this.handler=this.handler.bind(this);
     }
 
     componentDidMount () {
@@ -110,7 +116,7 @@ class AdminEvent extends Component {
 
         API.deleteConference(id)
         .then(res => {
-            console.log(res)
+            this.loadConferences(this.state.eId);
         })            
         .catch(err => console.log(err))
     }
@@ -122,6 +128,10 @@ class AdminEvent extends Component {
         });
     }
     
+    handler = () => {
+        this.loadConferences(this.state.eId);
+    }
+
     render() {       
         const {referrer} = this.state;
         if (referrer) return <Redirect to={referrer} />;
@@ -151,7 +161,7 @@ class AdminEvent extends Component {
 
                 <h3>Fill the form with the information of a conference of {this.state.eName}</h3>
 
-                <Conference eventId={this.state.eId} />
+                <Conference eventId={this.state.eId} handler={this.handler}/>
                 <FormBtn onClick={this.handleSubmit}>Go to List of Events</FormBtn>
 
                 <ConferenceList>

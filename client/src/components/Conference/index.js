@@ -32,6 +32,7 @@ class Conference extends Component {
             timeValid: false,
             durationValid: false
         }
+        // this.handler = props.handler.bind(this);
     }
 
     handleChange = e => {
@@ -118,9 +119,8 @@ class Conference extends Component {
                 alert: getAlert()
             });
 
-            API.getEventsbyId(this.state.eventId).
-            then(res => {
-                // console.log(res.data.name)
+            API.getEventsbyId(this.state.eventId)
+            .then(res => {
                 this.setState({eventName: res.data.name});
 
                 API.saveConference({
@@ -135,9 +135,9 @@ class Conference extends Component {
                     duration: this.state.duration
                 })
             })
-                .then(res => {
-                    // console.log(res);
-                    // this.forceUpdate();
+                .then(() => {
+                    console.log(this.state.time)
+                    this.props.handler();
                 })
                 .catch(err => console.log(err))
         } else {
@@ -161,7 +161,6 @@ class Conference extends Component {
         this.setState({
           alert: null
         });
-        // window.location.reload();
     }
 
     render() {
