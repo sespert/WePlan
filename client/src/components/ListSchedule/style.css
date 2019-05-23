@@ -1,0 +1,42 @@
+.list-overflow-container {
+    max-height: 1045px;
+    border-radius: 4px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    /* color:black; */
+    border-color: rgba(248, 248, 244, 0.486);
+   
+  }
+  
+  .list-overflow-container ul {
+    margin: 0;
+    border-color: rgba(248, 248, 244, 0.486);
+  }
+  
+  .list-overflow-container li {
+    border-radius: 0px;
+    border-left: none;
+    border-right: none;
+    border-color: rgba(248, 248, 244, 0.486);
+  
+  }
+  
+  .list-overflow-container li * {
+    cursor: pointer;
+  
+  }
+  
+  /* .list-overflow-container li a {
+    color: #2A878C;
+  } */
+  
+  .list-overflow-container li:first-child {
+    border-top: none;
+  
+  }
+  
+  .list-overflow-container li:last-child {
+    border-bottom: none;
+   
+   
+  }

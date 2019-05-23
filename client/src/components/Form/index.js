@@ -39,7 +39,7 @@ export function CheckButton(props) {
 
 export function FormBtn(props) {
   return (
-    <button {...props} className="btn btn-success">
+    <button {...props} className="btn btn-primary">
       {props.children}
     </button>
   );
