@@ -39,7 +39,7 @@ export function CheckButton(props) {
 
 export function FormBtn(props) {
   return (
-    <button {...props} className="btn btn-primary">
+    <button {...props} className="btn btn-primary" style={{fontFamily:"Montserrat"}}>
       {props.children}
     </button>
   );
