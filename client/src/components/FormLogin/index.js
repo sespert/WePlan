@@ -40,7 +40,8 @@ class FormLogin extends Component {
     // if ( referrer && this.state.userId ) return <Redirect to={{pathname: "/events", state: { userId : this.state.userId}}} />;
   
       return (
-        <form id="form1"className="col-3">
+        
+        <form id="form1"className="col-5">
           <div className="form-group">
             <label htmlFor="exampleInputEmail1">Login</label>
             <input type="email" className="form-control" aria-describedby="emailHelp" name="email" placeholder="Enter email" value={this.state.email} onChange={this.handleChange}/>
@@ -56,6 +57,7 @@ class FormLogin extends Component {
           <br></br>
           <a className="link" id="registerLink" href="/register">Click to Register</a>
         </form>
+
 
       );
   }

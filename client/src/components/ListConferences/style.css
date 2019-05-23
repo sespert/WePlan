@@ -1,12 +1,13 @@
 .list-overflow-container {
-  max-height: 545px;
+  margin-top:3%;
+  /* max-height: 545px; */
   border: 0px rgb(107, 106, 106) solid;
   border-radius: 10px;
   overflow-y: scroll;
   overflow-x: hidden;
   border-top: 1px solid rgb(107, 106, 106);
   border-bottom: 1px solid rgb(107, 106, 106);
-  margin-top: 10px;
+
 }
 
 .list-overflow-container ul {
