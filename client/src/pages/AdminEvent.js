@@ -11,6 +11,7 @@ import moment from 'moment';
 import { getFromStorage } from "../utils/storage";
 import SweetAlert from 'react-bootstrap-sweetalert';
 
+
 //TO DO: display all events of user by default?
 
 class AdminEvent extends Component {
@@ -142,8 +143,11 @@ class AdminEvent extends Component {
 
         return (
             <Container>
+             
                 <Jumbotron>
-                    <h1>Add conferences to {this.state.eName} </h1>
+
+                    <div id="adminEvents">
+                    <h1 id="fontAdminEvents">Add conferences to {this.state.eName} </h1>
                     <List>
                         <ListItem
                             key={this.state.eId}
@@ -154,8 +158,12 @@ class AdminEvent extends Component {
                             endDate={lengthDays}
                             eFirstDay={firstDay}
                         />
+                       
                     </List>
+                    </div>
+    
                 </Jumbotron>
+
 
 
 

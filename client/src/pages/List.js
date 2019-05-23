@@ -150,7 +150,7 @@ class EventsList extends Component {
 		if (token === "0") {
 			return (
 
-				<Container>
+				<Container fluid="fluid">
 					<ul className="navbar-nav flex-row ml-md-auto link-cont">
 						{/* <li className="nav-item">
 							<a className="nav-link guide-link mr-3" href="/events">Events Guide</a>
@@ -184,7 +184,7 @@ class EventsList extends Component {
 
 		return (
 
-			<Container>
+			<Container fluid="fluid">
 				<ul className="navbar-nav flex-row ml-md-auto link-cont">
 					<li className="nav-item">
 						<a className="nav-link schedule-link" onClick={this.handleClick} href="/">Your Schedule</a>
@@ -194,9 +194,12 @@ class EventsList extends Component {
 						<a className="nav-link logout-link" onClick={this.logout} href="/">Log Out</a>
 					</li>
 				</ul>
-				<Jumbotron className="currentEvent">
+				
+					 
+  <div className="col-6" id="currentEvent">
 
-					<List>
+  <Jumbotron> 	
+  <List>
 						<h1 id="currentEvents">Current Events </h1>
 
 
@@ -210,28 +213,40 @@ class EventsList extends Component {
 								/>
 							)
 						})}
-
+				
 					</List>
-				</Jumbotron>
+					</Jumbotron>				
+					
+  </div>
 
-				<Jumbotron3>
 
-					<h3>Events Added </h3>
-					<List styleProp={listStyle}>
-						{this.state.adminEvents.map((eve, i) => {
-							return (
-								<ListItem
-									key={i}
-									name={eve.name}
-									id={eve._id}
-									toSingleEvent={this.toSingleEvent}
-								/>
-							)
-						})}
-					</List>
+  <Jumbotron3>
+ <div className="col-5"  id="eventsAdded">
 
-				<FormBtn id="addNewEvent" onClick={this.handleSubmit}>Click to add your next event  <i class="far fa-calendar-plus"></i></FormBtn>
-				</Jumbotron3>
+<h3 id="fontEventsAdded">Events Added </h3>
+<List styleProp={listStyle}>
+	{this.state.adminEvents.map((eve, i) => {
+		return (
+			<ListItem
+				key={i}
+				name={eve.name}
+				id={eve._id}
+				toSingleEvent={this.toSingleEvent}
+			/>
+		)
+	})}
+</List>
+
+<FormBtn id="addNewEvent" onClick={this.handleSubmit}>Click to add your next event  <i class="far fa-calendar-plus"></i></FormBtn>
+</div>
+</Jumbotron3>
+
+
+
+
+
+
+			
 
 			</Container>
 		)

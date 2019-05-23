@@ -1,32 +1,51 @@
-.jumbotron3{
-    background-color: rgb(226, 183, 43);
-    position: static;
+#eventsAdded{
+  position: absolute;
+  background-image:  url("../../images/eventsAdded.png");
+    /* background-color: rgba(226, 183, 43, 0.555); */
     text-shadow: 1px 2px 1px rgba(0,0,0,0.3);
     text-align: center;
     border-radius: 10px; 
-    width: 56%; 
-    margin-top: -51%;
-    /* margin-left:52%;
+    /* margin-top: -48%; */
+margin-left: 55%;
+padding-bottom: 4%;
+Padding-top: 2%;
+background-position: -50%;
+margin-top: -48%;
 
 
-
-
-
-    
 }
 
+#fontEventsAdded{
+  font-family: "Montserrat", bolder;
+  text-align: center;
+  border-radius: 10px; 
+  color: white;
+  font-size: 26px;
+  padding-top:1%;
+  padding-bottom:1%;
+  margin-bottom: 5%;
+  margin-top:3%;
+  text-shadow: 1px 2px 1px rgba(0,0,0,0.3);
+  /* margin-bottom: %; */
 
+background-color: rgb(216, 97, 67);
+
+}
 #addNewEvent{
  background-color: rgb(216, 97, 67);
-margin-top: 40%;
+/* margin-top: 40%; */
 /* margin-left:53%; */
 font-family: "Montserrat", bolder;
 border-color:  rgb(216, 97, 67);
 border: none;
 padding-bottom: 00px;
-/* width: 57%; */
 padding: top 1%;
 padding-bottom: 1%;
+width: 100%;
+font-size: 20px;
+margin-top: 15%;
+text-shadow: 1px 2px 1px rgba(0,0,0,0.3);
+
 
 }
 
@@ -39,9 +58,9 @@ padding-bottom: 1%;
     padding-bottom: 00px;
   }
   
-  #EventsAdded{
+  /* #EventsAdded{
     width:60%;
     margin-left: 50%;
     margin-top: -45%;
 
-}
+} */

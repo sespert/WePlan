@@ -25,7 +25,7 @@ export function ConferenceList({ children }) {
     <Container>
       <Row>
         
-        <Col size="sm-12">
+        <Col size="sm-8">
           <h2>{props.eventName}</h2>
           <h3>Conference: {props.title}</h3>  
           <h4>Room: {props.room}</h4>
