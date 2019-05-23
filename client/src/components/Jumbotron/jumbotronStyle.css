@@ -52,5 +52,24 @@ blockquote:first-letter {
 
 #fontAdminEvents{
     font-family: 'Montserrat';
+    margin-top:-6%;
+    margin-left: 10%;
+  
+}
+
+#fontEvent{
+    text-decoration: none;
+}
+
+#fontAdmin{
+    font-family: 'Montserrat';
+    font-style: italic;
+margin-left: 3%;
+    text-decoration: underline;
+    font-size: 24px;
+
 
 }
+
+
+

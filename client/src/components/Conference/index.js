@@ -4,8 +4,7 @@ import API from "../../utils/API";
 import SweetAlert from 'react-bootstrap-sweetalert';
 import moment from "moment";
 import FormErrors from "../FormErrors";
-
-// import "./style.css";
+import "./Style.css";
 
 
 class Conference extends Component {
@@ -165,23 +164,29 @@ class Conference extends Component {
 
     render() {
         return (
-            <form>
+            <form id="formFont"> 
             <FormErrors formErrors={this.state.formErrors} />
             <Input name="title" placeholder="Title of the conference (required)" value={this.state.title} onChange={this.handleChange}/>
+            <br/>
             <Input name="speakers" placeholder="Speakers" value={this.state.speakers} onChange={this.handleChange}/>
+            <br/>
             <TextArea name="description" placeholder="Description of the event (required)" value={this.state.description} onChange={this.handleChange}/>
+            <br/>
             <Input name="room" placeholder="Room number (required)" value={this.state.room} onChange={this.handleChange}/> 
+            <br/>
             <Input name="day" placeholder="Conference Date: MM/DD/YYYY" value={this.state.day} onChange={this.handleChange}/>               
+            <br/>
             <Input name="time" placeholder="Start time: 12:00 AM" value={this.state.time} onChange={this.handleChange}/> 
+            <br/>
             <Input name="duration" placeholder="Duration of conference in minutes" value={this.state.duration} onChange={this.handleChange}/> 
 
-            <FormBtn onClick={this.handleSubmit} disabled={!this.state.formValid} >Add a Conference to Your Event</FormBtn>
+            <FormBtn id="eventFontBtn" onClick={this.handleSubmit} disabled={!this.state.formValid} >Add a Conference to Your Event</FormBtn>
             {this.state.alert}
             </form>
 
             
         )
     }
-}
+}  
 
 export default Conference;
