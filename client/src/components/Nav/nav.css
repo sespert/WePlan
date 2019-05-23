@@ -19,22 +19,7 @@ a:hover {
     top:5.2%;
     right: 1%;
 }
-/* .logout-link{
-    /* position: absolute;
-    top: 5.4%;
-    left: 88.7%; */
-    
-    /* right: 0%;
-    display: table;
 
-}
-
-.guide-link{
-    position: absolute;
-    top:5.2%;
-    right: 9%;
-    display: table;
-} */
 .nav-link3{
     font-family:"Montserrat";
     font-size: 30px;
@@ -49,4 +34,59 @@ a:hover {
     font-style: italic;
     /* margin-bottom: -70px; */
     margin-left: 250px;
+}
+
+@media screen and (min-width:1260px) {
+    #legend{
+        font-family:"Montserrat";
+        font-size: 20px;
+        color: wheat;
+        font-style: italic;
+        /* margin-bottom: -70px; */
+        margin-left: 240px;
+    }
+}
+
+@media screen and (min-width:1100px) and (max-width:1259px) {
+    #legend{
+        font-family:"Montserrat";
+        font-size: 20px;
+        color: wheat;
+        font-style: italic;
+        /* margin-bottom: -70px; */
+        margin-left: 90px;
+    }
+} 
+
+@media screen and (min-width:992px) and (max-width:1099px) {
+    #legend{
+        font-family:"Montserrat";
+        font-size: 20px;
+        color: wheat;
+        font-style: italic;
+        /* margin-bottom: -70px; */
+        margin-left: -10px;
+    }
+
+    .nav-link{
+        font-size: 23px;
+    }
+}
+
+@media screen and (max-width:991px) {
+    #legend{
+        font-family:"Montserrat";
+        font-size: 15px;
+        color: wheat;
+        font-style: italic;
+        /* margin-bottom: -70px; */
+        /* margin-left: -10px; */
+        position: absolute;
+        top: 60%;
+        right: 5%
+    }
+    
+    .nav-link{
+        font-size: 20px;
+    }
 }
