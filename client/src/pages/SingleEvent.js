@@ -210,6 +210,7 @@ class SingleEvent extends Component {
     handler = () => {
         console.log("conference added");
         this.loadConferences(this.state.eId);
+        
     }
 
     logout() {

@@ -162,15 +162,22 @@ module.exports = {
                 console.log("dbModel");
                 console.log(dbModel);
                 const userEvents = dbModel.events;
-                if (userEvents.length == 0) {
-                    userEvents.push(eId);
-                } else{
-                    for (let i=0; i< userEvents.length; i++) {
-                        if (eId != userEvents[i]) {
-                            userEvents.push(eId);
-                        }
+                let exists = false;
+                for (let i=0; i<= userEvents.length; i++) {
+                    console.log (eId);
+                    console.log (userEvents[i]);
+                    if (eId == userEvents[i]) {
+                        exists = true;
+                        console.log("changed to true");
+                        break;
                     }
                 }
+                console.log(exists);
+                if (exists === false) {
+                    userEvents.push(eId);
+                    console.log("pushed");
+                }
+
                 db.User.findOneAndUpdate({_id: userId}, { $set: { events: userEvents}})
                 .then(updatedUser => {
                     res.json(updatedUser);
