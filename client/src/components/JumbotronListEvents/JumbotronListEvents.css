@@ -17,7 +17,8 @@ position:center;
 
 
 #currentEvents{
-    padding-left: 40%;
+    /* padding-left: 40%; */
+    text-align: center;
     font-family: "Montserrat", bolder;
     text-shadow: 1px 2px 1px rgba(0,0,0,0.3);
     background: rgba(248, 192, 36, 0.897);

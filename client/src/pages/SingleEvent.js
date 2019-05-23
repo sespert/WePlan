@@ -18,7 +18,7 @@ class SingleEvent extends Component {
         super(props);
 
         this.state= {
-            token: null,
+            token: "0",
             eAdmin: "",
             eName: "",
             ePlace: "",
