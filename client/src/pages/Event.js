@@ -157,7 +157,7 @@ class Event extends Component {
 					</ul>
 
 					<div class="row justify-content-start">
-   					 <div class="col-8" id="conferenceInfo">
+   					 <div class="col-12 col-sm-6 "  id="conferenceInfo">
 					<Jumbotron>
 
 						<blockquote id="blockquote">
@@ -184,7 +184,7 @@ class Event extends Component {
 					
 					</Jumbotron>
 					</div>
-					<div class="col-5">
+					<div class="col-12 col-sm-6 ">
 					<form id="form1">
 						
 						{

@@ -7,7 +7,7 @@
     border-radius: 4px;
     overflow-y: scroll;
     overflow-x: hidden;
-    font: 1.100em "Montserrat", bolder;
+    font: 1.100rem "Montserrat", bolder;
     border-color: rgba(248, 248, 244, 0.486);
     /* background-color: rgba(248, 248, 244, 0.486);
    */
@@ -40,10 +40,11 @@
   }
 
   .list-group-item{
-    margin-left: 10%;
+    /* margin-left: 10%;
     margin-top: 3%;
 padding-left: 20%;
-padding-top: 3%;
+padding-top: 3%; */
+border-color: rgba(248, 248, 244, 0.486), solid, 1px ;
 background: rgba(248, 192, 36, 0.897);
   }
 
