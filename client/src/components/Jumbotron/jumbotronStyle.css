@@ -13,10 +13,11 @@ background: none;
     /* padding-top: 8%; */
     margin-top: 3%;
     padding-left: 8%;
+ 
     /* text-align: center; */
 }
 
-blockquote {
+#blockquote {
     /* width: 565px; */
     position: relative;
     font: 2.30em "Montserrat";
@@ -28,13 +29,14 @@ blockquote {
     -webkit-transform: rotate(-4deg);
 }
 blockquote:first-line {
-
+    position: absolute;
     font: 1.60em "Montserrat";
     color: #000000;
     
 }
 
 blockquote:first-letter {
+    /* position: relative; */
     font-size: 1.90em;
     /* text-transform: lowercase; */
     float: left;
@@ -48,6 +50,5 @@ blockquote:first-letter {
 }
 
 #fontAdminEvents{
-
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat';
 }

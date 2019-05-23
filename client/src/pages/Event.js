@@ -157,10 +157,13 @@ class Event extends Component {
    					 <div class="col-8" id="conferenceInfo">
 					<Jumbotron>
 
-						<blockquote>
+						<blockquote id="blockquote">
+		
 							<strong>Conference</strong>  <em>information</em>
+				
 						</blockquote>
-						<br></br>
+						<br/>
+						
 						<List>
 							<div id="listOne">
 							{this.state.events.slice(0, 4).map((eve, i) => {
@@ -178,9 +181,8 @@ class Event extends Component {
 					
 					</Jumbotron>
 					</div>
-						</div>
-
-					<form id="form1" className="col-5">
+					<div class="col-5">
+					<form id="form1">
 						
 						{
 							(signInError) ? (
@@ -202,6 +204,8 @@ class Event extends Component {
 						<br></br>
 						<a className="link" id="registerLink" href="/register">Click to Register</a>
 					</form>
+					</div>
+					</div>
 					<EventBodyInfo /> 
 
 				</Container>
