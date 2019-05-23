@@ -126,7 +126,10 @@ class Event extends Component {
 
 	toSingleEvent = (id) => {
 		// e.preventDefault();
-		this.setState({ referrer: '/events/' + id });
+		this.setState({ 
+			referrer: '/events/' + id,
+			token: "0"
+		});
 	}
 
 	render() {

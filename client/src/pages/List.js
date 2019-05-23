@@ -80,7 +80,7 @@ class EventsList extends Component {
 	loadAdminEvents = token => {
 		axios.get('/../api/user/findsession/' + token).then(data => {
 			const response = data.data;
-			this.setState({userId: response.userId});
+			this.setState({ userId: response.userId });
 			API.getEventsByAdmin(response.userId)
 				.then(res => this.setState({ adminEvents: res.data }))
 		}).catch(err => console.log(err))
@@ -194,63 +194,61 @@ class EventsList extends Component {
 						<a className="nav-link logout-link" onClick={this.logout} href="/">Log Out</a>
 					</li>
 				</ul>
-				
-				
-				
-				<div className="grid-container">
-  <div className="grid-item" id="currentEvent">
-
-  <Jumbotron> 	
-  <List>
-	
-						<h1 id="currentEvents">Current Events </h1>
-
-
-						{this.state.events.map((eve, i) => {
-							return (
-								<ListItem id="items"
-									key={i}
-									name={eve.name}
-									id={eve._id}
-									toSingleEvent={this.toSingleEvent}
-								/>
-							)
-						})}
-					
-					</List>
-			
-
-					</Jumbotron>				
-					
-  </div>
-
-  <Jumbotron3>
- <div className="grid-item" id="eventsAdded">
-
-<h3 id="fontEventsAdded">Events Added </h3>
-<List styleProp={listStyle}>
-	{this.state.adminEvents.map((eve, i) => {
-		return (
-			<ListItem
-				key={i}
-				name={eve.name}
-				id={eve._id}
-				toSingleEvent={this.toSingleEvent}
-			/>
-		)
-	})}
-</List>
-
-<FormBtn id="addNewEvent" onClick={this.handleSubmit}>Click to add your next event  <i class="far fa-calendar-plus"></i></FormBtn>
-</div>
-</Jumbotron3>
 
 
 
-</div>
+				<div className="row grid-container">
+					<div className="grid-item col-lg-6 col-12" id="currentEvent">
+
+						<Jumbotron>
+							<h1 id="currentEvents">Current Events </h1>
+							<List>
+								{this.state.events.map((eve, i) => {
+									return (
+										<ListItem id="items"
+											key={i}
+											name={eve.name}
+											id={eve._id}
+											toSingleEvent={this.toSingleEvent}
+										/>
+									)
+								})}
+
+							</List>
 
 
-			
+						</Jumbotron>
+
+					</div>
+
+
+					<div className="grid-item col-lg-6 col-12" id="eventsAdded">
+						<Jumbotron>
+							<h1 id="fontEventsAdded">Events Added </h1>
+							<List styleProp={listStyle}>
+								{this.state.adminEvents.map((eve, i) => {
+									return (
+										<ListItem
+											key={i}
+											name={eve.name}
+											id={eve._id}
+											toSingleEvent={this.toSingleEvent}
+										/>
+									)
+								})}
+							</List>
+
+							<FormBtn id="addNewEvent" onClick={this.handleSubmit}>Click to add your next event  <i class="far fa-calendar-plus"></i></FormBtn>
+						</Jumbotron>
+					</div>
+
+
+
+
+				</div>
+
+
+
 
 			</Container>
 		)
