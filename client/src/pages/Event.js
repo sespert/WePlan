@@ -3,11 +3,10 @@ import Jumbotron from "../components/Jumbotron";
 import "../../src/components/FormLogin/formLogin.css";
 import API from "../utils/API";
 import { Redirect } from "react-router-dom";
-import { Container } from "../components/Grid";
+import { Container, Row , Col} from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import EventBodyInfo from"../components/EventBodyInfo";
 import '../components/Nav/nav.css';
-
 import { setInStorage, getFromStorage } from "../utils/storage";
 import axios from 'axios';
 
@@ -140,12 +139,12 @@ class Event extends Component {
 		} = this.state;
 		
 		if (referrer) return <Redirect to={{ pathname: referrer, state: { token: this.state.token } }} />;
-		
+
 		if (!token) {
 			return (
 
-				<Container>
-					<ul className="navbar-nav flex-row ml-md-auto link-cont">
+				<Container>					
+					<ul className="navbar-nav flex-row ml-md-auto link-cont">		
 						<li className="nav-item">
 							<a className="nav-link guide-link mr-3" onClick={this.setTokenToZero} href="/events">Events Guide</a>
 						</li>
@@ -153,7 +152,7 @@ class Event extends Component {
 							{/* <a className="nav-link logout-link" onClick={this.handleSubmit} href="#">Log In</a> */}
 						</li>
 					</ul>
-
+					
 					<Jumbotron>
 						<blockquote>
 							<strong>Conference</strong>  <em>information</em>
@@ -172,9 +171,8 @@ class Event extends Component {
 							})}
 
 						</List>
+						
 					</Jumbotron>
-
-
 					<form id="form1">
 						{
 							(signInError) ? (
@@ -196,7 +194,6 @@ class Event extends Component {
 						<br></br>
 						<a className="link" id="registerLink" href="/register">Click to Register</a>
 					</form>
-		
 					<EventBodyInfo /> 
 
 				</Container>
