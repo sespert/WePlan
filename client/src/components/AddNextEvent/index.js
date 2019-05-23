@@ -3,8 +3,8 @@ import "./AddNextEvent.css";
 
 function EventsAdded({ children } ){
     return(
-    <div id="nextEvent"
-    className="jumbotron3">
+    <div id="jumbotron3"
+    className="jumbotron">
     
 
          {children}

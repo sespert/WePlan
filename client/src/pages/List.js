@@ -223,7 +223,7 @@ class EventsList extends Component {
 
 
 					<div className="grid-item col-lg-6 col-12" id="eventsAdded">
-						<Jumbotron>
+						<Jumbotron3>
 							<h1 id="fontEventsAdded">Events Added </h1>
 							<List styleProp={listStyle}>
 								{this.state.adminEvents.map((eve, i) => {
@@ -236,10 +236,11 @@ class EventsList extends Component {
 										/>
 									)
 								})}
+								
 							</List>
-
-							<FormBtn id="addNewEvent" onClick={this.handleSubmit}>Click to add your next event  <i class="far fa-calendar-plus"></i></FormBtn>
-						</Jumbotron>
+							<FormBtn id="addNewEvent" onClick={this.handleSubmit}>Click to add your next event  <i className="far fa-calendar-plus"></i></FormBtn>	
+							
+						</Jumbotron3>
 					</div>
 
 

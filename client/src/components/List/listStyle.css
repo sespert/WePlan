@@ -1,5 +1,7 @@
-.list-overflow-container {
-  margin-top: 35%;
+ .list-overflow-container {
+    margin-top: 35%;
+    width: 300;
+    height: 150;
     max-height: 545px;
     /* border: 3px rgb(221, 196, 53) solid; */
     border-radius: 4px;

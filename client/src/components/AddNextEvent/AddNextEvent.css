@@ -1,9 +1,37 @@
 .grid-item{
   width: 45%;
+  padding: 4% 3% 4% 3%;
 }
-#eventsAdded{
+#jumbotron3 {
+    background-image:  url("../../images/eventsAdded.png");
 
-  background-image:  url("../../images/eventsAdded.png");
+  /* background-position: 60%; */
+
+  /* margin-top: 3%; */
+
+  background-repeat: no-repeat;
+  background-color: white;
+
+  position:center;
+}
+
+.list-overflow-container {
+  margin-top: 35%;
+  width: 300;
+  min-height: 400;
+  /* max-height: 545px; */
+  /* border: 3px rgb(221, 196, 53) solid; */
+  border-radius: 4px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  font: 1.100em "Montserrat", bolder;
+  border-color: rgba(248, 248, 244, 0.486);
+  /* background-color: rgba(248, 248, 244, 0.486);
+ */
+
+}
+
+#eventsAdded{  
     text-shadow: 1px 2px 1px rgba(0,0,0,0.3);
     text-align: center;
     border-radius: 10px; 
@@ -26,20 +54,22 @@
 
 }
 #addNewEvent{
- background-color: rgb(216, 97, 67);
-/* margin-top: 40%; */
-/* margin-left:53%; */
-font-family: "Montserrat", bolder;
-border-color:  rgb(216, 97, 67);
-border: none;
-padding-bottom: 00px;
-padding: top 1%;
-padding-bottom: 1%;
-width: 100%;
-font-size: 20px;
-margin-top: 15%;
-text-shadow: 1px 2px 1px rgba(0,0,0,0.3);
-
+  background-color: rgb(216, 97, 67);
+  /* margin-top: 40%; */
+  /* margin-left:53%; */
+  font-family: "Montserrat", bolder;
+  border-color:  rgb(216, 97, 67);
+  border: none;
+  padding-bottom: 00px;
+  padding: top 1%;
+  padding-bottom: 1%;
+  width: 100%;
+  font-size: 20px;
+  margin-top: 15%;
+  text-shadow: 1px 2px 1px rgba(0,0,0,0.3);
+  /* position: absolute;
+  bottom: 0;
+  left: 0; */
 
 }
 

@@ -45,3 +45,6 @@
 .list-overflow-container li:last-child {
   border-bottom: none;
 }
+.list-group h2, .list-group h3, .list-group h4{
+  font-family: 'Montserrat', sans-serif;
+}

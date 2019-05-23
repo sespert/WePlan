@@ -2,7 +2,7 @@ import React , { Component } from "react";
 import { Container } from "../components/Grid";
 import { Redirect } from "react-router-dom";
 // import { List, ListItem } from "../components/ListEvent";
-import { ConferenceList, ConferenceListItem } from "../components/ListConferences";
+import { ConferenceList, ConferenceListItem } from "../components/ListSchedule";
 import API from "../utils/API";
 import moment from 'moment';
 import { getFromStorage, deleteFromStorage } from '../utils/storage';
@@ -64,11 +64,6 @@ class UserEvent extends Component {
 
                     })
             })
-            // this.state.conferences.map((elem,i) => {
-            // console.log(elem.day)
-            // console.log(elem.time)
-            // })
-            
         })
         .catch(err => console.log(err));
     }
@@ -168,20 +163,27 @@ class UserEvent extends Component {
         const { referrer } = this.state;
         const { token } = this.state;
         if (referrer) return <Redirect to={{pathname: referrer, state: { token : this.state.token}}} />;
+        
+        let bg = require('../images/eventsAdded.png');
+
+
+        
         return (
             <Container > 
-                <ul className="navbar-nav flex-row ml-md-auto link-cont">					
+                <ul className="navbar-nav flex-row ml-md-auto link-cont" >					
 					<li className="nav-item">
 						<a className="nav-link logout-link" onClick={this.logout} href="#" >Log Out</a>  
 					</li>
 				</ul>
-                <h1>See your agenda</h1>
+                <div className='jumbotron' style={{backgroundImage: "url("+bg+")"}}>
+                <h1 style={{textAlign: "center"}}>See your schedule</h1>
                 <a href={"events/" + this.state._id}>
                         <strong>
                           {this.state.name}
                         </strong>
-                      </a>       
-                <ConferenceList> 
+                      </a>    
+
+                <ConferenceList > 
                     {this.state.conferences.map(elem => {
                         return(
                         <ConferenceListItem 
@@ -200,9 +202,12 @@ class UserEvent extends Component {
                         />)
                     })}
                </ConferenceList>
+            
                {this.state.alert}
                <FormBtn onClick={this.handleSubmit}>Go to List of Events</FormBtn> 
+               </div>
             </Container> 
+            
         )
     }
 }
