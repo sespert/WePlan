@@ -340,7 +340,7 @@ class SingleEvent extends Component {
                     </li>
                 </ul>
                 <Jumbotron>
-                    <h1>Add conferences to {this.state.eName} </h1>
+                    <h1 id="fontAdminEvents">Add conferences to {this.state.eName} </h1>
                     <List>
                         <ListItem
                             key={this.state.eId}

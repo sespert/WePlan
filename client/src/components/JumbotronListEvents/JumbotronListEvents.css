@@ -1,9 +1,13 @@
+.grid-item{
+    width: 45%;
+    padding-left: 3%;
+}
 #jumbotron1 {
     background-image:  url("../../images/eventCalendar.png");
 
-background-position: 60%;
+/* background-position: 60%; */
 
-margin-top: 3%;
+/* margin-top: 3%; */
 
 background-repeat: no-repeat;
 background-color: white;

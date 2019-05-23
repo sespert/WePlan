@@ -195,11 +195,14 @@ class EventsList extends Component {
 					</li>
 				</ul>
 				
-					 
-  <div className="col-6" id="currentEvent">
+				
+				
+				<div className="grid-container">
+  <div className="grid-item" id="currentEvent">
 
   <Jumbotron> 	
   <List>
+	
 						<h1 id="currentEvents">Current Events </h1>
 
 
@@ -213,15 +216,16 @@ class EventsList extends Component {
 								/>
 							)
 						})}
-				
+					
 					</List>
+			
+
 					</Jumbotron>				
 					
   </div>
 
-
   <Jumbotron3>
- <div className="col-5"  id="eventsAdded">
+ <div className="grid-item" id="eventsAdded">
 
 <h3 id="fontEventsAdded">Events Added </h3>
 <List styleProp={listStyle}>
@@ -243,7 +247,7 @@ class EventsList extends Component {
 
 
 
-
+</div>
 
 
 			
