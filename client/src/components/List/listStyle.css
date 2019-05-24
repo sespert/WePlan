@@ -17,13 +17,11 @@
   .list-overflow-container ul {
     margin: 40px;
     border-color: rgba(248, 248, 244, 0.486);
-
-
-  
+    
   }
   
   .list-overflow-container li {
-    border-radius: 0px;
+    border-radius: 4px;
     border-left: none;
     border-right: none;
     text-align: center;
@@ -31,21 +29,19 @@
     border-color: rgba(248, 248, 244, 0.486);
     color: black;
 
- 
   }
   
   .list-overflow-container li * {
     cursor: pointer;
-  
   }
 
   .list-group-item{
     /* margin-left: 10%;
     margin-top: 3%;
-padding-left: 20%;
-padding-top: 3%; */
-border-color: rgba(248, 248, 244, 0.486), solid, 1px ;
-background: rgba(248, 192, 36, 0.897);
+    padding-left: 20%;
+    padding-top: 3%; */
+    border-color: rgba(248, 248, 244, 0.486), solid, 1px ;
+    background: rgba(248, 192, 36, 0.897);
   }
 
 

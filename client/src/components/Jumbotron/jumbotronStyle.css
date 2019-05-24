@@ -1,61 +1,55 @@
+@media (min-width: 1199.98px) { 
+    #mainContainer {
+        width: 1800px;
+    }
+}
+
+
 #eventMainDetail {
-background: none;
-    margin-left: -12%;
+    background: none;
+    /* margin-left: -12%; */
     padding-top: 8%;
     margin-top: 3%;
-    text-align: center;
- 
-
     font-family: 'Montserrat', sans-serif;
 }
 #conferenceInfo{
     background-image:  url("../../images/conferencePic.jpg"); 
-    /* margin-left: -10%; */
-    /* padding-top: 8%; */
-    /* margin-top: 3%;
-    padding-left: 8%; */
+    margin-top: 3%;
+    /* margin-left: -12%; */
     width: 100%;
- 
-    /* text-align: center; */
 }
 
 #blockquote {
-    /* width: 565px; */
     position: relative;
     font: 2.30rem "Montserrat";
     letter-spacing: .30rem;
-    /* float: left; */
     padding: 4px 0 10px 25px;
     border-top: 8px dotted #da5931;
     border-bottom: 8px dotted #da5931;
     -webkit-transform: rotate(-4deg);
 }
-blockquote:first-line {
-    position: absolute;
-    font: 1.60rem "Montserrat";
-    color: #000000;
-    
-}
 
+blockquote:first-line {
+    margin-left: 50%;
+    font: 2rem "Montserrat";
+    color: #000000;
+}
 blockquote:first-letter {
-    /* position: relative; */
-    font-size: 1.90rem;
-    /* text-transform: lowercase; */
+    font-size: 6rem;
     float: left;
-    padding-top: 3%;
+    padding-top: 7%;
     line-height: .60rem;
     position: relative;
-    z-index: 1;
     font-style: italic;
-    /* padding-left: 10%; */
-    letter-spacing: -.1rem;
+    padding-left: 10%;
+    letter-spacing: 2rem;
 }
 
 #fontAdminEvents{
     font-family: 'Montserrat';
     margin-top:-6%;
-    margin-left: 10%;
-  
+    /* margin-left: 10%; */
+    text-align: center;
 }
 
 #fontEvent{
@@ -65,11 +59,9 @@ blockquote:first-letter {
 #fontAdmin{
     font-family: 'Montserrat';
     font-style: italic;
-margin-left: 3%;
+    margin-left: 3%;
     text-decoration: underline;
     font-size: 24px;
-
-
 }
 
 
