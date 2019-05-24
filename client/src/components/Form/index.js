@@ -1,4 +1,5 @@
 import React from "react";
+import "./Form.css";
 
 // This file exports the Input, TextArea, and FormBtn components
 
@@ -39,7 +40,7 @@ export function CheckButton(props) {
 
 export function FormBtn(props) {
   return (
-    <button {...props} className="btn btn-primary" style={{fontFamily:"Montserrat"}}>
+    <button {...props} className="btn btn-primary ourBtn" style={{fontFamily:"Montserrat"}}>
       {props.children}
     </button>
   );

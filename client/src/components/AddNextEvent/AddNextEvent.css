@@ -1,9 +1,12 @@
 .grid-item{
   width: 45%;
-  padding: 4% 3% 4% 3%;
+  padding: 1%;
 }
 #jumbotron3 {
-    background-image:  url("../../images/eventsAdded.png");
+    background:  url("../../images/eventsAdded.png");
+    background-size: 100%;
+    padding-top: 8%;
+    padding-bottom: 8%;
 
   /* background-position: 60%; */
 
@@ -18,13 +21,13 @@
 .list-overflow-container {
   margin-top: 35%;
   width: 300;
-  min-height: 400;
-  /* max-height: 545px; */
+  /* min-height: 400; */
+  max-height: 471px;
   /* border: 3px rgb(221, 196, 53) solid; */
   border-radius: 4px;
   overflow-y: scroll;
   overflow-x: hidden;
-  font: 1.100em "Montserrat", bolder;
+  font: "Montserrat", bolder;
   border-color: rgba(248, 248, 244, 0.486);
   /* background-color: rgba(248, 248, 244, 0.486);
  */
@@ -32,7 +35,7 @@
 }
 
 #eventsAdded{  
-    text-shadow: 1px 2px 1px rgba(0,0,0,0.3);
+    /* text-shadow: 1px 2px 1px rgba(0,0,0,0.3); */
     text-align: center;
     border-radius: 10px; 
 }

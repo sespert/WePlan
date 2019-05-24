@@ -3,16 +3,15 @@
     padding-left: 3%;
 }
 #jumbotron1 {
-    background-image:  url("../../images/eventCalendar.png");
+    background:  url("../../images/eventsAdded34.png");
+    background-size: 100%;
+    background-position: 0% 6%;
+    padding-top: 8%;
+    padding-bottom: 8%;
+    background-repeat: no-repeat;
+    background-color: white;
+    position:center;
 
-/* background-position: 60%; */
-
-/* margin-top: 3%; */
-
-background-repeat: no-repeat;
-background-color: white;
-
-position:center;
 }
 
 
