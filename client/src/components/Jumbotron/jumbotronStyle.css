@@ -30,19 +30,10 @@
 }
 
 blockquote:first-line {
-    margin-left: 50%;
-    font: 2rem "Montserrat";
+    margin-left: 25%;
+    font: 3rem "Montserrat";
     color: #000000;
-}
-blockquote:first-letter {
-    font-size: 6rem;
-    float: left;
-    padding-top: 7%;
-    line-height: .60rem;
-    position: relative;
-    font-style: italic;
-    padding-left: 10%;
-    letter-spacing: 2rem;
+    line-height: 3rem;
 }
 
 #fontAdminEvents{
