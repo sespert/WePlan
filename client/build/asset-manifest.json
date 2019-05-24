@@ -1,0 +1,21 @@
+{
+  "main.css": "/static/css/main.0cea206d.chunk.css",
+  "main.js": "/static/js/main.d700e602.chunk.js",
+  "main.js.map": "/static/js/main.d700e602.chunk.js.map",
+  "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+  "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+  "static/js/2.8deceb91.chunk.js": "/static/js/2.8deceb91.chunk.js",
+  "static/js/2.8deceb91.chunk.js.map": "/static/js/2.8deceb91.chunk.js.map",
+  "index.html": "/index.html",
+  "precache-manifest.aeaf16420c8b8105326f169bbbbadb1d.js": "/precache-manifest.aeaf16420c8b8105326f169bbbbadb1d.js",
+  "service-worker.js": "/service-worker.js",
+  "static/css/main.0cea206d.chunk.css.map": "/static/css/main.0cea206d.chunk.css.map",
+  "static/media/jumbotronStyle.css": "/static/media/conferencePic.a1d65a3c.jpg",
+  "static/media/eventsAdded.png": "/static/media/eventsAdded.d2d6a6e3.png",
+  "static/media/JumbotronListEvents.css": "/static/media/eventsAdded34.4bacd698.png",
+  "static/media/image2.png": "/static/media/image2.2fdd1279.png",
+  "static/media/image3.png": "/static/media/image3.d505a141.png",
+  "static/media/logo.png": "/static/media/logo.e4b874a0.png",
+  "static/media/participantImage.png": "/static/media/participantImage.3544ab75.png",
+  "static/media/plannerImage.png": "/static/media/plannerImage.594d3d50.png"
+}
