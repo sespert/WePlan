@@ -7,6 +7,7 @@ import logo from "../../images/logo.png"
 
 export function List({ children }) {
   return (
+    
     <div className="list-overflow-container" img={logo} >
       <ul className="list-group" >{children}</ul>
       {/* <FormBtn id="addNewEvent" onClick={this.handleSubmit}>Click to add your next event  <i className="far fa-calendar-plus"></i></FormBtn>	 */}
