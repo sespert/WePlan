@@ -20,8 +20,8 @@ class QuestionUser extends Component {
             signUpCompany: '',
             signUpEmail: '',
             signUpPassword: '',
-            signInEmail:'',
-            signInPassword:'',
+            signInEmail: '',
+            signInPassword: '',
             users: [],
             referrer: null,
             userId: ''
@@ -59,7 +59,7 @@ class QuestionUser extends Component {
     }
     handleSubmit = e => {
         e.preventDefault();
-        console.log ("Entra a handle submit");
+        console.log("Entra a handle submit");
         const {
             signUpFullName,
             signUpCompany,
@@ -86,7 +86,7 @@ class QuestionUser extends Component {
             if (response.success) {
                 this.setState({
                     signUpError: response.message,
-                    userId:response._id,
+                    userId: response._id,
                     isLoading: false,
                     signUpEmail: '',
                     signUpPassword: '',
@@ -99,21 +99,21 @@ class QuestionUser extends Component {
                 }).then(data => {
                     console.log(data);
                     const response = data.data;
-                    if(response.success) {
+                    if (response.success) {
                         setInStorage('the_main_app', { token: response.token });
                         this.setState({
                             signInError: response.message,
                             isLoading: false,
-                            signInEmail:'',
+                            signInEmail: '',
                             signInPassword: '',
                             token: response.token
                         });
-                    }else{
+                    } else {
                         this.setState({
                             signInError: response.message,
                             isLoading: false
                         });
-                    }            
+                    }
                 })
             } else {
                 this.setState({
@@ -121,13 +121,13 @@ class QuestionUser extends Component {
                     isLoading: false
                 });
             };
-            
+
         })
 
     }
     componentDidMount() {
         const obj = getFromStorage('the_main_app');
-        if (obj  && obj.token) {
+        if (obj && obj.token) {
             //Verify token
             console.log(obj);
             const { token } = obj;
@@ -153,7 +153,7 @@ class QuestionUser extends Component {
     }
 
     render() {
-        const { 
+        const {
             isLoading,
             token,
             signUpError,
@@ -162,7 +162,7 @@ class QuestionUser extends Component {
             signUpEmail,
             signUpPassword,
             referrer,
-            userId       
+            userId
         } = this.state;
 
         if (isLoading) {
@@ -172,17 +172,17 @@ class QuestionUser extends Component {
         }
 
         // if ( referrer && this.state.userId ) 
-        if (!token){
+        if (!token) {
             return (
                 <div>
                     <ul className="navbar-nav flex-row ml-md-auto link-cont">
                         <li className="nav-item">
                             <a className="nav-link guide-link mr-3" href="/">Home</a>
                         </li>
-                        
+
                     </ul>
-                    
-                    <form className="col-6" id="formRegister"> 
+
+                    <form className="col-6" id="formRegister">
                         <Input id="name" name="name" placeholder="Full Name (required)" value={signUpFullName} onChange={this.onChangeSignUpFullName} />
                         <Input id="email" name="email" placeholder="Email (required)" value={signUpEmail} onChange={this.onChangeSignUpEmail} />
                         <Input id="company" name="company" placeholder="Your Company" value={signUpCompany} onChange={this.onChangeSignUpCompany} />
@@ -197,7 +197,7 @@ class QuestionUser extends Component {
                 </div>
             )
         }
-        return <Redirect to={{pathname: "/events", state: { token : this.state.token}}} />;
+        return <Redirect to={{ pathname: "/events", state: { token: this.state.token } }} />;
     }
 }
 

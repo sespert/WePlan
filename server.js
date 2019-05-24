@@ -20,27 +20,19 @@ app.use(express.urlencoded({ extended: true }));
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
+  app.use(express.static(path.join(__dirname, './client/build')))
 }
 // Add routes, both API and view
 app.use(routes);
 
 // Connect to the Mongo DB
-// mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/weplanDB");
-// mongoose.connection.once('open', function () {
-//   console.log('connection has been made, now make some fireworks...');
-//   // done();
-// }).on('error', function (error) {
-//   console.log('connection error:', error);
-// });
 
 // Send every other request to the React app
 // Define any API routes before this runs
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "/client/build/index.html"));
 });
-
 
 // Start the API server
 app.listen(PORT, function() {

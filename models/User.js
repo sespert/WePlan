@@ -2,9 +2,8 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const SALT_WORK_FACTOR = 13;
 const Schema = mongoose.Schema;
-
-const Day = require("./Day");
 const Event = require("./event");
+const Day = require("./Day");
 
 var validateEmail = function(email) {
     var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -20,11 +19,6 @@ const userSchema = new Schema({
         type: String, 
         default: "personal"
     },
-    // role: {
-    //     type: Boolean,
-    //     required: true,
-    //     default: false //false for attendee, true for admin
-    // },
     email: {
         type: String,
         trim: true,
@@ -49,32 +43,6 @@ const userSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Event"
     }]
-
-    // sched:{
-    //     day: Number,
-    //     hour: Number,
-    //     //conference or 101 or available
-    //     meetingType:{
-    //         type: String,
-    //         default: null
-    //     },
-    //     conf: [{
-    //         type: Schema.Types.ObjectId,
-    //         ref: "Conference"
-    //     }],
-    //     exhibit: [{
-    //         type: Schema.Types.ObjectId,
-    //         ref: "Exhibitor"
-    //     }]
-    // },
-    // sched:{
-    //     type:[{
-    //         type:Schema.Types.ObjectId,
-    //         ref:"Day"
-    //     }], 
-    //     required: false              
-    // },    
-   
 });
 
 // Pre save hook to hash passwords
@@ -96,15 +64,9 @@ userSchema.pre("save", function(next) {
     });
 });
 
-  // Helper method for password comparison promise based
+// Helper method for password comparison promise based
 userSchema.methods.comparePassword = function (candidatePassword) {
     return bcrypt.compareSync(candidatePassword, this.password);
-    // return new Promise((resolve, reject) => {
-    //     bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
-    //         if (err) reject(err, "passwords not a match");
-    //         return resolve(isMatch);
-    //     });
-    // });
 };
 
 const User = mongoose.model("User", userSchema);

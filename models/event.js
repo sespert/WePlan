@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-// const User = require("./User");
-
 const eventSchema = new Schema({
   admin: {
     type: Schema.Types.ObjectId,
@@ -44,7 +42,7 @@ const eventSchema = new Schema({
   exhibitors: [{
     type: Schema.Types.ObjectId,
     ref: "Exhibitor"
-  }]//implemntar llenar esto
+  }]
 });
 
 const Event = mongoose.model("Event", eventSchema);

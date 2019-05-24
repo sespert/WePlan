@@ -9,14 +9,12 @@ export function List({ children }) {
     
     <div className="list-overflow-container" img={logo} >
       <ul className="list-group" >{children}</ul>
-      {/* <FormBtn id="addNewEvent" onClick={this.handleSubmit}>Click to add your next event  <i className="far fa-calendar-plus"></i></FormBtn>	 */}
     </div>
   );
 }
 
 export function ListItem(props) {
   return (
-
       <li className="list-group-item" {...props}>
         <a onClick={()=>props.toSingleEvent(props.id)} href="#"  >
           <strong> {props.name}</strong>                     

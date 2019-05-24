@@ -9,7 +9,7 @@ import { getFromStorage, setInStorage, deleteFromStorage } from "../utils/storag
 import '../components/Nav/nav.css';
 import Jumbotron from "../components/JumbotronListEvents";
 import Jumbotron3 from "../components/AddNextEvent";
-import Title from"../components/Title";
+import Title from "../components/Title";
 
 
 class EventsList extends Component {
@@ -60,12 +60,9 @@ class EventsList extends Component {
 			});
 
 		}
-
 		console.log("state token" + this.state.token);
-
 		this.loadEvents();
 		this.loadAdminEvents(this.state.token);
-
 	}
 
 	loadEvents = () => {
@@ -84,13 +81,11 @@ class EventsList extends Component {
 			API.getEventsByAdmin(response.userId)
 				.then(res => this.setState({ adminEvents: res.data }))
 		}).catch(err => console.log(err))
-
 	}
 
 	handleSubmit = e => {
 		e.preventDefault();
 		this.setState({ referrer: '/admin' });
-		//set state of user to admin in this step and send info to DB???
 	}
 
 	handleClick = e => {
@@ -129,19 +124,16 @@ class EventsList extends Component {
 			this.setState({
 				isLoading: false
 			});
-
 		}
 	}
 
 	toSingleEvent = (id) => {
-		// e.preventDefault();
 		this.setState({ referrer: '/events/' + id });
 	}
 
 	render() {
 		const { token, referrer } = this.state;
 		if (referrer) return <Redirect to={{ pathname: referrer, state: { token: this.state.token } }} />;
-		// if (referrer && this.state.userId ) return <Redirect to={{pathname: "/admin", state: { userId : this.props.location.state.userId}}} />;
 		const listStyle = {
 			MargingTop: "50%",
 			backgroundColor: "black"
@@ -152,79 +144,74 @@ class EventsList extends Component {
 
 				<Container fluid="fluid">
 					<ul className="navbar-nav flex-row ml-md-auto link-cont">
-						{/* <li className="nav-item">
-							<a className="nav-link guide-link mr-3" href="/events">Events Guide</a>
-						</li> */}
+						
 						<li className="nav-item">
 							<a className="nav-link logout-link" href="/">Log In</a>
 						</li>
 					</ul>
 
-					{/* <button onClick={this.logout}>Logout</button> */}
-	<Title>
-					<svg width='900' height='200'>
-  <filter id='money'>
-    <feMorphology in='SourceGraphic' operator='dilate' radius='2' result='expand'/>
+					<Title>
+						<svg width='900' height='200'>
+							<filter id='money'>
+								<feMorphology in='SourceGraphic' operator='dilate' radius='2' result='expand' />
 
-    <feOffset in='expand' dx='1' dy='1' result='shadow_1'/>
-    <feOffset in='expand' dx='2' dy='2' result='shadow_2'/>
-    <feOffset in='expand' dx='3' dy='3' result='shadow_3'/>
-    <feOffset in='expand' dx='4' dy='4' result='shadow_4'/>
-    <feOffset in='expand' dx='5' dy='5' result='shadow_5'/>
-    <feOffset in='expand' dx='6' dy='6' result='shadow_6'/>
-    <feOffset in='expand' dx='7' dy='7' result='shadow_7'/>
+								<feOffset in='expand' dx='1' dy='1' result='shadow_1' />
+								<feOffset in='expand' dx='2' dy='2' result='shadow_2' />
+								<feOffset in='expand' dx='3' dy='3' result='shadow_3' />
+								<feOffset in='expand' dx='4' dy='4' result='shadow_4' />
+								<feOffset in='expand' dx='5' dy='5' result='shadow_5' />
+								<feOffset in='expand' dx='6' dy='6' result='shadow_6' />
+								<feOffset in='expand' dx='7' dy='7' result='shadow_7' />
 
-    <feMerge result='shadow'>
-      <feMergeNode in='expand'/>
-      <feMergeNode in='shadow_1'/>
-      <feMergeNode in='shadow_2'/>
-      <feMergeNode in='shadow_3'/>
-      <feMergeNode in='shadow_4'/>
-      <feMergeNode in='shadow_5'/>
-      <feMergeNode in='shadow_6'/>
-      <feMergeNode in='shadow_7'/>
-      <feMergeNode in='shadow_12'/>
-    </feMerge>
-    <feFlood flood-color='#ebe7e0'/>
-    <feComposite in2='shadow' operator='in' result='shadow'/>
+								<feMerge result='shadow'>
+									<feMergeNode in='expand' />
+									<feMergeNode in='shadow_1' />
+									<feMergeNode in='shadow_2' />
+									<feMergeNode in='shadow_3' />
+									<feMergeNode in='shadow_4' />
+									<feMergeNode in='shadow_5' />
+									<feMergeNode in='shadow_6' />
+									<feMergeNode in='shadow_7' />
+									<feMergeNode in='shadow_12' />
+								</feMerge>
+								<feFlood flood-color='#ebe7e0' />
+								<feComposite in2='shadow' operator='in' result='shadow' />
 
-    <feImage x='0' y='0' width='900' height='300' href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/78779/stripes.svg'/>
-    <feComposite in2='secondShadow' operator='in' result='secondShadow'/>
+								<feImage x='0' y='0' width='900' height='300' href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/78779/stripes.svg' />
+								<feComposite in2='secondShadow' operator='in' result='secondShadow' />
 
-    <feMerge>
-      <feMergeNode in='secondShadow'/>
-      <feMergeNode in='border'/>
-      <feMergeNode in='shadow'/>
-      <feMergeNode in='SourceGraphic'/>
-    </feMerge>
-  </filter>
+								<feMerge>
+									<feMergeNode in='secondShadow' />
+									<feMergeNode in='border' />
+									<feMergeNode in='shadow' />
+									<feMergeNode in='SourceGraphic' />
+								</feMerge>
+							</filter>
 
-  <text dominant-baseline='center' text-anchor='middle' x='50%' y='50%'>
-  Click to see the event's information
-  </text>
-</svg>
-</Title>
-<div className="container" 
-	style={{
-				backgroundColor:"rgba(240, 200, 90, 0.726)", 
-				paddingTop: "1%",
-				paddingBottom: "1%"
-				
-				}}>
-					<List  styleProp={listStyle}>
-
-						{this.state.events.map((eve, i) => {
-							return (
-								<ListItem 
-									key={i}
-									name={eve.name}
-									id={eve._id}
-									toSingleEvent={this.toSingleEvent}
-								/>
-							)
-						})}
-					</List>
-</div>
+							<text dominant-baseline='center' text-anchor='middle' x='50%' y='50%'>
+								Click to see the event's information
+							</text>
+						</svg>
+					</Title>
+					<div className="container"
+						style={{
+							backgroundColor: "rgba(240, 200, 90, 0.726)",
+							paddingTop: "1%",
+							paddingBottom: "1%"
+						}}>
+						<List styleProp={listStyle}>
+							{this.state.events.map((eve, i) => {
+								return (
+									<ListItem
+										key={i}
+										name={eve.name}
+										id={eve._id}
+										toSingleEvent={this.toSingleEvent}
+									/>
+								)
+							})}
+						</List>
+					</div>
 				</Container>
 			)
 		}
@@ -236,17 +223,13 @@ class EventsList extends Component {
 					<li className="nav-item">
 						<a className="nav-link schedule-link" onClick={this.handleClick} href="/">Your Schedule</a>
 					</li>
-
 					<li className="nav-item">
 						<a className="nav-link logout-link" onClick={this.logout} href="/">Log Out</a>
 					</li>
 				</ul>
 
-
-
 				<div className="row grid-container">
 					<div className="grid-item col-lg-6 col-12" id="currentEvent">
-
 						<Jumbotron>
 							<h1 id="currentEvents">Current Events </h1>
 							<List>
@@ -260,14 +243,9 @@ class EventsList extends Component {
 										/>
 									)
 								})}
-
 							</List>
-
-
 						</Jumbotron>
-
 					</div>
-
 
 					<div className="grid-item col-lg-6 col-12" id="eventsAdded">
 						<Jumbotron3>
@@ -283,21 +261,13 @@ class EventsList extends Component {
 										/>
 									)
 								})}
-								
+
 							</List>
-							<FormBtn id="addNewEvent" onClick={this.handleSubmit}>Click to add your next event  <i className="far fa-calendar-plus"></i></FormBtn>	
-							
+							<FormBtn id="addNewEvent" onClick={this.handleSubmit}>Click to add your next event  <i className="far fa-calendar-plus"></i></FormBtn>
+
 						</Jumbotron3>
 					</div>
-
-
-
-
 				</div>
-
-
-
-
 			</Container>
 		)
 	}

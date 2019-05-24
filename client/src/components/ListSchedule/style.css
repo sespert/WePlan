@@ -26,10 +26,6 @@
   
   }
   
-  /* .list-overflow-container li a {
-    color: #2A878C;
-  } */
-  
   .list-overflow-container li:first-child {
     border-top: none;
   
