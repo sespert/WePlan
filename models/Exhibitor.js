@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
 const DayExhibit = require("./DayExhibit");
-// const Event = require("./Event");
 
 const exhibitorSchema = new Schema ({
     name: {
@@ -18,8 +16,6 @@ const exhibitorSchema = new Schema ({
         required: true
     },
     sched: []
-    
-
 });
 
 const Exhibitor = mongoose.model("Exhibitor", exhibitorSchema);

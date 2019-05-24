@@ -5,7 +5,6 @@ module.exports = {
   findAll: function(req, res) {
     db.Event
       .find(req.query)
-      // .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -47,9 +46,6 @@ module.exports = {
   create: function(req, res) {
     db.Event
       .create(req.body)
-      // .then(function(dbEvent) {
-      //   return db.User.findOneAndUpdate({_id: req.params.id}, {event: dbEvent._id}, {new:true});
-      // })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

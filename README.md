@@ -2,7 +2,7 @@
 
 ### *Let's organize your convention...the easy way*
 
-![screenshot]()
+![screenshot](https://github.com/sespert/WePlan/blob/master/client/src/images/home.png)
 
 ## Final Project - Full Stack Development Program University of Miami Cohort 2019
 
@@ -26,8 +26,6 @@ The attendee, on the other hand, can see all the events hosted in our site, and 
 - Registration and login features to access events created and schedule.
 - Easy manage of the schedule, by adding or deleting conferences of interest.
 
-
-![gif of app flow]()
  
 ### Motivation
 
@@ -48,7 +46,7 @@ Back End (Fabian & Shirley): MongoDB and Mongoose configuration, API calls and H
 
 Front End (Diana): Pages styling and design, React component rendering.
 
-[See the app in action here]()
+[See the app in action here](https://weplan-app.herokuapp.com/)
 
 ## Copyright
 Fabian Diaz, Shirley Espert Galarce & Diana Pachon.

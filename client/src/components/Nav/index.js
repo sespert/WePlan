@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import './nav.css';
 import logo from '../../images/logo.png'
 
-
-
 class Nav extends Component {
 
   render() {
@@ -16,7 +14,6 @@ class Nav extends Component {
       partial = <li className="nav-item-2">
         <a className="nav-link3" href="/">Log In</a>
       </li>
-
     }
     return (
       <nav id="navBar" className="navbar navbar-expand-lg">

@@ -5,10 +5,7 @@ function Title({ children } ){
     return(
     <div id="titleFont"
     className="container">
-    
-
          {children}
-
     </div>
     );
 };

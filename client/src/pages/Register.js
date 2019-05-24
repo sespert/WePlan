@@ -1,19 +1,19 @@
 import React from "react";
 import { Container } from "../components/Grid";
 import QuestionUser from "../components/QuestionUser";
-import RegisterContainer from"../components/RegisterContainer";
+import RegisterContainer from "../components/RegisterContainer";
 
 function Register() {
-    
+
     return (
 
-        <Container fluid="fluid">  
+        <Container fluid="fluid">
 
-<RegisterContainer />
+            <RegisterContainer />
 
-            <QuestionUser/>
-           
-        </Container>           
+            <QuestionUser />
+
+        </Container>
     );
 }
 

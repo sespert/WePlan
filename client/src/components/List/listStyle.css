@@ -2,22 +2,16 @@
     margin-top: 35%;
     width: 300;
     height: 150;
-    /* max-height: 200px; */
-    /* border: 3px rgb(221, 196, 53) solid; */
     border-radius: 4px;
     overflow-y: scroll;
     overflow-x: hidden;
     font: 1.100rem "Montserrat", bolder;
     border-color: rgba(248, 248, 244, 0.486);
-    /* background-color: rgba(248, 248, 244, 0.486);
-   */
-  
   }
   
   .list-overflow-container ul {
     margin: 40px;
     border-color: rgba(248, 248, 244, 0.486);
-    
   }
   
   .list-overflow-container li {
@@ -28,7 +22,6 @@
     background-color: rgba(248, 248, 244, 0.486);
     border-color: rgba(248, 248, 244, 0.486);
     color: black;
-
   }
   
   .list-overflow-container li * {
@@ -40,23 +33,7 @@
   }
 
   .list-group-item{
-    /* margin-left: 10%;
-    margin-top: 3%;
-    padding-left: 20%;
-    padding-top: 3%; */
     border-color: rgba(248, 248, 244, 0.486), solid, 1px ;
     background: rgba(248, 192, 36, 0.897);
   }
-
-  /* .list-overflow-container li a {
-    color: #2A878C;
-  } */
-  
-  /* .list-overflow-container li:first-child {
-    border-top: none;
-  } */
-  
-  /* .list-overflow-container li:last-child {
-    border-bottom: none;
-  } */
   

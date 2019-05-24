@@ -56,9 +56,6 @@ export default {
   findConferenceSession: function (sessionToken) {
     return axios.get("/api/user/findsession/"+ sessionToken);
   },
-  // getUserByEmail: function(email) {
-  //   return axios.get("/api/user", email);
-  // },
   //Save user info (2)
   saveUser: function(userData) {    
     return axios.post("/api/user", userData);
@@ -72,12 +69,7 @@ export default {
   getConferencesbyUserId: function(id) {
     return axios.get("/api/user/" + id);
   },
-  // deleteConfFromUser: function(params) {
-  //   return axios.delete("/api/user/", params);
-  // }
   deleteConfFromUser: function(data) {
     return axios.put("/api/user/conf", data);
   }
-  
-  
 };
