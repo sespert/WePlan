@@ -441,9 +441,7 @@ class SingleEvent extends Component {
                     <h1 id="fontAdminEvents">
                      {this.state.eName} </h1>
                     <List>
-                        <div id="fontEvent">
                         <ListItem 
-                        
                             key={this.state.eId}
                             place={this.state.ePlace}
                             subject={this.state.eSubject}
@@ -452,7 +450,6 @@ class SingleEvent extends Component {
                             endDate={lengthDays}
                             eFirstDay={firstDay}
                         />
-                         </div>
                     </List>
                    
                 </Jumbotron>

@@ -1,7 +1,6 @@
 import React , { Component } from "react";
 import { Container } from "../components/Grid";
 import { Redirect } from "react-router-dom";
-// import { List, ListItem } from "../components/ListEvent";
 import { ConferenceList, ConferenceListItem } from "../components/ListSchedule";
 import API from "../utils/API";
 import moment from 'moment';
@@ -176,7 +175,7 @@ class UserEvent extends Component {
 					</li>
 				</ul>
                 <div className='jumbotron' style={{backgroundImage: "url("+bg+")"}}>
-                <h1 style={{textAlign: "center"}}>See your schedule</h1>
+                <h1 style={{textAlign: "center", fontFamily: "Montserrat"}}>See your schedule</h1>
                 <a href={"events/" + this.state._id}>
                         <strong>
                           {this.state.name}

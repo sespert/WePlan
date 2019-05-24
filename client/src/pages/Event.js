@@ -3,7 +3,7 @@ import Jumbotron from "../components/Jumbotron";
 import "../../src/components/FormLogin/formLogin.css";
 import API from "../utils/API";
 import { Redirect } from "react-router-dom";
-import { Container, Row , Col} from "../components/Grid";
+// import { Container, Row , Col} from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import EventBodyInfo from"../components/EventBodyInfo";
 import '../components/Nav/nav.css';
@@ -82,8 +82,8 @@ class Event extends Component {
 		const obj = getFromStorage('the_main_app');
 		console.log(obj);
         if (obj  && obj.token) {
-            //Verify token
-            
+			
+			//Verify token
             const { token } = obj;
             axios.get('api/user/verify?token=' + token).then(data => {
 
@@ -146,7 +146,8 @@ class Event extends Component {
 		if (!token) {
 			return (
 
-				<Container>					
+				// <Container>
+				<div className="container" id="mainContainer">					
 					<ul className="navbar-nav flex-row ml-md-auto link-cont">		
 						<li className="nav-item">
 							<a className="nav-link guide-link mr-3" onClick={this.setTokenToZero} href="/events">Events Guide</a>
@@ -156,13 +157,13 @@ class Event extends Component {
 						</li>
 					</ul>
 
-					<div class="row justify-content-start">
-   					 <div class="col-12 col-sm-6 "  id="conferenceInfo">
+					<div className="row justify-content-start">
+   					 <div className="col-12 col-sm-7"  id="conferenceInfo">
 					<Jumbotron>
 
 						<blockquote id="blockquote">
 		
-							<strong>Event</strong>  <em>information</em>
+							<strong>Event</strong> <br></br> <em>information</em>
 				
 						</blockquote>
 						<br/>
@@ -184,7 +185,7 @@ class Event extends Component {
 					
 					</Jumbotron>
 					</div>
-					<div class="col-12 col-sm-6 ">
+					<div className="col-12 col-sm-5">
 					<form id="form1">
 						
 						{
@@ -211,7 +212,8 @@ class Event extends Component {
 					</div>
 					<EventBodyInfo /> 
 
-				</Container>
+				{/* </Container> */}
+				</div>
 			);
 		} 
 		

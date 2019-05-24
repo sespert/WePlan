@@ -20,7 +20,7 @@ export function ListItem(props) {
     <Container>
       <Row>
         
-        <Col size="xs-8 sm-9">
+        <Col size="xs-8 sm-12">
           
           <h4>Location: {props.place}</h4>
 
