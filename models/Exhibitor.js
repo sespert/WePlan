@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const DayExhibit = require("./dayExhibit");
+const DayExhibit = require("./DayExhibit");
 // const Event = require("./Event");
 
 const exhibitorSchema = new Schema ({
