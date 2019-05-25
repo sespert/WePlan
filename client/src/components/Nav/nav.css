@@ -19,13 +19,11 @@ a:hover {
     top:5.2%;
     right: 1%;
 }
-
 .nav-link3{
     font-family:"Montserrat";
     font-size: 30px;
     color:  rgb(7, 63, 7);
     text-shadow: 2px 2px 5px wheat;
-    
 }
 #legend{
     font-family:"Montserrat";
@@ -35,8 +33,6 @@ a:hover {
     /* margin-bottom: -70px; */
     margin-left: 250px;
 }
-
-
 @media screen and (min-width:1260px) {
     #legend{
         font-family:"Montserrat";
@@ -68,7 +64,6 @@ a:hover {
         /* margin-bottom: -70px; */
         margin-left: -10px;
     }
-
     .nav-link{
         font-size: 23px;
     }
@@ -86,7 +81,6 @@ a:hover {
         top: 60%;
         right: 5%
     }
-    
     .nav-link{
         font-size: 20px;
     }

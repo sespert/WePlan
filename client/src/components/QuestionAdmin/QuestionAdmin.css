@@ -3,11 +3,10 @@ margin-left: 50%;
 background-color: rgb(216, 97, 67);
 font-family: "Montserrat", bolder;
 }
-
-#addNewEvent:hover {background-color:  rgb(216, 97, 67)}
-
+#addNewEvent:hover {
+  background-color:  rgb(216, 97, 67)
+}
 #createE:active {
-    background-color: rgb(216, 97, 67);
-  
-    transform: translateY(2px);
-  }
+  background-color: rgb(216, 97, 67);
+  transform: translateY(2px);
+}

@@ -8,13 +8,6 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  // find: function(req, res) {
-  //   db.User
-  //     .find({ email: { $elemMatch: req.query } })
-       
-  //     .then(dbModel => res.json(dbModel))
-  //     .catch(err => res.status(422).json(err));
-  // },
   find: (req, res, next) => {
     // Get the token
     const { query } = req;
@@ -43,7 +36,6 @@ module.exports = {
             });
         }
     })
-
   },
 
   findById: function(req, res) {
@@ -68,21 +60,12 @@ module.exports = {
                     message: 'Error: server error'
                 });
             }
-            
                 res.send({
                 success: true,
                 userId: sessions.userId
             })
       })
   },
-  // create: function(req, res) {
-  //   db.User
-  //   // .save(req.body)
-  //     .create(req.body)
-  //     .then(dbModel => res.json(dbModel))
-  //     .catch(err => res.status(422).json(err));
-      
-  // },
   create: (req, res, next) => {
     const { body } = req;
     const {

@@ -1,4 +1,4 @@
-import React , { Component } from "react";
+import React, { Component } from "react";
 import Jumbotron from "../components/Jumbotron";
 import { Container } from "../components/Grid";
 import { List, ListItem } from "../components/ListEvent";
@@ -12,15 +12,13 @@ import { getFromStorage } from "../utils/storage";
 import SweetAlert from 'react-bootstrap-sweetalert';
 
 
-//TO DO: display all events of user by default?
-
 class AdminEvent extends Component {
-    
+
     constructor(props) {
         super(props);
 
         this.state = {
-            eAdmin:"",
+            eAdmin: "",
             ePlace: "",
             eSubject: "",
             eDate: "",
@@ -28,18 +26,18 @@ class AdminEvent extends Component {
             eNumOfDays: "",
             eStartTime: "",
             eEndTime: "",
-            conferences : [],       
+            conferences: [],
             referrer: null,
             userId: null,
         }
 
-        this.handler=this.handler.bind(this);
+        this.handler = this.handler.bind(this);
     }
 
-    componentDidMount () {
+    componentDidMount() {
         const obj = getFromStorage('the_main_app');
-        const { token }= obj;
-        API.findEventSession(token).then(data => {           
+        const { token } = obj;
+        API.findEventSession(token).then(data => {
             const response = data.data;
             this.setState({
                 userId: response.userId
@@ -48,43 +46,43 @@ class AdminEvent extends Component {
         this.loadEventInfo(this.state.eId);
         this.loadConferences(this.state.eId);
     }
-   
+
     //Helper function to load the info of the current event
     loadEventInfo = id => {
         API.getEventsbyId(id)
-        .then(res => {            
-            this.setState({ 
-                eAdmin: res.data.admin,
-                ePlace: res.data.place,
-                eSubject: res.data.subject,
-                eDate: res.data.date,
-                eId: res.data._id,
-                eNumOfDays: res.data.numOfDays,
-                eStartTime: res.data.startTime,
-                eEndTime: res.data.endTime,
+            .then(res => {
+                this.setState({
+                    eAdmin: res.data.admin,
+                    ePlace: res.data.place,
+                    eSubject: res.data.subject,
+                    eDate: res.data.date,
+                    eId: res.data._id,
+                    eNumOfDays: res.data.numOfDays,
+                    eStartTime: res.data.startTime,
+                    eEndTime: res.data.endTime,
 
-            });
-         
-        })
-        .catch(err => console.log(err));
+                });
+
+            })
+            .catch(err => console.log(err));
     }
 
     //Helper function to load the conferences for the current event
     loadConferences = id => {
         API.getConferencesbyEvent(id)
-        .then(res=>    
-            this.setState({ conferences: res.data.conferences }))
-        .catch(err => console.log(err));
+            .then(res =>
+                this.setState({ conferences: res.data.conferences }))
+            .catch(err => console.log(err));
     }
-  
+
 
     handleChange = e => {
-        this.setState({[e.target.name] :  e.target.value})
+        this.setState({ [e.target.name]: e.target.value })
     }
 
     handleSubmit = e => {
         e.preventDefault();
-        this.setState({referrer: '/events'});
+        this.setState({ referrer: '/events' });
     }
 
     handleDelBtn = e => {
@@ -93,20 +91,20 @@ class AdminEvent extends Component {
         const idBtn = e.target.id;
 
         const getAlert = () => (
-            <SweetAlert 
-            warning
-            showCancel
-            confirmBtnText="Yes, delete it!"
-            confirmBtnBsStyle="danger"
-            cancelBtnBsStyle="default"
-            title="Are you sure?"
-            onConfirm={() => this.deleteFile(idBtn)}
-            onCancel={() => this.hideAlert()}
+            <SweetAlert
+                warning
+                showCancel
+                confirmBtnText="Yes, delete it!"
+                confirmBtnBsStyle="danger"
+                cancelBtnBsStyle="default"
+                title="Are you sure?"
+                onConfirm={() => this.deleteFile(idBtn)}
+                onCancel={() => this.hideAlert()}
             >
                 You will not be able to recover this conference!
             </SweetAlert>
         );
-    
+
         this.setState({
             alert: getAlert()
         });
@@ -116,34 +114,34 @@ class AdminEvent extends Component {
         this.hideAlert();
 
         API.deleteConference(id)
-        .then(res => {
-            this.loadConferences(this.state.eId);
-        })            
-        .catch(err => console.log(err))
+            .then(res => {
+                this.loadConferences(this.state.eId);
+            })
+            .catch(err => console.log(err))
     }
 
     hideAlert() {
         console.log('Hiding alert...');
         this.setState({
-          alert: null
+            alert: null
         });
     }
-    
+
     handler = () => {
         this.loadConferences(this.state.eId);
     }
 
-    render() {       
-        const {referrer} = this.state;
+    render() {
+        const { referrer } = this.state;
         if (referrer) return <Redirect to={referrer} />;
-        const eventTime = moment(this.state.eDate, "YYYY MM DD").format('MMMM DD YYYY'); 
+        const eventTime = moment(this.state.eDate, "YYYY MM DD").format('MMMM DD YYYY');
         const lengthDays = moment(this.state.eDate, "YYYY MM DD").add(this.state.eNumOfDays, 'days').format('MMMM DD YYYY');
-        const firstDay = moment(this.state.eDate, "YYYY MM DD").format('MMMM DD'); 
-       
+        const firstDay = moment(this.state.eDate, "YYYY MM DD").format('MMMM DD');
+
 
         return (
             <Container>
-             
+
                 <Jumbotron>
                     <h1 id>Add conferences to {this.state.eName} </h1>
                     <List>
@@ -156,18 +154,11 @@ class AdminEvent extends Component {
                             endDate={lengthDays}
                             eFirstDay={firstDay}
                         />
-                       
                     </List>
-   
-    
                 </Jumbotron>
-
-
-
-
                 <h3>Fill the form with the information of a conference of {this.state.eName}</h3>
 
-                <Conference eventId={this.state.eId} handler={this.handler}/>
+                <Conference eventId={this.state.eId} handler={this.handler} />
                 <FormBtn onClick={this.handleSubmit}>Go to List of Events</FormBtn>
 
                 <ConferenceList>
@@ -182,9 +173,9 @@ class AdminEvent extends Component {
                                 date={elem.day}
                                 time={elem.time}
                                 duration={elem.duration}
-                                id = {elem._id}
+                                id={elem._id}
                                 delVal={"a"}
-                                handleDelBtn = {this.handleDelBtn} 
+                                handleDelBtn={this.handleDelBtn}
                             />)
                     })}
                 </ConferenceList>
@@ -192,9 +183,6 @@ class AdminEvent extends Component {
 
             </Container>
         )
-             
-                      
-        
     }
 }
 

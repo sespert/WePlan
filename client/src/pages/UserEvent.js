@@ -22,7 +22,6 @@ class UserEvent extends Component {
             referrer: null
         }
         this.logout=this.logout.bind(this);
-
     }
 
     componentDidMount() {
@@ -49,7 +48,7 @@ class UserEvent extends Component {
 
     }
 
-
+    //Helper function to load the conferences selected by the user
     loadConferences = id => {
         const list = [];
         API.getConferencesbyUserId(id) 
@@ -60,7 +59,6 @@ class UserEvent extends Component {
                 API.getEventsbyId(elem.eventId).then(
                     res => {
                         list.push(res.data.name);
-
                     })
             })
         })
@@ -95,9 +93,10 @@ class UserEvent extends Component {
         this.setState({
             alert: getAlert()
         }); 
-     
     }
 
+    //If user wants to remove a conference from his schedule, this function triggers the delete and
+    //updates the schedule
     deleteFile(id) {
         this.hideAlert();
         console.log("id: " + id);
@@ -117,7 +116,6 @@ class UserEvent extends Component {
         this.setState({
           alert: null
         });
-
     }
 
     logout() {
@@ -165,8 +163,6 @@ class UserEvent extends Component {
         
         let bg = require('../images/eventsAdded.png');
 
-
-        
         return (
             <Container > 
                 <ul className="navbar-nav flex-row ml-md-auto link-cont" >					
@@ -206,7 +202,6 @@ class UserEvent extends Component {
                <FormBtn onClick={this.handleSubmit}>Go to List of Events</FormBtn> 
                </div>
             </Container> 
-            
         )
     }
 }

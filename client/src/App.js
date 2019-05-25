@@ -20,7 +20,6 @@ function App() {
           <Route path="/register" component={Register} />
           <Route exact path="/events" component={List} />
           <Route exact path="/admin" component={Admin} />
-          {/* <Route exact path="/admin/:token" component={Admin} /> */}
           <Route path="/admin/events/:id" component={AdminEvent} />
           <Route path="/events/:id" component={SingleEvent} />          
           <Route path="/user/events/:id" component={UserEvent} />
