@@ -6,14 +6,14 @@ text {
   font-weight: 300;
 }
 
-#buttonsEvent{
+/* #buttonsEvent{
     margin-left: 30%;
  font-family: "Montserrat", bolder;   
  margin-top: -6%;
  background-color: rgb(216, 97, 67);
  font-family: "Montserrat", bolder;
  border: none;
-}
+} */
 .btn:hover {
   background-color:  rgb(216, 97, 67)
 }
