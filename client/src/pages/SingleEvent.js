@@ -279,53 +279,53 @@ class SingleEvent extends Component {
 
                     <Jumbotron>
 
-                    <div className="row">
-							<div className="col-1"></div>
-							<div className="col-10">
-                        <svg width='100%' height='auto'>
-                            <filter id='money'>
-                                <feMorphology in='SourceGraphic' operator='dilate' radius='2' result='expand' />
+                        <div className="row">
+                            <div className="col-1"></div>
+                            <div className="col-10">
+                                <svg width='100%' height='auto'>
+                                    <filter id='money'>
+                                        <feMorphology in='SourceGraphic' operator='dilate' radius='2' result='expand' />
 
-                                <feOffset in='expand' dx='1' dy='1' result='shadow_1' />
-                                <feOffset in='expand' dx='2' dy='2' result='shadow_2' />
-                                <feOffset in='expand' dx='3' dy='3' result='shadow_3' />
-                                <feOffset in='expand' dx='4' dy='4' result='shadow_4' />
-                                <feOffset in='expand' dx='5' dy='5' result='shadow_5' />
-                                <feOffset in='expand' dx='6' dy='6' result='shadow_6' />
-                                <feOffset in='expand' dx='7' dy='7' result='shadow_7' />
+                                        <feOffset in='expand' dx='1' dy='1' result='shadow_1' />
+                                        <feOffset in='expand' dx='2' dy='2' result='shadow_2' />
+                                        <feOffset in='expand' dx='3' dy='3' result='shadow_3' />
+                                        <feOffset in='expand' dx='4' dy='4' result='shadow_4' />
+                                        <feOffset in='expand' dx='5' dy='5' result='shadow_5' />
+                                        <feOffset in='expand' dx='6' dy='6' result='shadow_6' />
+                                        <feOffset in='expand' dx='7' dy='7' result='shadow_7' />
 
-                                <feMerge result='shadow'>
-                                    <feMergeNode in='expand' />
-                                    <feMergeNode in='shadow_1' />
-                                    <feMergeNode in='shadow_2' />
-                                    <feMergeNode in='shadow_3' />
-                                    <feMergeNode in='shadow_4' />
-                                    <feMergeNode in='shadow_5' />
-                                    <feMergeNode in='shadow_6' />
-                                    <feMergeNode in='shadow_7' />
-                                    <feMergeNode in='shadow_12' />
-                                </feMerge>
-                                <feFlood flood-color='#ebe7e0' />
-                                <feComposite in2='shadow' operator='in' result='shadow' />
+                                        <feMerge result='shadow'>
+                                            <feMergeNode in='expand' />
+                                            <feMergeNode in='shadow_1' />
+                                            <feMergeNode in='shadow_2' />
+                                            <feMergeNode in='shadow_3' />
+                                            <feMergeNode in='shadow_4' />
+                                            <feMergeNode in='shadow_5' />
+                                            <feMergeNode in='shadow_6' />
+                                            <feMergeNode in='shadow_7' />
+                                            <feMergeNode in='shadow_12' />
+                                        </feMerge>
+                                        <feFlood flood-color='#ebe7e0' />
+                                        <feComposite in2='shadow' operator='in' result='shadow' />
 
-                                <feImage x='0' y='0' width='900' height='300' href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/78779/stripes.svg' />
-                                <feComposite in2='secondShadow' operator='in' result='secondShadow' />
+                                        <feImage x='0' y='0' width='900' height='300' href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/78779/stripes.svg' />
+                                        <feComposite in2='secondShadow' operator='in' result='secondShadow' />
 
-                                <feMerge>
-                                    <feMergeNode in='secondShadow' />
-                                    <feMergeNode in='border' />
-                                    <feMergeNode in='shadow' />
-                                    <feMergeNode in='SourceGraphic' />
-                                </feMerge>
-                            </filter>
+                                        <feMerge>
+                                            <feMergeNode in='secondShadow' />
+                                            <feMergeNode in='border' />
+                                            <feMergeNode in='shadow' />
+                                            <feMergeNode in='SourceGraphic' />
+                                        </feMerge>
+                                    </filter>
 
-                            <text dominant-baseline='center' text-anchor='middle' x='50%' y='50%'>
-                                {this.state.eName}
-                            </text>
-                        </svg>
+                                    <text dominant-baseline='center' text-anchor='middle' x='50%' y='50%'>
+                                        {this.state.eName}
+                                    </text>
+                                </svg>
+                            </div>
+                            <div className="col-1"></div>
                         </div>
-							<div className="col-1"></div>
-							</div>
 
                         <div className="container" id="font"
                             style={{
@@ -399,47 +399,53 @@ class SingleEvent extends Component {
                     </li>
                 </ul>
                 <Jumbotron>
-                    <svg width='900' height='200'>
-                        <filter id='money'>
-                            <feMorphology in='SourceGraphic' operator='dilate' radius='2' result='expand' />
+                    <div className="row">
+                        <div className="col-1"></div>
+                        <div className="col-10">
+                            <svg width='100%' height='auto'>
+                                <filter id='money'>
+                                    <feMorphology in='SourceGraphic' operator='dilate' radius='2' result='expand' />
 
-                            <feOffset in='expand' dx='1' dy='1' result='shadow_1' />
-                            <feOffset in='expand' dx='2' dy='2' result='shadow_2' />
-                            <feOffset in='expand' dx='3' dy='3' result='shadow_3' />
-                            <feOffset in='expand' dx='4' dy='4' result='shadow_4' />
-                            <feOffset in='expand' dx='5' dy='5' result='shadow_5' />
-                            <feOffset in='expand' dx='6' dy='6' result='shadow_6' />
-                            <feOffset in='expand' dx='7' dy='7' result='shadow_7' />
+                                    <feOffset in='expand' dx='1' dy='1' result='shadow_1' />
+                                    <feOffset in='expand' dx='2' dy='2' result='shadow_2' />
+                                    <feOffset in='expand' dx='3' dy='3' result='shadow_3' />
+                                    <feOffset in='expand' dx='4' dy='4' result='shadow_4' />
+                                    <feOffset in='expand' dx='5' dy='5' result='shadow_5' />
+                                    <feOffset in='expand' dx='6' dy='6' result='shadow_6' />
+                                    <feOffset in='expand' dx='7' dy='7' result='shadow_7' />
 
-                            <feMerge result='shadow'>
-                                <feMergeNode in='expand' />
-                                <feMergeNode in='shadow_1' />
-                                <feMergeNode in='shadow_2' />
-                                <feMergeNode in='shadow_3' />
-                                <feMergeNode in='shadow_4' />
-                                <feMergeNode in='shadow_5' />
-                                <feMergeNode in='shadow_6' />
-                                <feMergeNode in='shadow_7' />
-                                <feMergeNode in='shadow_12' />
-                            </feMerge>
-                            <feFlood flood-color='#ebe7e0' />
-                            <feComposite in2='shadow' operator='in' result='shadow' />
+                                    <feMerge result='shadow'>
+                                        <feMergeNode in='expand' />
+                                        <feMergeNode in='shadow_1' />
+                                        <feMergeNode in='shadow_2' />
+                                        <feMergeNode in='shadow_3' />
+                                        <feMergeNode in='shadow_4' />
+                                        <feMergeNode in='shadow_5' />
+                                        <feMergeNode in='shadow_6' />
+                                        <feMergeNode in='shadow_7' />
+                                        <feMergeNode in='shadow_12' />
+                                    </feMerge>
+                                    <feFlood flood-color='#ebe7e0' />
+                                    <feComposite in2='shadow' operator='in' result='shadow' />
 
-                            <feImage x='0' y='0' width='800' height='200' href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/78779/stripes.svg' />
-                            <feComposite in2='secondShadow' operator='in' result='secondShadow' />
+                                    <feImage x='0' y='0' width='800' height='200' href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/78779/stripes.svg' />
+                                    <feComposite in2='secondShadow' operator='in' result='secondShadow' />
 
-                            <feMerge>
-                                <feMergeNode in='secondShadow' />
-                                <feMergeNode in='border' />
-                                <feMergeNode in='shadow' />
-                                <feMergeNode in='SourceGraphic' />
-                            </feMerge>
-                        </filter>
+                                    <feMerge>
+                                        <feMergeNode in='secondShadow' />
+                                        <feMergeNode in='border' />
+                                        <feMergeNode in='shadow' />
+                                        <feMergeNode in='SourceGraphic' />
+                                    </feMerge>
+                                </filter>
 
-                        <text dominant-baseline='middle' text-anchor='middle' x='50%' y='50%'>
-                            Add Conference to
-                        </text>
-                    </svg>
+                                <text dominant-baseline='middle' text-anchor='middle' x='50%' y='50%'>
+                                    Add Conference to
+                                </text>
+                            </svg>
+                        </div>
+                        <div className="col-1"></div>
+                    </div>
                     <h1 id="fontAdminEvents">
                         {this.state.eName} </h1>
                     <List>
