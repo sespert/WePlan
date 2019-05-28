@@ -279,8 +279,10 @@ class SingleEvent extends Component {
 
                     <Jumbotron>
 
-
-                        <svg width='900' height='200'>
+                    <div className="row">
+							<div className="col-1"></div>
+							<div className="col-10">
+                        <svg width='100%' height='auto'>
                             <filter id='money'>
                                 <feMorphology in='SourceGraphic' operator='dilate' radius='2' result='expand' />
 
@@ -321,6 +323,10 @@ class SingleEvent extends Component {
                                 {this.state.eName}
                             </text>
                         </svg>
+                        </div>
+							<div className="col-1"></div>
+							</div>
+
                         <div className="container" id="font"
                             style={{
                                 backgroundColor: "rgba(240, 200, 90, 0.726)",

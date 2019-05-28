@@ -151,7 +151,10 @@ class EventsList extends Component {
 					</ul>
 
 					<Title>
-						<svg width='900' height='200'>
+						<div className="row">
+							<div className="col-1"></div>
+							<div className="col-10">
+						<svg width='100%' height='auto'>
 							<filter id='money'>
 								<feMorphology in='SourceGraphic' operator='dilate' radius='2' result='expand' />
 
@@ -187,11 +190,16 @@ class EventsList extends Component {
 									<feMergeNode in='SourceGraphic' />
 								</feMerge>
 							</filter>
-
+							
 							<text dominant-baseline='center' text-anchor='middle' x='50%' y='50%'>
 								Click to see the event's information
 							</text>
+							
+	
 						</svg>
+						</div>
+							<div className="col-1"></div>
+							</div>
 					</Title>
 					<div className="container"
 						style={{
