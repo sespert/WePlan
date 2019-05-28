@@ -7,11 +7,13 @@ import image3 from '../../images/image3.png'
 // That way we don't have to define them all individually
 function EventBodyInfo() {
   return (
-    <div className="container2">
-
-      <img className="card__image" id="cardImage1" src={image2} alt="" />
-
-      <img className="cardimage1" id="cardImage2" src={image3} alt="" />
+    <div className="container2 row">
+      <div className="col-12 col-md-6">
+        <img className="card__image img-fluid" id="cardImage1" src={image2} alt="" />
+      </div>
+      <div className="col-12 col-md-6">
+        <img className="cardimage1 img-fluid" id="cardImage2" src={image3} alt="" />
+      </div>
 
     </div>
   );
