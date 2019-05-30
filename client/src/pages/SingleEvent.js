@@ -279,64 +279,18 @@ class SingleEvent extends Component {
 
                     <Jumbotron>
 
-                        <div className="row">
-                            <div className="col-1"></div>
-                            <div className="col-10">
-                                <svg width='100%' height='auto'>
-                                    <filter id='money'>
-                                        <feMorphology in='SourceGraphic' operator='dilate' radius='2' result='expand' />
-
-                                        <feOffset in='expand' dx='1' dy='1' result='shadow_1' />
-                                        <feOffset in='expand' dx='2' dy='2' result='shadow_2' />
-                                        <feOffset in='expand' dx='3' dy='3' result='shadow_3' />
-                                        <feOffset in='expand' dx='4' dy='4' result='shadow_4' />
-                                        <feOffset in='expand' dx='5' dy='5' result='shadow_5' />
-                                        <feOffset in='expand' dx='6' dy='6' result='shadow_6' />
-                                        <feOffset in='expand' dx='7' dy='7' result='shadow_7' />
-
-                                        <feMerge result='shadow'>
-                                            <feMergeNode in='expand' />
-                                            <feMergeNode in='shadow_1' />
-                                            <feMergeNode in='shadow_2' />
-                                            <feMergeNode in='shadow_3' />
-                                            <feMergeNode in='shadow_4' />
-                                            <feMergeNode in='shadow_5' />
-                                            <feMergeNode in='shadow_6' />
-                                            <feMergeNode in='shadow_7' />
-                                            <feMergeNode in='shadow_12' />
-                                        </feMerge>
-                                        <feFlood flood-color='#ebe7e0' />
-                                        <feComposite in2='shadow' operator='in' result='shadow' />
-
-                                        <feImage x='0' y='0' width='900' height='300' href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/78779/stripes.svg' />
-                                        <feComposite in2='secondShadow' operator='in' result='secondShadow' />
-
-                                        <feMerge>
-                                            <feMergeNode in='secondShadow' />
-                                            <feMergeNode in='border' />
-                                            <feMergeNode in='shadow' />
-                                            <feMergeNode in='SourceGraphic' />
-                                        </feMerge>
-                                    </filter>
-
-                                    <text dominant-baseline='center' text-anchor='middle' x='50%' y='50%'>
-                                        {this.state.eName}
-                                    </text>
-                                </svg>
-                            </div>
-                            <div className="col-1"></div>
-                        </div>
+                    <h3 id="effectFontBackground1"> {this.state.eName} </h3>
 
                         <div className="container" id="font"
                             style={{
                                 backgroundColor: "rgba(240, 200, 90, 0.726)",
-                                paddingTop: "1%",
-                                paddingBottom: "1%",
+                                paddingTop: "0%",
+                                paddingBottom: "4%",
 
                             }}>
                         </div>
-
-                        <h1 id="font" style={{ fontFamily: 'Montserrat' }}>Choose the conference you want to Attend</h1>
+<br/>
+                 <h3> Choose the conference you want to Attend</h3>
 
                         <List>
                             <ListItem
@@ -399,55 +353,10 @@ class SingleEvent extends Component {
                     </li>
                 </ul>
                 <Jumbotron>
-                    <div className="row">
-                        <div className="col-1"></div>
-                        <div className="col-10">
-                            <svg width='100%' height='auto'>
-                                <filter id='money'>
-                                    <feMorphology in='SourceGraphic' operator='dilate' radius='2' result='expand' />
-
-                                    <feOffset in='expand' dx='1' dy='1' result='shadow_1' />
-                                    <feOffset in='expand' dx='2' dy='2' result='shadow_2' />
-                                    <feOffset in='expand' dx='3' dy='3' result='shadow_3' />
-                                    <feOffset in='expand' dx='4' dy='4' result='shadow_4' />
-                                    <feOffset in='expand' dx='5' dy='5' result='shadow_5' />
-                                    <feOffset in='expand' dx='6' dy='6' result='shadow_6' />
-                                    <feOffset in='expand' dx='7' dy='7' result='shadow_7' />
-
-                                    <feMerge result='shadow'>
-                                        <feMergeNode in='expand' />
-                                        <feMergeNode in='shadow_1' />
-                                        <feMergeNode in='shadow_2' />
-                                        <feMergeNode in='shadow_3' />
-                                        <feMergeNode in='shadow_4' />
-                                        <feMergeNode in='shadow_5' />
-                                        <feMergeNode in='shadow_6' />
-                                        <feMergeNode in='shadow_7' />
-                                        <feMergeNode in='shadow_12' />
-                                    </feMerge>
-                                    <feFlood flood-color='#ebe7e0' />
-                                    <feComposite in2='shadow' operator='in' result='shadow' />
-
-                                    <feImage x='0' y='0' width='800' height='200' href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/78779/stripes.svg' />
-                                    <feComposite in2='secondShadow' operator='in' result='secondShadow' />
-
-                                    <feMerge>
-                                        <feMergeNode in='secondShadow' />
-                                        <feMergeNode in='border' />
-                                        <feMergeNode in='shadow' />
-                                        <feMergeNode in='SourceGraphic' />
-                                    </feMerge>
-                                </filter>
-
-                                <text dominant-baseline='middle' text-anchor='middle' x='50%' y='50%'>
-                                    Add Conference to
-                                </text>
-                            </svg>
-                        </div>
-                        <div className="col-1"></div>
-                    </div>
-                    <h1 id="fontAdminEvents">
-                        {this.state.eName} </h1>
+                <h3 id="effectFontBackground"> Add Conference to </h3>
+            <br/>
+                    <h4 id="fontAdminEvents">
+                        {this.state.eName} </h4>
                     <List>
                         <ListItem
                             key={this.state.eId}
@@ -464,7 +373,7 @@ class SingleEvent extends Component {
 
 
 
-                <h3 id="fontAdmin">Fill the form with the information of a conference of  {this.state.eName}</h3>
+                <h1 id="fontAdmin">Fill the form with the information of a conference of  {this.state.eName}</h1>
 
                 <Conference id="conferenceFont" eventId={this.state.eId} handler={this.handler} />
                 <FormBtn onClick={this.handleSubmit}>Go to List of Events</FormBtn>

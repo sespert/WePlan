@@ -46,4 +46,72 @@ blockquote:first-line {
     font-size: 24px;
 }
 
+h3 {
+    position: relative;
+    margin-top: 0;
+    color: rgba(95, 76, 64, 0.952);
+    font-family: 'Montserrat';
+    text-shadow: 3px 5px 5px rgb(248, 252, 248);
+
+
+}
+
+#effectFontBackground{
+    background: url("../../images/lines.png") no-repeat;
+    border-radius: 10px;
+    font-size: 60px;
+    position: relative;
+    margin-top: 0;
+    color: rgba(95, 76, 64, 0.952);
+    font-family: 'Montserrat';
+    text-shadow: 3px 5px 5px rgb(248, 252, 248);
+    letter-spacing: -5px;
+
+}
+
+#effectFontBackground1{
+    background: url("../../images/lines.png") no-repeat;
+
+    font-size: 40px;
+    position: relative;
+    margin-top: 0;
+    color: rgba(95, 76, 64, 0.952);
+    font-family: 'Montserrat';
+    text-shadow: 3px 5px 5px rgb(248, 252, 248);
+    letter-spacing: -1px;
+    padding-top: 2%;
+    padding-bottom: 2%;
+
+}
+
+#effectFontBackground2{
+    background: url("../../images/lines.png") no-repeat;
+
+    font-size: 40px;
+    position: relative;
+    margin-top: 2%;
+    color: rgba(95, 76, 64, 0.952);
+    font-family: 'Montserrat';
+    text-shadow: 3px 5px 5px rgb(248, 252, 248);
+    letter-spacing: -1px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    text-align: center;
+    margin-left: -2%;
+    margin-right:-2%;
+    margin-bottom: 3%;
+
+}
+
+h4{
+    position: relative;
+    font-size: 30px;
+    padding-bottom: 3%;
+    padding-top: 7%;
+    font-family: 'Montserrat';
+    text-shadow: 1px 1px 1px  rgba(95, 76, 64, 0.952);
+    letter-spacing: -1px;
+    -webkit-text-stroke: .5px   rgba(95, 76, 64, 0.952);
+    color:  rgba(95, 76, 64, 0.952)
+}
 
